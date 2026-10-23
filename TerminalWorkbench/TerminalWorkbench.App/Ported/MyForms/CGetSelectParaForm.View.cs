@@ -1,0 +1,102 @@
+﻿using System;
+using System.Drawing;
+using TerminalWorkbench.Presentation;
+namespace DtuTestManager
+{
+    partial class CGetSelectParaForm
+    {
+        private TreeView ParaGroupTree;
+        private Panel panel1;
+        private Button BtnCancel;
+        private Button BtnSetOK;
+        private ListView ParaListView;
+        private ListView HaveSelectView;
+        private Button BtnAddSelect;
+        private Button BtnDelete;
+        private Button BtnInsert;
+        private void InitializeComponent()
+        {
+            ParaGroupTree = new TreeView();
+            panel1 = new Panel();
+            BtnCancel = new Button();
+            BtnSetOK = new Button();
+            ParaListView = new ListView();
+            HaveSelectView = new ListView();
+            BtnAddSelect = new Button();
+            BtnDelete = new Button();
+            BtnInsert = new Button();
+            this.ParaGroupTree.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ParaGroupTree.Dock = DockStyle.Left;
+            this.ParaGroupTree.Location = new System.Drawing.Point(0, 0);
+            this.ParaGroupTree.Name = "ParaGroupTree";
+            this.ParaGroupTree.Size = new System.Drawing.Size(189, 433);
+            this.ParaGroupTree.TabIndex = 0;
+            this.panel1.Dock = DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(189, 377);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(901, 56);
+            this.panel1.TabIndex = 1;
+            this.BtnCancel.Location = new System.Drawing.Point(485, 21);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancel.TabIndex = 0;
+            this.BtnCancel.Text = "取消";
+            this.BtnSetOK.Location = new System.Drawing.Point(266, 19);
+            this.BtnSetOK.Name = "BtnSetOK";
+            this.BtnSetOK.Size = new System.Drawing.Size(75, 23);
+            this.BtnSetOK.TabIndex = 0;
+            this.BtnSetOK.Text = "确认";
+            this.ParaListView.BackColor = System.Drawing.Color.AliceBlue;
+            this.ParaListView.Dock = DockStyle.Left;
+            this.ParaListView.Location = new System.Drawing.Point(189, 0);
+            this.ParaListView.Name = "ParaListView";
+            this.ParaListView.Size = new System.Drawing.Size(400, 377);
+            this.ParaListView.TabIndex = 2;
+            this.HaveSelectView.BackColor = System.Drawing.Color.AliceBlue;
+            this.HaveSelectView.Dock = DockStyle.Right;
+            this.HaveSelectView.Location = new System.Drawing.Point(689, 0);
+            this.HaveSelectView.Name = "HaveSelectView";
+            this.HaveSelectView.Size = new System.Drawing.Size(401, 377);
+            this.HaveSelectView.TabIndex = 3;
+            this.BtnAddSelect.Location = new System.Drawing.Point(601, 41);
+            this.BtnAddSelect.Name = "BtnAddSelect";
+            this.BtnAddSelect.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddSelect.TabIndex = 4;
+            this.BtnAddSelect.Text = "添加 —>";
+            this.BtnDelete.Location = new System.Drawing.Point(601, 159);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(75, 23);
+            this.BtnDelete.TabIndex = 4;
+            this.BtnDelete.Text = "<— 移除";
+            this.BtnInsert.Location = new System.Drawing.Point(601, 100);
+            this.BtnInsert.Name = "BtnInsert";
+            this.BtnInsert.Size = new System.Drawing.Size(75, 23);
+            this.BtnInsert.TabIndex = 4;
+            this.BtnInsert.Text = "插入 —>";
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(1090, 433);
+            this.Name = "CGetSelectParaForm";
+            this.Text = "参数选择";
+            this.panel1.Controls.Add(this.BtnCancel);
+            this.panel1.Controls.Add(this.BtnSetOK);
+            this.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.BtnInsert);
+            this.Controls.Add(this.BtnAddSelect);
+            this.Controls.Add(this.HaveSelectView);
+            this.Controls.Add(this.ParaListView);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ParaGroupTree);
+            ParaGroupTree.AfterSelect += ParaGroupTree_AfterSelect;
+            BtnCancel.Click += BtnCancel_Click;
+            BtnSetOK.Click += BtnSetOK_Click;
+            ParaListView.SelectedIndexChanged += ParaListView_SelectedIndexChanged;
+            ParaListView.Validated += ParaListView_Validated;
+            HaveSelectView.SelectedIndexChanged += HaveSelectView_SelectedIndexChanged;
+            HaveSelectView.Validated += HaveSelectView_Validated;
+            BtnAddSelect.Click += BtnAddSelect_Click;
+            BtnDelete.Click += BtnDelete_Click;
+            BtnInsert.Click += BtnInsert_Click;
+            Load += CGetSelectParaForm_Load;
+        }
+    }
+}

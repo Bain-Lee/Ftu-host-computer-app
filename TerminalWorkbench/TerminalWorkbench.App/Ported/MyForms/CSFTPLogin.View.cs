@@ -1,0 +1,108 @@
+﻿using System;
+using System.Drawing;
+using TerminalWorkbench.Presentation;
+namespace DtuTestManager
+{
+    partial class CSFTPLogin
+    {
+        private Button button4;
+        private Button button3;
+        private TextBox textBoxPortNum;
+        private Label label4;
+        private TextBox textBoxPassWord;
+        private Label label3;
+        private TextBox textBoxUserName;
+        private Label label2;
+        private TextBox textBoxIP;
+        private Label label1;
+        private Label label5;
+        private void InitializeComponent()
+        {
+            button4 = new Button();
+            button3 = new Button();
+            textBoxPortNum = new TextBox();
+            label4 = new Label();
+            textBoxPassWord = new TextBox();
+            label3 = new Label();
+            textBoxUserName = new TextBox();
+            label2 = new Label();
+            textBoxIP = new TextBox();
+            label1 = new Label();
+            label5 = new Label();
+            this.button4.Location = new System.Drawing.Point(163, 189);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 35);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "取消";
+            this.button3.Location = new System.Drawing.Point(61, 189);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 35);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "连接";
+            this.textBoxPortNum.Location = new System.Drawing.Point(114, 141);
+            this.textBoxPortNum.Name = "textBoxPortNum";
+            this.textBoxPortNum.Size = new System.Drawing.Size(124, 26);
+            this.textBoxPortNum.TabIndex = 7;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(47, 144);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 16);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "端口号:";
+            this.textBoxPassWord.Location = new System.Drawing.Point(113, 105);
+            this.textBoxPassWord.Name = "textBoxPassWord";
+            this.textBoxPassWord.Size = new System.Drawing.Size(125, 26);
+            this.textBoxPassWord.TabIndex = 8;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(63, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "密码:";
+            this.textBoxUserName.Location = new System.Drawing.Point(114, 73);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(124, 26);
+            this.textBoxUserName.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(47, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "用户名:";
+            this.textBoxIP.Location = new System.Drawing.Point(113, 39);
+            this.textBoxIP.Name = "textBoxIP";
+            this.textBoxIP.Size = new System.Drawing.Size(125, 26);
+            this.textBoxIP.TabIndex = 10;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "IP:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(61, 246);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "label5";
+            this.BackColor = System.Drawing.Color.Lavender;
+            this.ClientSize = new System.Drawing.Size(308, 310);
+            this.Name = "CSFTPLogin";
+            this.Text = "登录";
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.textBoxPortNum);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxPassWord);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxUserName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxIP);
+            this.Controls.Add(this.label1);
+            button4.Click += button4_Click;
+            button3.Click += button3_Click;
+            Load += CSFTPLogin_Load;
+        }
+    }
+}

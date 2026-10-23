@@ -108,3 +108,12 @@ Release 验证使用对应的 `Configuration=Release` 及隔离输出路径。�
 - 说明修改内容、原因、验证方法和结果；构建因环境依赖失败时列出具体缺项，不能声称验证通过。
 - 新发现但不在任务范围的问题单独说明，不擅自修复。静态代码发现不能写成已在设备上复现的故障，也不能据此声称规约全面符合标准。
 - 验证与改动风险相称，不默认扫描、格式化、哈希或重构整个工程。
+
+## WPF 重构分支
+
+- `refactor/wpf-mvvm` 分支新增 `TerminalWorkbench/TerminalWorkbench.sln`，其有效项目为 `TerminalWorkbench.App` 和 `TerminalWorkbench.Regression`；原解决方案仍独立保留。
+- 新项目使用 .NET 10、WPF、自包含 x86 输出，按 `TerminalWorkbench/Build.ps1` 构建，不使用原 COM 工程的构建命令来构建新版。
+- 新版分析与范围边界见 `TerminalWorkbench/REFACTORING.md`，功能索引见 `TerminalWorkbench/FEATURE_PARITY.md`。不得把窗口创建、固定报文对照或零告警构建写成设备全功能验收。
+- `Ported` 是经过人工修复的迁移源码，直接维护；一次性迁移脚本不参与构建且不得覆盖已有实现。保留原任务号及原本故意错误的试验报文。
+- `TerminalWorkbench.Core` / `Legacy` / `Desktop` 为未采用的早期兼容草稿，未纳入有效解决方案或发布包；不以它们代替新版功能，也不擅自删除。
+- 不手工修改、清理或暂存 `.tools`、`.artifacts`、各项目 `bin` / `obj` 中的生成物；正常构建可更新生成物，不把 SDK 或运行时加入 Git。

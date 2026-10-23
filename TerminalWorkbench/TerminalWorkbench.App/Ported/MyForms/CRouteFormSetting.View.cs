@@ -1,0 +1,103 @@
+﻿using System;
+using System.Drawing;
+using TerminalWorkbench.Presentation;
+namespace DtuTestManager
+{
+    partial class CRouteFormSetting
+    {
+        private ListView Total_Listview;
+        private ListView Pri_ListView;
+        private Button BtnAddSelect;
+        private Button BtnInsert;
+        private Button BtnDelete;
+        private Button BtnSave;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel1;
+        private ComboBox Dev_Combox;
+        private void InitializeComponent()
+        {
+            Total_Listview = new ListView();
+            Pri_ListView = new ListView();
+            BtnAddSelect = new Button();
+            BtnInsert = new Button();
+            BtnDelete = new Button();
+            BtnSave = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            Dev_Combox = new ComboBox();
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(50, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(130, System.Windows.GridUnitType.Pixel));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(50, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.RowHeights.Add(new System.Windows.GridLength(100, System.Windows.GridUnitType.Star));
+            this.Total_Listview.Dock = DockStyle.Fill;
+            this.Total_Listview.Location = new System.Drawing.Point(3, 3);
+            this.Total_Listview.Name = "Total_Listview";
+            this.Total_Listview.Size = new System.Drawing.Size(587, 481);
+            this.Total_Listview.TabIndex = 0;
+            this.Pri_ListView.Dock = DockStyle.Fill;
+            this.Pri_ListView.Location = new System.Drawing.Point(726, 3);
+            this.Pri_ListView.Name = "Pri_ListView";
+            this.Pri_ListView.Size = new System.Drawing.Size(587, 481);
+            this.Pri_ListView.TabIndex = 1;
+            this.BtnAddSelect.Location = new System.Drawing.Point(22, 124);
+            this.BtnAddSelect.Name = "BtnAddSelect";
+            this.BtnAddSelect.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddSelect.TabIndex = 2;
+            this.BtnAddSelect.Text = "添加";
+            this.BtnInsert.Location = new System.Drawing.Point(22, 163);
+            this.BtnInsert.Name = "BtnInsert";
+            this.BtnInsert.Size = new System.Drawing.Size(75, 23);
+            this.BtnInsert.TabIndex = 2;
+            this.BtnInsert.Text = "插入";
+            this.BtnDelete.Location = new System.Drawing.Point(22, 202);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(75, 23);
+            this.BtnDelete.TabIndex = 2;
+            this.BtnDelete.Text = "移除";
+            this.BtnSave.Location = new System.Drawing.Point(22, 241);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(75, 23);
+            this.BtnSave.TabIndex = 2;
+            this.BtnSave.Text = "保存";
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.Dock = DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1316, 487);
+            this.tableLayoutPanel1.TabIndex = 3;
+            this.panel1.Dock = DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(596, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(124, 481);
+            this.panel1.TabIndex = 2;
+            this.Dev_Combox.Location = new System.Drawing.Point(22, 86);
+            this.Dev_Combox.Name = "Dev_Combox";
+            this.Dev_Combox.Size = new System.Drawing.Size(75, 20);
+            this.Dev_Combox.TabIndex = 3;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(1316, 487);
+            this.Name = "CRouteFormSetting";
+            this.Text = "CRouteFormSetting";
+            this.tableLayoutPanel1.Controls.Add(this.Total_Listview, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.Pri_ListView, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.panel1.Controls.Add(this.Dev_Combox);
+            this.panel1.Controls.Add(this.BtnAddSelect);
+            this.panel1.Controls.Add(this.BtnSave);
+            this.panel1.Controls.Add(this.BtnInsert);
+            this.panel1.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.tableLayoutPanel1);
+            Total_Listview.SelectedIndexChanged += Total_Listview_SelectedIndexChanged;
+            Total_Listview.Validated += Total_Listview_Validated;
+            Pri_ListView.SelectedIndexChanged += Pri_ListView_SelectedIndexChanged;
+            Pri_ListView.Validated += Pri_ListView_Validated;
+            BtnAddSelect.Click += BtnAddSelect_Click;
+            BtnInsert.Click += BtnInsert_Click;
+            BtnDelete.Click += BtnDelete_Click;
+            BtnSave.Click += BtnSave_Click;
+            Dev_Combox.SelectedIndexChanged += Dev_Combox_SelectedIndexChanged;
+            Load += CRouteFormSetting_Load;
+        }
+    }
+}

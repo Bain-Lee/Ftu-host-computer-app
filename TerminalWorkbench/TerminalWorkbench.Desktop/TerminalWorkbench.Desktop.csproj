@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TerminalWorkbench.Core\TerminalWorkbench.Core.csproj" />
+    <ProjectReference Include="..\TerminalWorkbench.Legacy\TerminalWorkbench.Legacy.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3306 @@
+[
+  {
+    "source": "4GForms/CAddCom.cs",
+    "type": "CAddCom",
+    "title": "CAddCom",
+    "handlers": [
+      {
+        "control": "btn_addIP",
+        "event": "Click",
+        "handler": "btn_addIP_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CAddCom_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "4GForms/CAddGateWay.cs",
+    "type": "CAddGateWay",
+    "title": "添加网关",
+    "handlers": [
+      {
+        "control": "btn_Enter",
+        "event": "Click",
+        "handler": "btn_Enter_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CAddGateWay_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "4GForms/CAddHost.cs",
+    "type": "CAddHost",
+    "title": "CAddHost",
+    "handlers": [
+      {
+        "control": "cbx_HostType",
+        "event": "SelectedIndexChanged",
+        "handler": "cbx_HostType_SelectedIndexChanged"
+      },
+      {
+        "control": "btn_addIP",
+        "event": "Click",
+        "handler": "btn_addIP_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CAddHost_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "4GForms/CAddIPForm.cs",
+    "type": "CAddIPForm",
+    "title": "添加IP地址",
+    "handlers": [
+      {
+        "control": "btn_addIP",
+        "event": "Click",
+        "handler": "btn_addIP_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CAddIPForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CDiffParaForm.cs",
+    "type": "CDiffParaForm",
+    "title": "CDiffParaForm",
+    "handlers": [
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      },
+      {
+        "control": "LV",
+        "event": "SelectedIndexChanged",
+        "handler": "LV_SelectedIndexChanged"
+      },
+      {
+        "control": "LV",
+        "event": "DoubleClick",
+        "handler": "LV_DoubleClick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CDiffParaForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CEngModPara.cs",
+    "type": "CEngModPara",
+    "title": "参数配置",
+    "handlers": [
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CEngModPara_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CEngParaNewForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CEngPara.cs",
+    "type": "CEngPara",
+    "title": "工程参数",
+    "handlers": [
+      {
+        "control": "BtnAllDown",
+        "event": "Click",
+        "handler": "BtnAllDown_Click"
+      },
+      {
+        "control": "BtnAllRead",
+        "event": "Click",
+        "handler": "BtnAllRead_Click"
+      },
+      {
+        "control": "BtnNewFile",
+        "event": "Click",
+        "handler": "BtnNewFile_Click"
+      },
+      {
+        "control": "BtnEdit",
+        "event": "Click",
+        "handler": "BtnEdit_Click"
+      },
+      {
+        "control": "BtnModPara",
+        "event": "Click",
+        "handler": "BtnModPara_Click"
+      },
+      {
+        "control": "BtnSavePara",
+        "event": "Click",
+        "handler": "BtnSavePara_Click"
+      },
+      {
+        "control": "BtnSelectAll",
+        "event": "Click",
+        "handler": "BtnSelectAll_Click"
+      },
+      {
+        "control": "BtnCancel",
+        "event": "Click",
+        "handler": "BtnCancel_Click"
+      },
+      {
+        "control": "BtnSelectNo",
+        "event": "Click",
+        "handler": "BtnSelectNo_Click"
+      },
+      {
+        "control": "ParaFileTree",
+        "event": "DrawNode",
+        "handler": "ParaFileTree_DrawNode"
+      },
+      {
+        "control": "ParaFileTree",
+        "event": "AfterSelect",
+        "handler": "ParaFileTree_AfterSelect"
+      },
+      {
+        "control": "TaskTime",
+        "event": "Tick",
+        "handler": "TaskTime_Tick"
+      },
+      {
+        "control": "FreshTime",
+        "event": "Tick",
+        "handler": "FreshTime_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CEngPara_Load"
+      }
+    ],
+    "taskNumbers": [
+      10
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CEngParaNewForm.cs",
+    "type": "CEngParaNewForm",
+    "title": "参数配置",
+    "handlers": [
+      {
+        "control": "ParaTreeView",
+        "event": "AfterSelect",
+        "handler": "ParaTreeView_AfterSelect"
+      },
+      {
+        "control": "ParaLV",
+        "event": "SelectedIndexChanged",
+        "handler": "ParaLV_SelectedIndexChanged"
+      },
+      {
+        "control": "ParaLV",
+        "event": "Validated",
+        "handler": "ParaLV_Validated"
+      },
+      {
+        "control": "button5",
+        "event": "Click",
+        "handler": "button5_Click"
+      },
+      {
+        "control": "button4",
+        "event": "Click",
+        "handler": "button4_Click"
+      },
+      {
+        "control": "button3",
+        "event": "Click",
+        "handler": "button3_Click"
+      },
+      {
+        "control": "button2",
+        "event": "Click",
+        "handler": "button2_Click"
+      },
+      {
+        "control": "button6",
+        "event": "Click",
+        "handler": "button6_Click"
+      },
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CEngParaNewForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CEngParaNewForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CFixDataForm.cs",
+    "type": "CFixDataForm",
+    "title": "置数窗口",
+    "handlers": [
+      {
+        "control": "radioButton1",
+        "event": "CheckedChanged",
+        "handler": "radioButton1_CheckedChanged"
+      },
+      {
+        "control": "radioButton2",
+        "event": "CheckedChanged",
+        "handler": "radioButton2_CheckedChanged"
+      },
+      {
+        "control": "button2",
+        "event": "Click",
+        "handler": "button2_Click"
+      },
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CFixDataForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      61,
+      62,
+      63,
+      64
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CFTUFastUpdate.cs",
+    "type": "CFTUFastUpdate",
+    "title": "CFTUFastUpdate",
+    "handlers": [
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      },
+      {
+        "control": "BtnStartDown",
+        "event": "Click",
+        "handler": "BtnStartDown_Click"
+      },
+      {
+        "control": "timer1",
+        "event": "Tick",
+        "handler": "timer1_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosed",
+        "handler": "CFTUFastUpdate_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CFTUFastUpdate_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CGuHuaForm.cs",
+    "type": "CGuHuaForm",
+    "title": "固化窗口",
+    "handlers": [
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      },
+      {
+        "control": "button2",
+        "event": "Click",
+        "handler": "button2_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CGuHuaForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      10
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSFTPForm.cs",
+    "type": "CSFTPForm",
+    "title": "SFTP传输",
+    "handlers": [
+      {
+        "control": "button3",
+        "event": "Click",
+        "handler": "button3_Click"
+      },
+      {
+        "control": "button4",
+        "event": "Click",
+        "handler": "button4_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CSFTPForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSFTPLogin.cs",
+    "type": "CSFTPLogin",
+    "title": "登录",
+    "handlers": [
+      {
+        "control": "button4",
+        "event": "Click",
+        "handler": "button4_Click"
+      },
+      {
+        "control": "button3",
+        "event": "Click",
+        "handler": "button3_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CSFTPLogin_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSFTPMainForm.cs",
+    "type": "CSFTPMainForm",
+    "title": "文件上下装",
+    "handlers": [
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      },
+      {
+        "control": "LV1",
+        "event": "Click",
+        "handler": "LV1_Click"
+      },
+      {
+        "control": "LV1",
+        "event": "DoubleClick",
+        "handler": "LV1_DoubleClick"
+      },
+      {
+        "control": "LV2",
+        "event": "Click",
+        "handler": "LV2_Click"
+      },
+      {
+        "control": "LV2",
+        "event": "DoubleClick",
+        "handler": "LV2_DoubleClick"
+      },
+      {
+        "control": "button2",
+        "event": "Click",
+        "handler": "button2_Click"
+      },
+      {
+        "control": "button3",
+        "event": "Click",
+        "handler": "button3_Click"
+      },
+      {
+        "control": "button4",
+        "event": "Click",
+        "handler": "button4_Click"
+      },
+      {
+        "control": "button5",
+        "event": "Click",
+        "handler": "button5_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CSFTPMainForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CSFTPMainForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSpeParaForm.cs",
+    "type": "CSpeParaForm",
+    "title": "厂站参数",
+    "handlers": [
+      {
+        "control": "IDvalue",
+        "event": "TextChanged",
+        "handler": "textBox1_TextChanged"
+      },
+      {
+        "control": "button1",
+        "event": "Click",
+        "handler": "button1_Click"
+      },
+      {
+        "control": "button2",
+        "event": "Click",
+        "handler": "button2_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CSpeParaForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      50,
+      51
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTtestCaseForm.cs",
+    "type": "CTtestCaseForm",
+    "title": "CTtestCaseForm",
+    "handlers": [
+      {
+        "control": "BtnConnectDev",
+        "event": "Click",
+        "handler": "BtnConnectDev_Click"
+      },
+      {
+        "control": "BtnSendOrder",
+        "event": "Click",
+        "handler": "BtnSendOrder_Click"
+      },
+      {
+        "control": "TestCaseView",
+        "event": "SelectedIndexChanged",
+        "handler": "TestCaseView_SelectedIndexChanged"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CTtestCaseForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CTtestCaseForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CCommModeSet.cs",
+    "type": "CommuCFG",
+    "title": "通信模块配置软件",
+    "handlers": [
+      {
+        "control": "BtnStartFreshBuff",
+        "event": "Click",
+        "handler": "BtnStartFreshBuff_Click"
+      },
+      {
+        "control": "BtnStopFreshBuff",
+        "event": "Click",
+        "handler": "BtnStopFreshBuff_Click"
+      },
+      {
+        "control": "BtnClearBuff",
+        "event": "Click",
+        "handler": "BtnClearBuff_Click"
+      },
+      {
+        "control": "TaskTime",
+        "event": "Tick",
+        "handler": "TaskTime_Tick"
+      },
+      {
+        "control": "IPReadBtn",
+        "event": "Click",
+        "handler": "IPReadBtn_Click"
+      },
+      {
+        "control": "DevAddBtn",
+        "event": "Click",
+        "handler": "DevAddBtn_Click"
+      },
+      {
+        "control": "DevModifyBtn",
+        "event": "Click",
+        "handler": "DevModifyBtn_Click"
+      },
+      {
+        "control": "DevInsertBtn",
+        "event": "Click",
+        "handler": "DevInsertBtn_Click"
+      },
+      {
+        "control": "DevDeleteBtn",
+        "event": "Click",
+        "handler": "DevDeleteBtn_Click"
+      },
+      {
+        "control": "IPClearBtn",
+        "event": "Click",
+        "handler": "DevClearBtn_Click"
+      },
+      {
+        "control": "IPSaveBtn",
+        "event": "Click",
+        "handler": "IPSaveBtn_Click"
+      },
+      {
+        "control": "Btn_MacRead",
+        "event": "Click",
+        "handler": "Btn_MacRead_Click"
+      },
+      {
+        "control": "MacClearBtn",
+        "event": "Click",
+        "handler": "MacClearBtn_Click"
+      },
+      {
+        "control": "Btn_MacSave",
+        "event": "Click",
+        "handler": "Btn_MacSave_Click"
+      },
+      {
+        "control": "GWReadBtn",
+        "event": "Click",
+        "handler": "GWReadBtn_Click"
+      },
+      {
+        "control": "GWAddBtn",
+        "event": "Click",
+        "handler": "GWAddBtn_Click"
+      },
+      {
+        "control": "GWModifyBtn",
+        "event": "Click",
+        "handler": "GWModifyBtn_Click"
+      },
+      {
+        "control": "GWInsertBtn",
+        "event": "Click",
+        "handler": "GWInsertBtn_Click"
+      },
+      {
+        "control": "GWDeleteBtn",
+        "event": "Click",
+        "handler": "GWDeleteBtn_Click"
+      },
+      {
+        "control": "GWClearBtn",
+        "event": "Click",
+        "handler": "GWClearBtn_Click"
+      },
+      {
+        "control": "GWSaveBtn",
+        "event": "Click",
+        "handler": "GWSaveBtn_Click"
+      },
+      {
+        "control": "Set4GGrid",
+        "event": "CurrentCellChanged",
+        "handler": "Set4GGrid_CurrentCellChanged"
+      },
+      {
+        "control": "Btn_4GRead",
+        "event": "Click",
+        "handler": "Btn_4GRead_Click"
+      },
+      {
+        "control": "Btn_4GSave",
+        "event": "Click",
+        "handler": "Btn_4GSave_Click"
+      },
+      {
+        "control": "Btn_Read_COM",
+        "event": "Click",
+        "handler": "Btn_Read_COM_Click"
+      },
+      {
+        "control": "Btn_Add_COM",
+        "event": "Click",
+        "handler": "Btn_Add_COM_Click"
+      },
+      {
+        "control": "Btn_Modify_COM",
+        "event": "Click",
+        "handler": "Btn_Modify_COM_Click"
+      },
+      {
+        "control": "Btn_Insert_COM",
+        "event": "Click",
+        "handler": "Btn_Insert_COM_Click"
+      },
+      {
+        "control": "Btn_Del_COM",
+        "event": "Click",
+        "handler": "Btn_Del_COM_Click"
+      },
+      {
+        "control": "Btn_Clear_COM",
+        "event": "Click",
+        "handler": "Btn_Clear_COM_Click"
+      },
+      {
+        "control": "Btn_Save_COM",
+        "event": "Click",
+        "handler": "Btn_Save_COM_Click"
+      },
+      {
+        "control": "SetHostGrid",
+        "event": "CurrentCellChanged",
+        "handler": "SetHostGrid_CurrentCellChanged"
+      },
+      {
+        "control": "SetHostGrid",
+        "event": "Scroll",
+        "handler": "SetHostGrid_Scroll"
+      },
+      {
+        "control": "Btn_Read_Host",
+        "event": "Click",
+        "handler": "Btn_Read_Host_Click"
+      },
+      {
+        "control": "Btn_Del_Host",
+        "event": "Click",
+        "handler": "Btn_Del_Host_Click"
+      },
+      {
+        "control": "Btn_Clear_Host",
+        "event": "Click",
+        "handler": "Btn_Clear_Host_Click"
+      },
+      {
+        "control": "Btn_Save_Host",
+        "event": "Click",
+        "handler": "Btn_Save_Host_Click"
+      },
+      {
+        "control": "SetDevGrid",
+        "event": "CurrentCellChanged",
+        "handler": "SetDevGrid_CurrentCellChanged"
+      },
+      {
+        "control": "SetDevGrid",
+        "event": "Scroll",
+        "handler": "SetDevGrid_Scroll"
+      },
+      {
+        "control": "Btn_Read_Dev",
+        "event": "Click",
+        "handler": "Btn_Read_Dev_Click"
+      },
+      {
+        "control": "Btn_Del_Dev",
+        "event": "Click",
+        "handler": "Btn_Del_Dev_Click"
+      },
+      {
+        "control": "Btn_Clear_Dev",
+        "event": "Click",
+        "handler": "Btn_Clear_Dev_Click"
+      },
+      {
+        "control": "Btn_Save_Dev",
+        "event": "Click",
+        "handler": "Btn_Save_Dev_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CommuCFG_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CommuCFG_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CEventViewForm.cs",
+    "type": "CEventViewForm",
+    "title": "事件信息",
+    "handlers": [],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CEventViewForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSecrteKeyForm.cs",
+    "type": "CSecrteKeyForm",
+    "title": "加密管理",
+    "handlers": [
+      {
+        "control": "BtnConnectDev",
+        "event": "Click",
+        "handler": "BtnConnectDev_Click"
+      },
+      {
+        "control": "SecretIndex",
+        "event": "SelectedIndexChanged",
+        "handler": "SecretIndex_SelectedIndexChanged"
+      },
+      {
+        "control": "BtnCheckCARight",
+        "event": "Click",
+        "handler": "BtnCheckCARight_Click"
+      },
+      {
+        "control": "BtnAutoCheck",
+        "event": "Click",
+        "handler": "BtnAutoCheck_Click"
+      },
+      {
+        "control": "BtnSecretReset",
+        "event": "Click",
+        "handler": "BtnSecretReset_Click"
+      },
+      {
+        "control": "BtnCredDown",
+        "event": "Click",
+        "handler": "BtnCredDown_Click"
+      },
+      {
+        "control": "BtnCredInput",
+        "event": "Click",
+        "handler": "BtnCredInput_Click"
+      },
+      {
+        "control": "BtnCredUpdate",
+        "event": "Click",
+        "handler": "BtnCredUpdate_Click"
+      },
+      {
+        "control": "BtnSecretUpdate",
+        "event": "Click",
+        "handler": "BtnSecretUpdate_Click"
+      },
+      {
+        "control": "BtnTermReadChipNo",
+        "event": "Click",
+        "handler": "BtnTermReadChipNo_Click"
+      },
+      {
+        "control": "BtnReadVersion",
+        "event": "Click",
+        "handler": "BtnReadVersion_Click"
+      },
+      {
+        "control": "BtnGateAnswer",
+        "event": "Click",
+        "handler": "BtnGateAnswer_Click"
+      },
+      {
+        "control": "BtnGateDegree",
+        "event": "Click",
+        "handler": "BtnGateDegree_Click"
+      },
+      {
+        "control": "BtnMasterAnswer",
+        "event": "Click",
+        "handler": "BtnMasterAnswer_Click"
+      },
+      {
+        "control": "BtnIdentity",
+        "event": "Click",
+        "handler": "BtnIdentity_Click"
+      },
+      {
+        "control": "BtnSendData",
+        "event": "Click",
+        "handler": "BtnSendData_Click"
+      },
+      {
+        "control": "BtnResetKey",
+        "event": "Click",
+        "handler": "BtnResetKey_Click"
+      },
+      {
+        "control": "BtnTerDown",
+        "event": "Click",
+        "handler": "BtnTerDown_Click"
+      },
+      {
+        "control": "BtnWriteBack",
+        "event": "Click",
+        "handler": "BtnWriteBack_Click"
+      },
+      {
+        "control": "BtnCredWrite",
+        "event": "Click",
+        "handler": "BtnCredWrite_Click"
+      },
+      {
+        "control": "BtnSign",
+        "event": "Click",
+        "handler": "BtnSign_Click"
+      },
+      {
+        "control": "BtnReadKey",
+        "event": "Click",
+        "handler": "BtnReadKey_Click"
+      },
+      {
+        "control": "BtnReadChipNo",
+        "event": "Click",
+        "handler": "BtnReadChipNo_Click"
+      },
+      {
+        "control": "BtnReadNo",
+        "event": "Click",
+        "handler": "BtnReadNo_Click"
+      },
+      {
+        "control": "BtnYWReadVersion",
+        "event": "Click",
+        "handler": "BtnYWReadVersion_Click"
+      },
+      {
+        "control": "BtnYWRequest",
+        "event": "Click",
+        "handler": "BtnYWRequest_Click"
+      },
+      {
+        "control": "BtnDegree",
+        "event": "Click",
+        "handler": "BtnDegree_Click"
+      },
+      {
+        "control": "BtnClearRichText",
+        "event": "Click",
+        "handler": "BtnClearRichText_Click"
+      },
+      {
+        "control": "UseErrRand",
+        "event": "CheckedChanged",
+        "handler": "UseErrRand_CheckedChanged"
+      },
+      {
+        "control": "UseMingWen",
+        "event": "CheckedChanged",
+        "handler": "UseMingWen_CheckedChanged"
+      },
+      {
+        "control": "UseNoRand",
+        "event": "CheckedChanged",
+        "handler": "UseNoRand_CheckedChanged"
+      },
+      {
+        "control": "UseNoTime",
+        "event": "CheckedChanged",
+        "handler": "UseNoTime_CheckedChanged"
+      },
+      {
+        "control": "UseNoSign",
+        "event": "CheckedChanged",
+        "handler": "UseNoSign_CheckedChanged"
+      },
+      {
+        "control": "UseErrTime",
+        "event": "CheckedChanged",
+        "handler": "UseErrTime_CheckedChanged"
+      },
+      {
+        "control": "UseErrMACCheck",
+        "event": "CheckedChanged",
+        "handler": "UseErrMACCheck_CheckedChanged"
+      },
+      {
+        "control": "UseErrSign",
+        "event": "CheckedChanged",
+        "handler": "UseErrSign_CheckedChanged"
+      },
+      {
+        "control": "Use_Normal",
+        "event": "CheckedChanged",
+        "handler": "Use_Normal_CheckedChanged"
+      },
+      {
+        "control": "NormalUseErrCS",
+        "event": "CheckedChanged",
+        "handler": "NormalUseErrCS_CheckedChanged"
+      },
+      {
+        "control": "StatusTimer",
+        "event": "Tick",
+        "handler": "StatusTimer_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CSecrteKeyForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CDataTranForm.cs",
+    "type": "CDataTranForm",
+    "title": "数据转换",
+    "handlers": [
+      {
+        "control": "BtTran1",
+        "event": "Click",
+        "handler": "BtTran1_Click"
+      },
+      {
+        "control": "BtTran5",
+        "event": "Click",
+        "handler": "BtTran5_Click"
+      },
+      {
+        "control": "BtTran2",
+        "event": "Click",
+        "handler": "BtTran2_Click"
+      },
+      {
+        "control": "BtTran6",
+        "event": "Click",
+        "handler": "BtTran6_Click"
+      },
+      {
+        "control": "BtTran3",
+        "event": "Click",
+        "handler": "BtTran3_Click"
+      },
+      {
+        "control": "BtTran7",
+        "event": "Click",
+        "handler": "BtTran7_Click"
+      },
+      {
+        "control": "BtTran4",
+        "event": "Click",
+        "handler": "BtTran4_Click"
+      },
+      {
+        "control": "BtTran8",
+        "event": "Click",
+        "handler": "BtTran8_Click"
+      },
+      {
+        "control": "BtnClear",
+        "event": "Click",
+        "handler": "BtnClear_Click"
+      }
+    ],
+    "lifecycle": [],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTestFunForm.cs",
+    "type": "CTestFunForm",
+    "title": "辅助功能",
+    "handlers": [
+      {
+        "control": "BtnSelectBackColor",
+        "event": "Click",
+        "handler": "BtnSelectBackColor_Click"
+      },
+      {
+        "control": "BtnComTest",
+        "event": "Click",
+        "handler": "BtnComTest_Click"
+      },
+      {
+        "control": "BtnOpenSuperCom",
+        "event": "Click",
+        "handler": "BtnOpenSuperCom_Click"
+      },
+      {
+        "control": "ClearAllText",
+        "event": "Click",
+        "handler": "ClearAllText_Click"
+      },
+      {
+        "control": "BtnSendOrder",
+        "event": "Click",
+        "handler": "BtnSendOrder_Click"
+      },
+      {
+        "control": "BtnNextOrder",
+        "event": "Click",
+        "handler": "BtnNextOrder_Click"
+      },
+      {
+        "control": "BtnPreOrder",
+        "event": "Click",
+        "handler": "BtnPreOrder_Click"
+      },
+      {
+        "control": "FreshTimer",
+        "event": "Tick",
+        "handler": "FreshTimer_Tick"
+      },
+      {
+        "control": "BtnClearPingMsg",
+        "event": "Click",
+        "handler": "BtnClearPingMsg_Click"
+      },
+      {
+        "control": "BtnPingTest",
+        "event": "Click",
+        "handler": "BtnPingTest_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTestFunForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CAddTermForm.cs",
+    "type": "CAddTermForm",
+    "title": "终端信息",
+    "handlers": [
+      {
+        "control": "Btn_OK",
+        "event": "Click",
+        "handler": "Btn_OK_Click"
+      },
+      {
+        "control": "Btn_Cancel",
+        "event": "Click",
+        "handler": "Btn_Cancel_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CAddTermForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CAddTermForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CPriForm.cs",
+    "type": "CPriForm",
+    "title": "CPriForm",
+    "handlers": [
+      {
+        "control": "PriTreeView",
+        "event": "AfterSelect",
+        "handler": "PriTreeView_AfterSelect"
+      },
+      {
+        "control": "AddTermBtn",
+        "event": "Click",
+        "handler": "AddTermBtn_Click"
+      },
+      {
+        "control": "CopyTermBtn",
+        "event": "Click",
+        "handler": "CopyTermBtn_Click"
+      },
+      {
+        "control": "DelTermBtn",
+        "event": "Click",
+        "handler": "DelTermBtn_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CPriForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CPriOptionForm.cs",
+    "type": "CPriOptionForm",
+    "title": "CTranStationOptionForm",
+    "handlers": [
+      {
+        "control": "OptionView",
+        "event": "SelectedIndexChanged",
+        "handler": "OptionView_SelectedIndexChanged"
+      },
+      {
+        "control": "OptionView",
+        "event": "DoubleClick",
+        "handler": "OptionView_DoubleClick"
+      },
+      {
+        "control": "RecordView",
+        "event": "SelectedIndexChanged",
+        "handler": "RecordView_SelectedIndexChanged"
+      },
+      {
+        "control": "RecordView",
+        "event": "DoubleClick",
+        "handler": "RecordView_DoubleClick"
+      },
+      {
+        "control": "SaveSetBtn",
+        "event": "Click",
+        "handler": "SaveSetBtn_Click"
+      },
+      {
+        "control": "BtnProtocl",
+        "event": "Click",
+        "handler": "BtnProtocl_Click"
+      },
+      {
+        "control": "BtnCreateTestModule",
+        "event": "Click",
+        "handler": "BtnCreateTestModule_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTranStationOptionForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CRouteForm.cs",
+    "type": "CRouteForm",
+    "title": "CTermForm",
+    "handlers": [
+      {
+        "control": "RouteTreeView",
+        "event": "AfterSelect",
+        "handler": "RouteTreeView_AfterSelect"
+      },
+      {
+        "control": "AddBtn",
+        "event": "Click",
+        "handler": "AddBtn_Click"
+      },
+      {
+        "control": "CopyBtn",
+        "event": "Click",
+        "handler": "CopyBtn_Click"
+      },
+      {
+        "control": "DelBtn",
+        "event": "Click",
+        "handler": "DelBtn_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CRouteForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CRouteFormSetting.cs",
+    "type": "CRouteFormSetting",
+    "title": "CRouteFormSetting",
+    "handlers": [
+      {
+        "control": "Total_Listview",
+        "event": "SelectedIndexChanged",
+        "handler": "Total_Listview_SelectedIndexChanged"
+      },
+      {
+        "control": "Total_Listview",
+        "event": "Validated",
+        "handler": "Total_Listview_Validated"
+      },
+      {
+        "control": "Pri_ListView",
+        "event": "SelectedIndexChanged",
+        "handler": "Pri_ListView_SelectedIndexChanged"
+      },
+      {
+        "control": "Pri_ListView",
+        "event": "Validated",
+        "handler": "Pri_ListView_Validated"
+      },
+      {
+        "control": "BtnAddSelect",
+        "event": "Click",
+        "handler": "BtnAddSelect_Click"
+      },
+      {
+        "control": "BtnInsert",
+        "event": "Click",
+        "handler": "BtnInsert_Click"
+      },
+      {
+        "control": "BtnDelete",
+        "event": "Click",
+        "handler": "BtnDelete_Click"
+      },
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      },
+      {
+        "control": "Dev_Combox",
+        "event": "SelectedIndexChanged",
+        "handler": "Dev_Combox_SelectedIndexChanged"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CRouteFormSetting_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTermForm.cs",
+    "type": "CTermForm",
+    "title": "CTermForm",
+    "handlers": [
+      {
+        "control": "TermTreeView",
+        "event": "AfterSelect",
+        "handler": "TermTreeView_AfterSelect"
+      },
+      {
+        "control": "AddTermBtn",
+        "event": "Click",
+        "handler": "AddTermBtn_Click"
+      },
+      {
+        "control": "CopyTermBtn",
+        "event": "Click",
+        "handler": "CopyTermBtn_Click"
+      },
+      {
+        "control": "DelTermBtn",
+        "event": "Click",
+        "handler": "DelTermBtn_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTermForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTermOptionForm.cs",
+    "type": "CTermOptionForm",
+    "title": "CTranStationOptionForm",
+    "handlers": [
+      {
+        "control": "OptionView",
+        "event": "SelectedIndexChanged",
+        "handler": "OptionView_SelectedIndexChanged"
+      },
+      {
+        "control": "OptionView",
+        "event": "Click",
+        "handler": "OptionView_Click"
+      },
+      {
+        "control": "OptionView",
+        "event": "DoubleClick",
+        "handler": "OptionView_DoubleClick"
+      },
+      {
+        "control": "CountSetView",
+        "event": "SelectedIndexChanged",
+        "handler": "CountSetView_SelectedIndexChanged"
+      },
+      {
+        "control": "CountSetView",
+        "event": "Click",
+        "handler": "CountSetView_Click"
+      },
+      {
+        "control": "CountSetView",
+        "event": "DoubleClick",
+        "handler": "CountSetView_DoubleClick"
+      },
+      {
+        "control": "RecordView",
+        "event": "SelectedIndexChanged",
+        "handler": "RecordView_SelectedIndexChanged"
+      },
+      {
+        "control": "RecordView",
+        "event": "Click",
+        "handler": "RecordView_Click"
+      },
+      {
+        "control": "RecordView",
+        "event": "DoubleClick",
+        "handler": "RecordView_DoubleClick"
+      },
+      {
+        "control": "SaveSetBtn",
+        "event": "Click",
+        "handler": "SaveSetBtn_Click"
+      },
+      {
+        "control": "BtnYx",
+        "event": "Click",
+        "handler": "BtnYx_Click"
+      },
+      {
+        "control": "BtnYc",
+        "event": "Click",
+        "handler": "BtnYc_Click"
+      },
+      {
+        "control": "BtnYk",
+        "event": "Click",
+        "handler": "BtnYk_Click"
+      },
+      {
+        "control": "BtnSet",
+        "event": "Click",
+        "handler": "BtnSet_Click"
+      },
+      {
+        "control": "BtnYm",
+        "event": "Click",
+        "handler": "BtnYm_Click"
+      },
+      {
+        "control": "BtnProtocl",
+        "event": "Click",
+        "handler": "BtnProtocl_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTranStationOptionForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CGetSelectParaForm.cs",
+    "type": "CGetSelectParaForm",
+    "title": "参数选择",
+    "handlers": [
+      {
+        "control": "ParaGroupTree",
+        "event": "AfterSelect",
+        "handler": "ParaGroupTree_AfterSelect"
+      },
+      {
+        "control": "BtnCancel",
+        "event": "Click",
+        "handler": "BtnCancel_Click"
+      },
+      {
+        "control": "BtnSetOK",
+        "event": "Click",
+        "handler": "BtnSetOK_Click"
+      },
+      {
+        "control": "ParaListView",
+        "event": "SelectedIndexChanged",
+        "handler": "ParaListView_SelectedIndexChanged"
+      },
+      {
+        "control": "ParaListView",
+        "event": "Validated",
+        "handler": "ParaListView_Validated"
+      },
+      {
+        "control": "HaveSelectView",
+        "event": "SelectedIndexChanged",
+        "handler": "HaveSelectView_SelectedIndexChanged"
+      },
+      {
+        "control": "HaveSelectView",
+        "event": "Validated",
+        "handler": "HaveSelectView_Validated"
+      },
+      {
+        "control": "BtnAddSelect",
+        "event": "Click",
+        "handler": "BtnAddSelect_Click"
+      },
+      {
+        "control": "BtnDelete",
+        "event": "Click",
+        "handler": "BtnDelete_Click"
+      },
+      {
+        "control": "BtnInsert",
+        "event": "Click",
+        "handler": "BtnInsert_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CGetSelectParaForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CFileTimeForm.cs",
+    "type": "CFileTimeForm",
+    "title": "召唤目录时间选择",
+    "handlers": [
+      {
+        "control": "SetOK",
+        "event": "Click",
+        "handler": "SetOK_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CFileTimeForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CLineRealForm.cs",
+    "type": "CLineRealForm",
+    "title": "CLineRealForm",
+    "handlers": [
+      {
+        "control": "ClearZero",
+        "event": "Click",
+        "handler": "ClearZero_Click"
+      },
+      {
+        "control": "FastSet",
+        "event": "Click",
+        "handler": "FastSet_Click"
+      },
+      {
+        "control": "SaveSet",
+        "event": "Click",
+        "handler": "SaveSet_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CLineRealForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CDeviceSetForm.cs",
+    "type": "CDeviceSetForm",
+    "title": "CDeviceSetForm",
+    "handlers": [
+      {
+        "control": "BtnChange",
+        "event": "Click",
+        "handler": "BtnChange_Click"
+      },
+      {
+        "control": "BtnReloadDefault",
+        "event": "Click",
+        "handler": "BtnReloadDefault_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CDeviceSetForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CParaSetForm.cs",
+    "type": "CParaSetForm",
+    "title": "CParaSetForm",
+    "handlers": [
+      {
+        "control": "ParaListTree",
+        "event": "AfterSelect",
+        "handler": "ParaListTree_AfterSelect"
+      },
+      {
+        "control": "AddRoot",
+        "event": "Click",
+        "handler": "AddRoot_Click"
+      },
+      {
+        "control": "DeleteRoot",
+        "event": "Click",
+        "handler": "DeleteRoot_Click"
+      },
+      {
+        "control": "AddList",
+        "event": "Click",
+        "handler": "AddList_Click"
+      },
+      {
+        "control": "DeleteList",
+        "event": "Click",
+        "handler": "DeleteList_Click"
+      },
+      {
+        "control": "ParaDataListView",
+        "event": "SelectedIndexChanged",
+        "handler": "ParaDataListView_SelectedIndexChanged"
+      },
+      {
+        "control": "ParaDataListView",
+        "event": "DoubleClick",
+        "handler": "ParaDataListView_DoubleClick"
+      },
+      {
+        "control": "ResetAddNo",
+        "event": "Click",
+        "handler": "ResetAddNo_Click"
+      },
+      {
+        "control": "AddChileModule",
+        "event": "Click",
+        "handler": "AddChileModule_Click"
+      },
+      {
+        "control": "ChildMdList",
+        "event": "SelectedIndexChanged",
+        "handler": "ChildMdList_SelectedIndexChanged"
+      },
+      {
+        "control": "FirstAddress",
+        "event": "TextChanged",
+        "handler": "FirstAddress_TextChanged"
+      },
+      {
+        "control": "BtnChangeName",
+        "event": "Click",
+        "handler": "BtnChangeName_Click"
+      },
+      {
+        "control": "BtnAdd",
+        "event": "Click",
+        "handler": "BtnAdd_Click"
+      },
+      {
+        "control": "BtnInsert",
+        "event": "Click",
+        "handler": "BtnInsert_Click"
+      },
+      {
+        "control": "BtnDelete",
+        "event": "Click",
+        "handler": "BtnDelete_Click"
+      },
+      {
+        "control": "BtnClear",
+        "event": "Click",
+        "handler": "BtnClear_Click"
+      },
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      },
+      {
+        "control": "BtnReset",
+        "event": "Click",
+        "handler": "BtnReset_Click"
+      },
+      {
+        "control": "BtnLoadNowPara",
+        "event": "Click",
+        "handler": "BtnLoadNowPara_Click"
+      },
+      {
+        "control": "BtnParaCheck",
+        "event": "Click",
+        "handler": "BtnParaCheck_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CParaSetForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CModulForm.cs",
+    "type": "CModulForm",
+    "title": "模板配置",
+    "handlers": [
+      {
+        "control": "SaveModuleSelect",
+        "event": "Click",
+        "handler": "SaveModuleSelect_Click"
+      },
+      {
+        "control": "ChileAddModule",
+        "event": "Click",
+        "handler": "ChileAddModule_Click"
+      },
+      {
+        "control": "ChileDelModule",
+        "event": "Click",
+        "handler": "ChileDelModule_Click"
+      },
+      {
+        "control": "ModuleTabCtrl",
+        "event": "SelectedIndexChanged",
+        "handler": "ModuleTabCtrl_SelectedIndexChanged"
+      },
+      {
+        "control": "DevDataView",
+        "event": "SelectedIndexChanged",
+        "handler": "DevDataView_SelectedIndexChanged"
+      },
+      {
+        "control": "DevDataView",
+        "event": "DoubleClick",
+        "handler": "DevDataView_DoubleClick"
+      },
+      {
+        "control": "ResetAddress",
+        "event": "Click",
+        "handler": "ResetAddress_Click"
+      },
+      {
+        "control": "AddChildModule",
+        "event": "Click",
+        "handler": "AddChildModule_Click"
+      },
+      {
+        "control": "ChildModuleList",
+        "event": "SelectedIndexChanged",
+        "handler": "ChildModuleList_SelectedIndexChanged"
+      },
+      {
+        "control": "DevAddBtn",
+        "event": "Click",
+        "handler": "DevAddBtn_Click"
+      },
+      {
+        "control": "DevInsertBtn",
+        "event": "Click",
+        "handler": "DevInsertBtn_Click"
+      },
+      {
+        "control": "DevDeleteBtn",
+        "event": "Click",
+        "handler": "DevDeleteBtn_Click"
+      },
+      {
+        "control": "DevClearBtn",
+        "event": "Click",
+        "handler": "DevClearBtn_Click"
+      },
+      {
+        "control": "DevSaveBtn",
+        "event": "Click",
+        "handler": "DevSaveBtn_Click"
+      },
+      {
+        "control": "DeviceTreeView",
+        "event": "AfterSelect",
+        "handler": "DeviceTreeView_AfterSelect"
+      },
+      {
+        "control": "AddDeivceBtn",
+        "event": "Click",
+        "handler": "AddDeivceBtn_Click"
+      },
+      {
+        "control": "CopyDevBtn",
+        "event": "Click",
+        "handler": "CopyDevBtn_Click"
+      },
+      {
+        "control": "DelDeviceBtn",
+        "event": "Click",
+        "handler": "DelDeviceBtn_Click"
+      },
+      {
+        "control": "ModuleView",
+        "event": "SelectedIndexChanged",
+        "handler": "ModuleView_SelectedIndexChanged"
+      },
+      {
+        "control": "ModuleView",
+        "event": "DoubleClick",
+        "handler": "ModuleView_DoubleClick"
+      },
+      {
+        "control": "ChildAdd",
+        "event": "Click",
+        "handler": "ChildAdd_Click"
+      },
+      {
+        "control": "ChildInsert",
+        "event": "Click",
+        "handler": "ChildInsert_Click"
+      },
+      {
+        "control": "ChildDelete",
+        "event": "Click",
+        "handler": "ChildDelete_Click"
+      },
+      {
+        "control": "ClearClear",
+        "event": "Click",
+        "handler": "ClearClear_Click"
+      },
+      {
+        "control": "ChildSave",
+        "event": "Click",
+        "handler": "ChildSave_Click"
+      },
+      {
+        "control": "LineListView",
+        "event": "AfterSelect",
+        "handler": "LineListView_AfterSelect"
+      },
+      {
+        "control": "toolStripButton1",
+        "event": "Click",
+        "handler": "ChileAddModule_Click"
+      },
+      {
+        "control": "AddModule",
+        "event": "Click",
+        "handler": "ChileDelModule_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosed",
+        "handler": "CModulForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CModulForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTransForm.cs",
+    "type": "CTransForm",
+    "title": "终端配置",
+    "handlers": [
+      {
+        "control": "StationTree",
+        "event": "AfterSelect",
+        "handler": "StationTree_AfterSelect"
+      },
+      {
+        "control": "BtnNewStation",
+        "event": "Click",
+        "handler": "BtnNewStation_Click"
+      },
+      {
+        "control": "BtnSFTP",
+        "event": "Click",
+        "handler": "BtnSFTP_Click"
+      },
+      {
+        "control": "DownFileTime",
+        "event": "Tick",
+        "handler": "DownFileTime_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosed",
+        "handler": "CTransForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CTransForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      23
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTranStationOptionForm.cs",
+    "type": "CTranStationOptionForm",
+    "title": "CTranStationOptionForm",
+    "handlers": [
+      {
+        "control": "OptionView",
+        "event": "SelectedIndexChanged",
+        "handler": "OptionView_SelectedIndexChanged"
+      },
+      {
+        "control": "OptionView",
+        "event": "DoubleClick",
+        "handler": "OptionView_DoubleClick"
+      },
+      {
+        "control": "RecordView",
+        "event": "SelectedIndexChanged",
+        "handler": "RecordView_SelectedIndexChanged"
+      },
+      {
+        "control": "RecordView",
+        "event": "DoubleClick",
+        "handler": "RecordView_DoubleClick"
+      },
+      {
+        "control": "SaveSetBtn",
+        "event": "Click",
+        "handler": "SaveSetBtn_Click"
+      },
+      {
+        "control": "YxCalcBtn",
+        "event": "Click",
+        "handler": "YxCalcBtn_Click"
+      },
+      {
+        "control": "BtnYc",
+        "event": "Click",
+        "handler": "BtnYc_Click"
+      },
+      {
+        "control": "BtnYx",
+        "event": "Click",
+        "handler": "BtnYx_Click"
+      },
+      {
+        "control": "BtnYk",
+        "event": "Click",
+        "handler": "BtnYk_Click"
+      },
+      {
+        "control": "BtnSet",
+        "event": "Click",
+        "handler": "BtnSet_Click"
+      },
+      {
+        "control": "BtnYm",
+        "event": "Click",
+        "handler": "BtnYm_Click"
+      },
+      {
+        "control": "BtnDCHH",
+        "event": "Click",
+        "handler": "BtnDCHH_Click"
+      },
+      {
+        "control": "BtnComSet",
+        "event": "Click",
+        "handler": "BtnComSet_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTranStationOptionForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTranTableManageSubForm.cs",
+    "type": "CTranTableManageSubForm",
+    "title": "数据表管理",
+    "handlers": [
+      {
+        "control": "BtnAdd",
+        "event": "Click",
+        "handler": "BtnAdd_Click"
+      },
+      {
+        "control": "BtnDelete",
+        "event": "Click",
+        "handler": "BtnDelete_Click"
+      },
+      {
+        "control": "BtnClear",
+        "event": "Click",
+        "handler": "BtnClear_Click"
+      },
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      },
+      {
+        "control": "DataListView",
+        "event": "SelectedIndexChanged",
+        "handler": "DataListView_SelectedIndexChanged"
+      },
+      {
+        "control": "DataListView",
+        "event": "DoubleClick",
+        "handler": "DataListView_DoubleClick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CTranTableManageSubForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CTranTableManageSubForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CTranTableManageTermForm.cs",
+    "type": "CTranTableManageTermForm",
+    "title": "数据表管理",
+    "handlers": [
+      {
+        "control": "BtnAdd",
+        "event": "Click",
+        "handler": "BtnAdd_Click"
+      },
+      {
+        "control": "BtnDelete",
+        "event": "Click",
+        "handler": "BtnDelete_Click"
+      },
+      {
+        "control": "BtnClear",
+        "event": "Click",
+        "handler": "BtnClear_Click"
+      },
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      },
+      {
+        "control": "DataListView",
+        "event": "SelectedIndexChanged",
+        "handler": "DataListView_SelectedIndexChanged"
+      },
+      {
+        "control": "DataListView",
+        "event": "DoubleClick",
+        "handler": "DataListView_DoubleClick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CTranTableManageTermForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CUpdataForm.cs",
+    "type": "CUpdataForm",
+    "title": "远程升级",
+    "handlers": [
+      {
+        "control": "BtnOpenFile",
+        "event": "Click",
+        "handler": "BtnOpenFile_Click"
+      },
+      {
+        "control": "BtnStartDown",
+        "event": "Click",
+        "handler": "BtnStartDown_Click"
+      },
+      {
+        "control": "DownFileTime",
+        "event": "Tick",
+        "handler": "DownFileTime_Tick"
+      },
+      {
+        "control": "BtnEndDown",
+        "event": "Click",
+        "handler": "BtnEndDown_Click"
+      },
+      {
+        "control": "Btn_SendVerfy",
+        "event": "Click",
+        "handler": "Btn_SendVerfy_Click"
+      },
+      {
+        "control": "BtnSendEnd",
+        "event": "Click",
+        "handler": "BtnSendEnd_Click"
+      },
+      {
+        "control": "BtnUpID",
+        "event": "Click",
+        "handler": "BtnUpID_Click"
+      },
+      {
+        "control": "Use_Normal",
+        "event": "CheckedChanged",
+        "handler": "Use_Normal_CheckedChanged"
+      },
+      {
+        "control": "UseErrRand",
+        "event": "CheckedChanged",
+        "handler": "UseErrRand_CheckedChanged"
+      },
+      {
+        "control": "UseErrRand",
+        "event": "Click",
+        "handler": "UseErrRand_Click"
+      },
+      {
+        "control": "UseMingWen",
+        "event": "CheckedChanged",
+        "handler": "UseMingWen_CheckedChanged"
+      },
+      {
+        "control": "UseMingWen",
+        "event": "Click",
+        "handler": "UseMingWen_Click"
+      },
+      {
+        "control": "UseNoSign",
+        "event": "CheckedChanged",
+        "handler": "UseNoSign_CheckedChanged"
+      },
+      {
+        "control": "UseNoSign",
+        "event": "Click",
+        "handler": "UseNoSign_Click"
+      },
+      {
+        "control": "UseErrTime",
+        "event": "CheckedChanged",
+        "handler": "UseErrTime_CheckedChanged"
+      },
+      {
+        "control": "UseErrTime",
+        "event": "Click",
+        "handler": "UseErrTime_Click"
+      },
+      {
+        "control": "UseErrSign",
+        "event": "CheckedChanged",
+        "handler": "UseErrSign_CheckedChanged"
+      },
+      {
+        "control": "UseErrSign",
+        "event": "Click",
+        "handler": "UseErrSign_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CUpdataForm_FormClosing"
+      },
+      {
+        "event": "FormClosed",
+        "handler": "CUpdataForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CUpdataForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      35,
+      36
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CVersionForm.cs",
+    "type": "CVersionForm",
+    "title": "板件类型",
+    "handlers": [
+      {
+        "control": "Btn_Cmd",
+        "event": "Click",
+        "handler": "Btn_Cmd_Click"
+      },
+      {
+        "control": "Btn_Can",
+        "event": "Click",
+        "handler": "Btn_Can_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CVersionForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CDownFileForm.cs",
+    "type": "CDownFileForm",
+    "title": "文件传输",
+    "handlers": [
+      {
+        "control": "BtnOpenFile",
+        "event": "Click",
+        "handler": "BtnOpenFile_Click"
+      },
+      {
+        "control": "BtnStartDown",
+        "event": "Click",
+        "handler": "BtnStartDown_Click"
+      },
+      {
+        "control": "DownFileTime",
+        "event": "Tick",
+        "handler": "DownFileTime_Tick"
+      },
+      {
+        "control": "BtnStartUpdate",
+        "event": "Click",
+        "handler": "BtnStartUpdate_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosed",
+        "handler": "CDownFileForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CDownFileForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      33
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CDataCheckForm.cs",
+    "type": "CDataCheckForm",
+    "title": "数据校验",
+    "handlers": [
+      {
+        "control": "Btn_Check",
+        "event": "Click",
+        "handler": "Btn_Check_Click"
+      },
+      {
+        "control": "Btn_DC_Check",
+        "event": "Click",
+        "handler": "Btn_DC_Check_Click"
+      },
+      {
+        "control": "BtnCallPhase",
+        "event": "Click",
+        "handler": "BtnCallPhase_Click"
+      },
+      {
+        "control": "SelectKillAllCmd",
+        "event": "Click",
+        "handler": "SelectKillAllCmd_Click"
+      },
+      {
+        "control": "BtnSelectAllCmd",
+        "event": "Click",
+        "handler": "BtnSelectAllCmd_Click"
+      },
+      {
+        "control": "Btn_DownRatioCmd",
+        "event": "Click",
+        "handler": "Btn_DownRatioCmd_Click"
+      },
+      {
+        "control": "Btn_CallRationCmd",
+        "event": "Click",
+        "handler": "Btn_CallRationCmd_Click"
+      },
+      {
+        "control": "BtnCallPhaseCmd",
+        "event": "Click",
+        "handler": "BtnCallPhaseCmd_Click"
+      },
+      {
+        "control": "BtnCheckCmd",
+        "event": "Click",
+        "handler": "BtnCheckCmd_Click"
+      },
+      {
+        "control": "com_Angle",
+        "event": "SelectedIndexChanged",
+        "handler": "com_Angle_SelectedIndexChanged"
+      },
+      {
+        "control": "com_Current",
+        "event": "SelectedIndexChanged",
+        "handler": "com_Current_SelectedIndexChanged"
+      },
+      {
+        "control": "com_LineNo",
+        "event": "SelectedIndexChanged",
+        "handler": "com_LineNo_SelectedIndexChanged"
+      },
+      {
+        "control": "com_Vol",
+        "event": "SelectedIndexChanged",
+        "handler": "com_Vol_SelectedIndexChanged"
+      },
+      {
+        "control": "Freshtimer",
+        "event": "Tick",
+        "handler": "Freshtimer_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CDataCheckForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      25,
+      26,
+      27,
+      31,
+      32
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSoePicForm.cs",
+    "type": "CSoePicForm",
+    "title": "录波图形分析",
+    "handlers": [
+      {
+        "control": "ComBox_X",
+        "event": "SelectedIndexChanged",
+        "handler": "ComBox_X_SelectedIndexChanged"
+      },
+      {
+        "control": "LineSel",
+        "event": "SelectedIndexChanged",
+        "handler": "LineSel_SelectedIndexChanged"
+      },
+      {
+        "control": "ComBox_Y",
+        "event": "SelectedIndexChanged",
+        "handler": "ComBox_Y_SelectedIndexChanged"
+      },
+      {
+        "control": "BtnReset",
+        "event": "Click",
+        "handler": "BtnReset_Click"
+      },
+      {
+        "control": "BtnOpenFile",
+        "event": "Click",
+        "handler": "BtnOpenFile_Click"
+      },
+      {
+        "control": "CurrentPicBox",
+        "event": "Paint",
+        "handler": "CurrentPicBox_Paint"
+      },
+      {
+        "control": "CurrentPicBox",
+        "event": "MouseDown",
+        "handler": "CurrentPicBox_MouseDown"
+      },
+      {
+        "control": "CurrentPicBox",
+        "event": "MouseMove",
+        "handler": "CurrentPicBox_MouseMove"
+      },
+      {
+        "control": "CurrentPicBox",
+        "event": "MouseUp",
+        "handler": "CurrentPicBox_MouseUp"
+      },
+      {
+        "control": "FreshTimer",
+        "event": "Tick",
+        "handler": "FreshTimer_Tick"
+      },
+      {
+        "control": "ShowMsg",
+        "event": "Click",
+        "handler": "ShowMsg_Click"
+      },
+      {
+        "control": "HideMsg",
+        "event": "Click",
+        "handler": "HideMsg_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CSoePicForm_Load"
+      },
+      {
+        "event": "Resize",
+        "handler": "CSoePicForm_Resize"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CParaForm.cs",
+    "type": "CParaForm",
+    "title": "终端参数",
+    "handlers": [
+      {
+        "control": "SetVersionType",
+        "event": "Click",
+        "handler": "SetVersionType_Click"
+      },
+      {
+        "control": "ReWritePara",
+        "event": "Click",
+        "handler": "ReWritePara_Click"
+      },
+      {
+        "control": "BtnReadAeroNO",
+        "event": "Click",
+        "handler": "BtnReadAeroNO_Click"
+      },
+      {
+        "control": "BtnSwitchAeroNo",
+        "event": "Click",
+        "handler": "BtnSwitchAeroNo_Click"
+      },
+      {
+        "control": "BtnReadStandPara",
+        "event": "Click",
+        "handler": "BtnReadStandPara_Click"
+      },
+      {
+        "control": "BtnReadLocalPara",
+        "event": "Click",
+        "handler": "BtnReadLocalPara_Click"
+      },
+      {
+        "control": "BtnSelectAllPara",
+        "event": "Click",
+        "handler": "BtnSelectAllPara_Click"
+      },
+      {
+        "control": "BtnCancleAllPara",
+        "event": "Click",
+        "handler": "BtnCancleAllPara_Click"
+      },
+      {
+        "control": "BtnSelecDifferent",
+        "event": "Click",
+        "handler": "BtnSelecDifferent_Click"
+      },
+      {
+        "control": "BtnReadAllPara",
+        "event": "Click",
+        "handler": "BtnReadAllPara_Click"
+      },
+      {
+        "control": "BtnReadSelectPara",
+        "event": "Click",
+        "handler": "BtnReadSelectPara_Click"
+      },
+      {
+        "control": "BtnDownAllPara",
+        "event": "Click",
+        "handler": "BtnDownAllPara_Click"
+      },
+      {
+        "control": "BtnDownSelect",
+        "event": "Click",
+        "handler": "BtnDownSelect_Click"
+      },
+      {
+        "control": "BtnCan",
+        "event": "Click",
+        "handler": "BtnCan_Click"
+      },
+      {
+        "control": "BtnGH",
+        "event": "Click",
+        "handler": "BtnGH_Click"
+      },
+      {
+        "control": "BtnSaveAll",
+        "event": "Click",
+        "handler": "BtnSaveAll_Click"
+      },
+      {
+        "control": "BtnSaveSelcet",
+        "event": "Click",
+        "handler": "BtnSaveSelcet_Click"
+      },
+      {
+        "control": "UpdateParaDesc",
+        "event": "Click",
+        "handler": "UpdateParaDesc_Click"
+      },
+      {
+        "control": "FreshTime",
+        "event": "Tick",
+        "handler": "FreshTime_Tick"
+      },
+      {
+        "control": "TaskTime",
+        "event": "Tick",
+        "handler": "TaskTime_Tick"
+      },
+      {
+        "control": "ParaTreeView",
+        "event": "AfterSelect",
+        "handler": "ParaTreeView_AfterSelect"
+      },
+      {
+        "control": "UseErrRand",
+        "event": "CheckedChanged",
+        "handler": "UseErrRand_CheckedChanged"
+      },
+      {
+        "control": "UseMingWen",
+        "event": "CheckedChanged",
+        "handler": "UseMingWen_CheckedChanged"
+      },
+      {
+        "control": "UseNoRand",
+        "event": "CheckedChanged",
+        "handler": "UseNoRand_CheckedChanged"
+      },
+      {
+        "control": "Use_Normal",
+        "event": "CheckedChanged",
+        "handler": "Use_Normal_CheckedChanged"
+      },
+      {
+        "control": "UseNoSign",
+        "event": "CheckedChanged",
+        "handler": "UseNoSign_CheckedChanged"
+      },
+      {
+        "control": "UseErrSign",
+        "event": "CheckedChanged",
+        "handler": "UseErrSign_CheckedChanged"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CParaForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      10,
+      28,
+      37,
+      38,
+      42
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CWaitForm.cs",
+    "type": "CWaitForm",
+    "title": "CWaitForm",
+    "handlers": [
+      {
+        "control": "WaitTime",
+        "event": "Tick",
+        "handler": "WaitTime_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CWaitForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CHisRecordForm.cs",
+    "type": "CHisRecordForm",
+    "title": "历史记录",
+    "handlers": [
+      {
+        "control": "btn_CallDir",
+        "event": "Click",
+        "handler": "btn_CallDir_Click"
+      },
+      {
+        "control": "btn_CallAllFile",
+        "event": "Click",
+        "handler": "btn_CallAllFile_Click"
+      },
+      {
+        "control": "btn_raed_SelFile",
+        "event": "Click",
+        "handler": "btn_raed_SelFile_Click"
+      },
+      {
+        "control": "btn_diff_read",
+        "event": "Click",
+        "handler": "btn_diff_read_Click"
+      },
+      {
+        "control": "Btn_StopReadFile",
+        "event": "Click",
+        "handler": "Btn_StopReadFile_Click"
+      },
+      {
+        "control": "BtnCancelAll",
+        "event": "Click",
+        "handler": "BtnCancelAll_Click"
+      },
+      {
+        "control": "BtnCopySave",
+        "event": "Click",
+        "handler": "BtnCopySave_Click"
+      },
+      {
+        "control": "BtnCurrent",
+        "event": "Click",
+        "handler": "BtnCurrent_Click"
+      },
+      {
+        "control": "BtnLeft",
+        "event": "Click",
+        "handler": "BtnLeft_Click"
+      },
+      {
+        "control": "BtnRight",
+        "event": "Click",
+        "handler": "BtnRight_Click"
+      },
+      {
+        "control": "FileTreeViewList",
+        "event": "AfterSelect",
+        "handler": "FileTreeViewList_AfterSelect"
+      },
+      {
+        "control": "FileView",
+        "event": "DoubleClick",
+        "handler": "FileView_DoubleClick"
+      },
+      {
+        "control": "Time_FreshView",
+        "event": "Tick",
+        "handler": "Time_FreshView_Tick"
+      },
+      {
+        "control": "BtnEnableTime",
+        "event": "Tick",
+        "handler": "BtnEnableTime_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CHisRecordForm_FormClosing"
+      },
+      {
+        "event": "FormClosed",
+        "handler": "CHisRecordForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CHisRecordForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      22,
+      23
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CBufferViewForm.cs",
+    "type": "CBufferViewForm",
+    "title": "实时报文",
+    "handlers": [
+      {
+        "control": "BtnStartFreshBuff",
+        "event": "Click",
+        "handler": "BtnStartFreshBuff_Click"
+      },
+      {
+        "control": "BtnStopFreshBuff",
+        "event": "Click",
+        "handler": "BtnStopFreshBuff_Click"
+      },
+      {
+        "control": "BtnClearBuff",
+        "event": "Click",
+        "handler": "BtnClearBuff_Click"
+      },
+      {
+        "control": "BtnSave",
+        "event": "Click",
+        "handler": "BtnSave_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CBufferViewForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CBufferViewForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CEventMsgForm.cs",
+    "type": "CEventMsgForm",
+    "title": "事件信息",
+    "handlers": [
+      {
+        "control": "BtnClear",
+        "event": "Click",
+        "handler": "BtnClear_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CEventMsgForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CEventMsgForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CMasterConForm.cs",
+    "type": "CMasterConForm",
+    "title": "通讯配置",
+    "handlers": [
+      {
+        "control": "SaveDataSet",
+        "event": "Click",
+        "handler": "SaveDataSet_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosed",
+        "handler": "CMasterConForm_FormClosed"
+      },
+      {
+        "event": "Load",
+        "handler": "CMasterConParaForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CCurrentForm.cs",
+    "type": "CCurrentForm",
+    "title": "数据曲线",
+    "handlers": [],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CCurrentForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CRealCtrlForm.cs",
+    "type": "CRealCtrlForm",
+    "title": "实时监控",
+    "handlers": [
+      {
+        "control": "timer1",
+        "event": "Tick",
+        "handler": "timer1_Tick"
+      },
+      {
+        "control": "Btn_StartOrder",
+        "event": "Click",
+        "handler": "Btn_StartOrder_Click"
+      },
+      {
+        "control": "Btn_StopOrder",
+        "event": "Click",
+        "handler": "Btn_StopOrder_Click"
+      },
+      {
+        "control": "Btn_HeartTest",
+        "event": "Click",
+        "handler": "Btn_HeartTest_Click"
+      },
+      {
+        "control": "Btn_CheckNo",
+        "event": "Click",
+        "handler": "Btn_CheckNo_Click"
+      },
+      {
+        "control": "Btn_SetTime",
+        "event": "Click",
+        "handler": "Btn_SetTime_Click"
+      },
+      {
+        "control": "BtnCallTime",
+        "event": "Click",
+        "handler": "BtnCallTime_Click"
+      },
+      {
+        "control": "Btn_CallTotalData",
+        "event": "Click",
+        "handler": "Btn_CallTotalData_Click"
+      },
+      {
+        "control": "Btn_CallPowerData",
+        "event": "Click",
+        "handler": "Btn_CallPowerData_Click"
+      },
+      {
+        "control": "Btn_GetFrzData",
+        "event": "Click",
+        "handler": "Btn_GetFrzData_Click"
+      },
+      {
+        "control": "BtnSetFixData",
+        "event": "Click",
+        "handler": "BtnSetFixData_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CRealCtrlForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      7,
+      21,
+      39,
+      41
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CSOEMsgForm.cs",
+    "type": "CSOEMsgForm",
+    "title": "SOE信息",
+    "handlers": [
+      {
+        "control": "BtnClearSOE",
+        "event": "Click",
+        "handler": "BtnClearSOE_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "CSOEMsgForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "CSOEMsgForm_Load"
+      }
+    ],
+    "taskNumbers": [],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/CYKForm.cs",
+    "type": "CYKForm",
+    "title": "遥控",
+    "handlers": [
+      {
+        "control": "UseMingWen",
+        "event": "CheckedChanged",
+        "handler": "UseMingWen_CheckedChanged_1"
+      },
+      {
+        "control": "UseNoSign",
+        "event": "CheckedChanged",
+        "handler": "UseNoSign_CheckedChanged"
+      },
+      {
+        "control": "UseErrRand",
+        "event": "CheckedChanged",
+        "handler": "UseErrRand_CheckedChanged"
+      },
+      {
+        "control": "UseNoTime",
+        "event": "CheckedChanged",
+        "handler": "UseNoTime_CheckedChanged"
+      },
+      {
+        "control": "UseErrTime",
+        "event": "CheckedChanged",
+        "handler": "UseErrTime_CheckedChanged"
+      },
+      {
+        "control": "Use_Normal",
+        "event": "CheckedChanged",
+        "handler": "Use_Normal_CheckedChanged"
+      },
+      {
+        "control": "UseNoRand",
+        "event": "CheckedChanged",
+        "handler": "UseNoRand_CheckedChanged"
+      },
+      {
+        "control": "UseErrSign",
+        "event": "CheckedChanged",
+        "handler": "UseErrSign_CheckedChanged"
+      },
+      {
+        "control": "YK_H_Sel_btn",
+        "event": "Click",
+        "handler": "YK_S_H_btn_Click"
+      },
+      {
+        "control": "YK_F_Sel_btn",
+        "event": "Click",
+        "handler": "YK_S_F_btn_Click"
+      },
+      {
+        "control": "YK_H_C_btn",
+        "event": "Click",
+        "handler": "YK_H_C_btn_Click"
+      },
+      {
+        "control": "YK_F_Ex_btn",
+        "event": "Click",
+        "handler": "YK_F_btn_Click"
+      },
+      {
+        "control": "YK_F_C_btn",
+        "event": "Click",
+        "handler": "YK_C_F_btn_Click"
+      },
+      {
+        "control": "YK_H_Ex_btn",
+        "event": "Click",
+        "handler": "YK_H_btn_Click"
+      },
+      {
+        "control": "radioButton1",
+        "event": "CheckedChanged",
+        "handler": "radioButton1_CheckedChanged"
+      },
+      {
+        "control": "radioButton2",
+        "event": "CheckedChanged",
+        "handler": "radioButton2_CheckedChanged"
+      },
+      {
+        "control": "LV_YK",
+        "event": "SelectedIndexChanged",
+        "handler": "LV_YK_SelectedIndexChanged"
+      },
+      {
+        "control": "timer1",
+        "event": "Tick",
+        "handler": "timer1_Tick"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "Load",
+        "handler": "CYKForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      6
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  },
+  {
+    "source": "MyForms/MainForm.cs",
+    "type": "MainForm",
+    "title": "配电终端测试软件（版本号V2.00）",
+    "handlers": [
+      {
+        "control": "FreshTimer",
+        "event": "Tick",
+        "handler": "FreshTimer_Tick"
+      },
+      {
+        "control": "Btn_ModeSet1",
+        "event": "Click",
+        "handler": "Btn_ModeSet1_Click"
+      },
+      {
+        "control": "DeviceSetting1",
+        "event": "Click",
+        "handler": "DeviceSetting1_Click"
+      },
+      {
+        "control": "Btn_CommModeSet1",
+        "event": "Click",
+        "handler": "Btn_CommModeSet1_Click"
+      },
+      {
+        "control": "Btn_DataCheck1",
+        "event": "Click",
+        "handler": "Btn_DataCheck1_Click"
+      },
+      {
+        "control": "BtnSpePara",
+        "event": "Click",
+        "handler": "BtnSpePara_Click"
+      },
+      {
+        "control": "BtnLuBo1",
+        "event": "Click",
+        "handler": "BtnLuBo1_Click"
+      },
+      {
+        "control": "BtnDownFile1",
+        "event": "Click",
+        "handler": "BtnDownFile1_Click"
+      },
+      {
+        "control": "BtnFTUFastUpdate",
+        "event": "Click",
+        "handler": "BtnFTUFastUpdate_Click"
+      },
+      {
+        "control": "Btn_Function1",
+        "event": "Click",
+        "handler": "Btn_Function1_Click"
+      },
+      {
+        "control": "BtnDataTran1",
+        "event": "Click",
+        "handler": "BtnDataTran1_Click"
+      },
+      {
+        "control": "Btn_ProExp1",
+        "event": "Click",
+        "handler": "Btn_ProExp1_Click"
+      },
+      {
+        "control": "Btn_ConSet",
+        "event": "Click",
+        "handler": "Btn_ConSet_Click"
+      },
+      {
+        "control": "Btn_RealData",
+        "event": "Click",
+        "handler": "Btn_RealData_Click"
+      },
+      {
+        "control": "Btn_LongCtrl",
+        "event": "Click",
+        "handler": "Btn_LongCtrl_Click"
+      },
+      {
+        "control": "Btn_ParaSet",
+        "event": "Click",
+        "handler": "Btn_ParaSet_Click"
+      },
+      {
+        "control": "Btn_EngPara",
+        "event": "Click",
+        "handler": "Btn_EngPara_Click"
+      },
+      {
+        "control": "Btn_HisRecord",
+        "event": "Click",
+        "handler": "Btn_HisRecord_Click"
+      },
+      {
+        "control": "UpdateButton",
+        "event": "Click",
+        "handler": "UpdateButton_Click"
+      },
+      {
+        "control": "Btn_Output",
+        "event": "Click",
+        "handler": "Btn_Output_Click"
+      },
+      {
+        "control": "Btn_Encode",
+        "event": "Click",
+        "handler": "Btn_Encode_Click"
+      },
+      {
+        "control": "Btu_RunStart",
+        "event": "Click",
+        "handler": "Btu_RunStart_Click"
+      },
+      {
+        "control": "Btn_StopRun",
+        "event": "Click",
+        "handler": "Btn_StopRun_Click"
+      },
+      {
+        "control": "timer1",
+        "event": "Tick",
+        "handler": "timer1_Tick"
+      },
+      {
+        "control": "BtnSFTPFileDOwn",
+        "event": "Click",
+        "handler": "BtnSFTPFileDOwn_Click"
+      }
+    ],
+    "lifecycle": [
+      {
+        "event": "FormClosing",
+        "handler": "MainForm_FormClosing"
+      },
+      {
+        "event": "Load",
+        "handler": "MainForm_Load"
+      }
+    ],
+    "taskNumbers": [
+      1,
+      4
+    ],
+    "implementation": "ported controller with native WPF view",
+    "offlineValidation": "constructor and native view creation passed; see named regression cases for exercised workflows",
+    "deviceValidation": "not executed"
+  }
+]

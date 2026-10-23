@@ -1,0 +1,194 @@
+﻿using System;
+using System.Drawing;
+using TerminalWorkbench.Presentation;
+namespace DtuTestManager
+{
+    partial class CTranStationOptionForm
+    {
+        private Panel panel2;
+        private GroupBox groupBox2;
+        private Panel panel3;
+        private ListView SetCountView;
+        private ToolStrip toolStrip1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox3;
+        private GroupBox groupBox4;
+        private ToolStripButton SaveSetBtn;
+        private MyListView OptionView;
+        private ListView CountSetView;
+        private MyListView RecordView;
+        private ToolStripButton YxCalcBtn;
+        private ToolStripButton BtnYc;
+        private ToolStripButton BtnYx;
+        private ToolStripButton BtnYk;
+        private ToolStripButton BtnYm;
+        private ToolStripButton BtnSet;
+        private ToolStripButton BtnDCHH;
+        private ToolStripButton BtnComSet;
+        private void InitializeComponent()
+        {
+            panel2 = new Panel();
+            groupBox2 = new GroupBox();
+            panel3 = new Panel();
+            SetCountView = new ListView();
+            toolStrip1 = new ToolStrip();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            groupBox1 = new GroupBox();
+            groupBox3 = new GroupBox();
+            groupBox4 = new GroupBox();
+            SaveSetBtn = new ToolStripButton();
+            OptionView = new MyListView();
+            CountSetView = new ListView();
+            RecordView = new MyListView();
+            YxCalcBtn = new ToolStripButton();
+            BtnYc = new ToolStripButton();
+            BtnYx = new ToolStripButton();
+            BtnYk = new ToolStripButton();
+            BtnYm = new ToolStripButton();
+            BtnSet = new ToolStripButton();
+            BtnDCHH = new ToolStripButton();
+            BtnComSet = new ToolStripButton();
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(33.33333, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(33.33333, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(33.33333, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.RowHeights.Add(new System.Windows.GridLength(50, System.Windows.GridUnitType.Star));
+            this.panel2.Location = new System.Drawing.Point(334, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(325, 100);
+            this.panel2.TabIndex = 1;
+            this.groupBox2.Dock = DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(325, 100);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.Text = "配置数量";
+            this.SetCountView.Dock = DockStyle.Fill;
+            this.SetCountView.Location = new System.Drawing.Point(3, 17);
+            this.SetCountView.Name = "SetCountView";
+            this.SetCountView.Size = new System.Drawing.Size(319, 80);
+            this.SetCountView.TabIndex = 0;
+            this.panel3.Dock = DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1002, 431);
+            this.panel3.TabIndex = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.Dock = DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1002, 406);
+            this.tableLayoutPanel1.TabIndex = 1;
+            this.groupBox1.Dock = DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 400);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.Text = "属性配置";
+            this.OptionView.BackColor = System.Drawing.Color.Lavender;
+            this.OptionView.Dock = DockStyle.Fill;
+            this.OptionView.Location = new System.Drawing.Point(3, 17);
+            this.OptionView.Name = "OptionView";
+            this.OptionView.Size = new System.Drawing.Size(322, 380);
+            this.OptionView.TabIndex = 0;
+            this.groupBox3.Dock = DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(337, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(328, 400);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.Text = "数量配置";
+            this.CountSetView.BackColor = System.Drawing.Color.Lavender;
+            this.CountSetView.Dock = DockStyle.Fill;
+            this.CountSetView.Location = new System.Drawing.Point(3, 17);
+            this.CountSetView.Name = "CountSetView";
+            this.CountSetView.Size = new System.Drawing.Size(322, 380);
+            this.CountSetView.TabIndex = 0;
+            this.groupBox4.Dock = DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(671, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(328, 400);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.Text = "记录配置";
+            this.RecordView.BackColor = System.Drawing.Color.Lavender;
+            this.RecordView.Dock = DockStyle.Fill;
+            this.RecordView.Location = new System.Drawing.Point(3, 17);
+            this.RecordView.Name = "RecordView";
+            this.RecordView.Size = new System.Drawing.Size(322, 380);
+            this.RecordView.TabIndex = 0;
+            this.toolStrip1.BackColor = System.Drawing.Color.LightBlue;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1002, 25);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            this.SaveSetBtn.Name = "SaveSetBtn";
+            this.SaveSetBtn.Size = new System.Drawing.Size(52, 22);
+            this.SaveSetBtn.Text = "保存";
+            this.YxCalcBtn.Name = "YxCalcBtn";
+            this.YxCalcBtn.Size = new System.Drawing.Size(88, 22);
+            this.YxCalcBtn.Text = "遥信计算表";
+            this.BtnYc.Name = "BtnYc";
+            this.BtnYc.Size = new System.Drawing.Size(76, 22);
+            this.BtnYc.Text = "遥测点表";
+            this.BtnYx.Name = "BtnYx";
+            this.BtnYx.Size = new System.Drawing.Size(76, 22);
+            this.BtnYx.Text = "遥信点表";
+            this.BtnYk.Name = "BtnYk";
+            this.BtnYk.Size = new System.Drawing.Size(76, 22);
+            this.BtnYk.Text = "遥控点表";
+            this.BtnSet.Name = "BtnSet";
+            this.BtnSet.Size = new System.Drawing.Size(76, 22);
+            this.BtnSet.Text = "定值点表";
+            this.BtnYm.Name = "BtnYm";
+            this.BtnYm.Size = new System.Drawing.Size(76, 22);
+            this.BtnYm.Text = "遥脉点表";
+            this.BtnDCHH.Name = "BtnDCHH";
+            this.BtnDCHH.Size = new System.Drawing.Size(100, 22);
+            this.BtnDCHH.Text = "电池活化配置";
+            this.BtnComSet.Name = "BtnComSet";
+            this.BtnComSet.Size = new System.Drawing.Size(76, 22);
+            this.BtnComSet.Text = "串口配置";
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(1002, 431);
+            this.Name = "CTranStationOptionForm";
+            this.Text = "CTranStationOptionForm";
+            this.panel2.Controls.Add(this.groupBox2);
+            this.groupBox2.Controls.Add(this.SetCountView);
+            this.panel3.Controls.Add(this.tableLayoutPanel1);
+            this.panel3.Controls.Add(this.toolStrip1);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox3, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 2, 0);
+            this.groupBox1.Controls.Add(this.OptionView);
+            this.groupBox3.Controls.Add(this.CountSetView);
+            this.groupBox4.Controls.Add(this.RecordView);
+            this.toolStrip1.Items.AddRange(new Control[] {
+            this.SaveSetBtn,
+            this.YxCalcBtn,
+            this.BtnYc,
+            this.BtnYx,
+            this.BtnYk,
+            this.BtnSet,
+            this.BtnYm,
+            this.BtnDCHH,
+            this.BtnComSet});
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            OptionView.SelectedIndexChanged += OptionView_SelectedIndexChanged;
+            OptionView.DoubleClick += OptionView_DoubleClick;
+            RecordView.SelectedIndexChanged += RecordView_SelectedIndexChanged;
+            RecordView.DoubleClick += RecordView_DoubleClick;
+            SaveSetBtn.Click += SaveSetBtn_Click;
+            YxCalcBtn.Click += YxCalcBtn_Click;
+            BtnYc.Click += BtnYc_Click;
+            BtnYx.Click += BtnYx_Click;
+            BtnYk.Click += BtnYk_Click;
+            BtnSet.Click += BtnSet_Click;
+            BtnYm.Click += BtnYm_Click;
+            BtnDCHH.Click += BtnDCHH_Click;
+            BtnComSet.Click += BtnComSet_Click;
+            Load += CTranStationOptionForm_Load;
+        }
+    }
+}

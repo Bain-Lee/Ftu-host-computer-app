@@ -7,6 +7,11 @@
 # Build intermediates
 [Oo]bj/
 
+# Refactored desktop build and verification outputs
+/TerminalWorkbench/**/bin/
+/TerminalWorkbench/.artifacts/
+/TerminalWorkbench/.tools/
+
 # Local database not referenced by the current project
 /DtuTestManager/CDataBase.sdf
 

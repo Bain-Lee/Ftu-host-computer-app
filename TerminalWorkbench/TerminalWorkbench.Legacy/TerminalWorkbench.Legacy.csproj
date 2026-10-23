@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TerminalWorkbench.Core\TerminalWorkbench.Core.csproj" />
+    <ProjectReference Include="..\..\DtuTestManager\DtuTestManager.csproj" />
+  </ItemGroup>
+</Project>
