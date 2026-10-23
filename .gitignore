@@ -1,0 +1,42 @@
+# Visual Studio local state
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Build intermediates
+[Oo]bj/
+
+# Local database not referenced by the current project
+/DtuTestManager/CDataBase.sdf
+
+# Runtime packages, executables, logs, certificates and site configuration
+/DtuTestManager/bin/*
+!/DtuTestManager/bin/Debug/
+/DtuTestManager/bin/Debug/*
+
+# Existing third-party dependencies; project HintPaths use this directory
+!/DtuTestManager/bin/Debug/Renci.SshNet.dll
+!/DtuTestManager/bin/Debug/WeifenLuo.WinFormsUI.Docking.dll
+!/DtuTestManager/bin/Debug/AxInterop.TeeChart.dll
+!/DtuTestManager/bin/Debug/Interop.TeeChart.dll
+
+# Application database, device templates and UI images
+!/DtuTestManager/bin/Debug/DataBase.mdb
+!/DtuTestManager/bin/Debug/DefaultDevModule/
+/DtuTestManager/bin/Debug/DefaultDevModule/*
+!/DtuTestManager/bin/Debug/DefaultDevModule/*.mdb
+!/DtuTestManager/bin/Debug/DevModuleDataBase/
+/DtuTestManager/bin/Debug/DevModuleDataBase/*
+!/DtuTestManager/bin/Debug/DevModuleDataBase/*.mdb
+!/DtuTestManager/bin/Debug/res/
+/DtuTestManager/bin/Debug/res/*
+!/DtuTestManager/bin/Debug/res/*.png
+!/DtuTestManager/bin/Debug/res/*.jpg
+!/DtuTestManager/bin/Debug/res/*.ico
+!/DtuTestManager/bin/Debug/res/Icon/
+
+# Keep the empty directory required by MainForm.GetDevModuleFile
+!/DtuTestManager/bin/Debug/工程模板/
+/DtuTestManager/bin/Debug/工程模板/*
+!/DtuTestManager/bin/Debug/工程模板/.gitkeep

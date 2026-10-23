@@ -1,0 +1,748 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC78A041-BA23-4473-8201-ED4D800BEBF2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DtuTestManager</RootNamespace>
+    <AssemblyName>配电终端测试软件V2.0</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ProIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DtuTestManager.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Renci.SshNet, Version=2014.4.6.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\System.Data.SQLite\2012\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.3.1.24483, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="4GForms\CAddCom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4GForms\CAddCom.Designer.cs">
+      <DependentUpon>CAddCom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4GForms\CAddGateWay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4GForms\CAddGateWay.Designer.cs">
+      <DependentUpon>CAddGateWay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4GForms\CAddHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4GForms\CAddHost.Designer.cs">
+      <DependentUpon>CAddHost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="4GForms\CAddIPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4GForms\CAddIPForm.Designer.cs">
+      <DependentUpon>CAddIPForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\SFTP.cs" />
+    <Compile Include="MyForms\CDiffParaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CDiffParaForm.Designer.cs">
+      <DependentUpon>CDiffParaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CEngModPara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CEngModPara.Designer.cs">
+      <DependentUpon>CEngModPara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CEngPara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CEngPara.Designer.cs">
+      <DependentUpon>CEngPara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CEngParaNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CEngParaNewForm.Designer.cs">
+      <DependentUpon>CEngParaNewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CFixDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CFixDataForm.Designer.cs">
+      <DependentUpon>CFixDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CFTUFastUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CFTUFastUpdate.Designer.cs">
+      <DependentUpon>CFTUFastUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CGuHuaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CGuHuaForm.Designer.cs">
+      <DependentUpon>CGuHuaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CSFTPForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSFTPForm.Designer.cs">
+      <DependentUpon>CSFTPForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CSFTPLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSFTPLogin.Designer.cs">
+      <DependentUpon>CSFTPLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CSFTPMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSFTPMainForm.Designer.cs">
+      <DependentUpon>CSFTPMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CSpeParaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSpeParaForm.Designer.cs">
+      <DependentUpon>CSpeParaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTtestCaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTtestCaseForm.Designer.cs">
+      <DependentUpon>CTtestCaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CTetstCasePro.cs" />
+    <Compile Include="MyClass\CSecretInterface.cs" />
+    <Compile Include="MyClass\CCRC16Clc.cs" />
+    <Compile Include="MyClass\CShowBuff.cs" />
+    <Compile Include="MyControls\MyIP .cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControls\MyIP.Designer.cs" />
+    <Compile Include="MyForms\CCommModeSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CCommModeSet.Designer.cs">
+      <DependentUpon>CCommModeSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CEventViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CEventViewForm.Designer.cs">
+      <DependentUpon>CEventViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CSecrteKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSecrteKeyForm.Designer.cs">
+      <DependentUpon>CSecrteKeyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CDataTranForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CDataTranForm.Designer.cs">
+      <DependentUpon>CDataTranForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTestFunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTestFunForm.Designer.cs">
+      <DependentUpon>CTestFunForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CComOption.cs" />
+    <Compile Include="MyClass\CBattertyAcv.cs" />
+    <Compile Include="MyClass\CRouteTable.cs" />
+    <Compile Include="MyClass\CSerialPort.cs" />
+    <Compile Include="MyClass\CTransGlobal.cs" />
+    <Compile Include="MyClass\CTransPowerDB.cs" />
+    <Compile Include="MyClass\CTransPriStation.cs" />
+    <Compile Include="MyClass\CTransProtocl.cs" />
+    <Compile Include="MyClass\CTransSetDB.cs" />
+    <Compile Include="MyClass\CTransSubStation.cs" />
+    <Compile Include="MyClass\CTransTerminal.cs" />
+    <Compile Include="MyClass\CTransYcDB.cs" />
+    <Compile Include="MyClass\CTransYkDB.cs" />
+    <Compile Include="MyClass\CTransYxDB.cs" />
+    <Compile Include="MyForms\CAddTermForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CAddTermForm.Designer.cs">
+      <DependentUpon>CAddTermForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CPriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CPriForm.Designer.cs">
+      <DependentUpon>CPriForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CPriOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CPriOptionForm.Designer.cs">
+      <DependentUpon>CPriOptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CRouteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CRouteForm.Designer.cs">
+      <DependentUpon>CRouteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CRouteFormSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CRouteFormSetting.Designer.cs">
+      <DependentUpon>CRouteFormSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTermForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTermForm.Designer.cs">
+      <DependentUpon>CTermForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTermOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTermOptionForm.Designer.cs">
+      <DependentUpon>CTermOptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CTransCalcYxCfg.cs" />
+    <Compile Include="MyClass\CTranValueList.cs" />
+    <Compile Include="MyClass\CTrasnSingleTable.cs" />
+    <Compile Include="MyClass\CEnCodePtr.cs" />
+    <Compile Include="MyClass\CSQLite.cs" />
+    <Compile Include="MyClass\CTransStation.cs" />
+    <Compile Include="MyForms\CGetSelectParaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CGetSelectParaForm.Designer.cs">
+      <DependentUpon>CGetSelectParaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CEventRecord.cs" />
+    <Compile Include="MyClass\CParaDefine.cs" />
+    <Compile Include="MyClass\CGlobalData.cs" />
+    <Compile Include="MyClass\CPtrInterface.cs" />
+    <Compile Include="MyClass\C101Ptr.cs" />
+    <Compile Include="MyForms\CFileTimeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CFileTimeForm.Designer.cs">
+      <DependentUpon>CFileTimeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CLineRealForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CLineRealForm.Designer.cs">
+      <DependentUpon>CLineRealForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CDeviceSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CDeviceSetForm.Designer.cs">
+      <DependentUpon>CDeviceSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CParaSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CParaSetForm.Designer.cs">
+      <DependentUpon>CParaSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CDeviceMudule.cs" />
+    <Compile Include="MyClass\CChildMudule.cs" />
+    <Compile Include="MyControls\CNormalTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyControls\CNormalTabControl.Designer.cs">
+      <DependentUpon>CNormalTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CDeviceClass.cs" />
+    <Compile Include="MyForms\CModulForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CModulForm.Designer.cs">
+      <DependentUpon>CModulForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTransForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTransForm.Designer.cs">
+      <DependentUpon>CTransForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTranStationOptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTranStationOptionForm.Designer.cs">
+      <DependentUpon>CTranStationOptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTranTableManageSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTranTableManageSubForm.Designer.cs">
+      <DependentUpon>CTranTableManageSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CTranTableManageTermForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CTranTableManageTermForm.Designer.cs">
+      <DependentUpon>CTranTableManageTermForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CUpdataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CUpdataForm.Designer.cs">
+      <DependentUpon>CUpdataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CVersionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CVersionForm.Designer.cs">
+      <DependentUpon>CVersionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CTransFile.cs" />
+    <Compile Include="MyForms\CDownFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CDownFileForm.Designer.cs">
+      <DependentUpon>CDownFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CCheckdata.cs" />
+    <Compile Include="MyForms\CDataCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CDataCheckForm.Designer.cs">
+      <DependentUpon>CDataCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CWaveFileInfo.cs" />
+    <Compile Include="MyClass\CSoePicData.cs" />
+    <Compile Include="MyForms\CSoePicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSoePicForm.Designer.cs">
+      <DependentUpon>CSoePicForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CParaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CParaForm.Designer.cs">
+      <DependentUpon>CParaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CWaitForm.Designer.cs">
+      <DependentUpon>CWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CFileCtrl.cs" />
+    <Compile Include="MyClass\CFloderCtrl.cs" />
+    <Compile Include="MyForms\CHisRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CHisRecordForm.Designer.cs">
+      <DependentUpon>CHisRecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\C104Ptr.cs" />
+    <Compile Include="MyClass\CSoeCosRecord.cs" />
+    <Compile Include="MyForms\CBufferViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CBufferViewForm.Designer.cs">
+      <DependentUpon>CBufferViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CDataBase.cs" />
+    <Compile Include="MyClass\CGlobal.cs" />
+    <Compile Include="MyForms\CEventMsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CEventMsgForm.Designer.cs">
+      <DependentUpon>CEventMsgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CMasterConForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CMasterConForm.Designer.cs">
+      <DependentUpon>CMasterConForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CCurrentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CCurrentForm.Designer.cs">
+      <DependentUpon>CCurrentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CRealCtrlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CRealCtrlForm.Designer.cs">
+      <DependentUpon>CRealCtrlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyClass\CSocketClient.cs" />
+    <Compile Include="MyForms\CSOEMsgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CSOEMsgForm.Designer.cs">
+      <DependentUpon>CSOEMsgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\CYKForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\CYKForm.Designer.cs">
+      <DependentUpon>CYKForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyForms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyForms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\MyPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyControls\MyPanel.Designer.cs">
+      <DependentUpon>MyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\MyTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyControls\MyTabControl.Designer.cs">
+      <DependentUpon>MyTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyControls\MyListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyControls\MyListView.Designer.cs">
+      <DependentUpon>MyListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MyForms\CDiffParaForm.resx">
+      <DependentUpon>CDiffParaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CEngModPara.resx">
+      <DependentUpon>CEngModPara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CEngPara.resx">
+      <DependentUpon>CEngPara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CEngParaNewForm.resx">
+      <DependentUpon>CEngParaNewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CFixDataForm.resx">
+      <DependentUpon>CFixDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CFTUFastUpdate.resx">
+      <DependentUpon>CFTUFastUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CGuHuaForm.resx">
+      <DependentUpon>CGuHuaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSFTPForm.resx">
+      <DependentUpon>CSFTPForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSFTPLogin.resx">
+      <DependentUpon>CSFTPLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSFTPMainForm.resx">
+      <DependentUpon>CSFTPMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSpeParaForm.resx">
+      <DependentUpon>CSpeParaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTtestCaseForm.resx">
+      <DependentUpon>CTtestCaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CCommModeSet.resx">
+      <DependentUpon>CCommModeSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CEventViewForm.resx">
+      <DependentUpon>CEventViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSecrteKeyForm.resx">
+      <DependentUpon>CSecrteKeyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CDataTranForm.resx">
+      <DependentUpon>CDataTranForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTestFunForm.resx">
+      <DependentUpon>CTestFunForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CAddTermForm.resx">
+      <DependentUpon>CAddTermForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CPriForm.resx">
+      <DependentUpon>CPriForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CPriOptionForm.resx">
+      <DependentUpon>CPriOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CRouteForm.resx">
+      <DependentUpon>CRouteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CRouteFormSetting.resx">
+      <DependentUpon>CRouteFormSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTermForm.resx">
+      <DependentUpon>CTermForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTermOptionForm.resx">
+      <DependentUpon>CTermOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CDeviceSetForm.resx">
+      <DependentUpon>CDeviceSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CFileTimeForm.resx">
+      <DependentUpon>CFileTimeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CGetSelectParaForm.resx">
+      <DependentUpon>CGetSelectParaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CLineRealForm.resx">
+      <DependentUpon>CLineRealForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CParaSetForm.resx">
+      <DependentUpon>CParaSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CDownFileForm.resx">
+      <DependentUpon>CDownFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CDataCheckForm.resx">
+      <DependentUpon>CDataCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CModulForm.resx">
+      <DependentUpon>CModulForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSoePicForm.resx">
+      <DependentUpon>CSoePicForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CParaForm.resx">
+      <DependentUpon>CParaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTransForm.resx">
+      <DependentUpon>CTransForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTranStationOptionForm.resx">
+      <DependentUpon>CTranStationOptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTranTableManageSubForm.resx">
+      <DependentUpon>CTranTableManageSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CTranTableManageTermForm.resx">
+      <DependentUpon>CTranTableManageTermForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CUpdataForm.resx">
+      <DependentUpon>CUpdataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CVersionForm.resx">
+      <DependentUpon>CVersionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CWaitForm.resx">
+      <DependentUpon>CWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CBufferViewForm.resx">
+      <DependentUpon>CBufferViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CEventMsgForm.resx">
+      <DependentUpon>CEventMsgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CHisRecordForm.resx">
+      <DependentUpon>CHisRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CMasterConForm.resx">
+      <DependentUpon>CMasterConForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CCurrentForm.resx">
+      <DependentUpon>CCurrentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CRealCtrlForm.resx">
+      <DependentUpon>CRealCtrlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CSOEMsgForm.resx">
+      <DependentUpon>CSOEMsgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\CYKForm.resx">
+      <DependentUpon>CYKForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\TabBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxTeeChart">
+      <Guid>{B6C10482-FB89-11D4-93C9-006008A7EED4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="TeeChart">
+      <Guid>{B6C10482-FB89-11D4-93C9-006008A7EED4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\res\TabFromBack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ooopic_1497507895.ico" />
+    <Content Include="ProIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
