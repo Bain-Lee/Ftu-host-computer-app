@@ -21,7 +21,7 @@ $compiler = Join-Path $env:WINDIR 'Microsoft.NET\Framework\v4.0.30319\csc.exe'
 $testExecutable = Join-Path $testDirectory 'BaselineRegression.exe'
 & $compiler /nologo /target:exe /platform:x86 /warn:4 /warnaserror+ `
     "/reference:$applicationPath" "/reference:$buildPath\System.Data.SQLite.dll" `
-    "/out:$testExecutable" (Join-Path $PSScriptRoot 'BaselineRegression.cs')
+    "/out:$testExecutable" (Join-Path $PSScriptRoot 'BaselineRegression.cs') (Join-Path $PSScriptRoot 'UiRegression.cs')
 if ($LASTEXITCODE -ne 0)
 {
     throw 'Regression test compilation failed.'

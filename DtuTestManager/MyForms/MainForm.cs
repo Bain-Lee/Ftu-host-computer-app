@@ -14,18 +14,7 @@ using WeifenLuo.WinFormsUI.Docking;     //浮动窗口
 namespace DtuTestManager
 {
     public partial class MainForm : Form
-    { /// <summary>
-        /// 解决闪烁问题
-        /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+    {
         Form pLoadForm = null;     
         public Object m_SaveRepLock = new object();   
         public MainForm()
@@ -141,13 +130,21 @@ namespace DtuTestManager
         }
         public void FreshForm()
         {
-            pLoadForm.TopLevel = false; //指示子窗体非顶级窗体          
-            myPanelForm.Controls.Clear();
-            myPanelForm.Controls.Add(pLoadForm);//将子窗体载入panel          
-            pLoadForm.Show();
-            pLoadForm.Dock = DockStyle.Fill;          
+            pLoadForm.TopLevel = false; //指示子窗体非顶级窗体
+            pLoadForm.Dock = DockStyle.Fill;
+            myPanelForm.SuspendLayout();
+            try
+            {
+                myPanelForm.Controls.Clear();
+                myPanelForm.Controls.Add(pLoadForm);//将子窗体载入panel
+                pLoadForm.Show();
+            }
+            finally
+            {
+                myPanelForm.ResumeLayout(true);
+            }
             this.Focus();
-        }  
+        }
         private bool StartConnDevice()
         {           
             if (CGlobal.m_Device.m_bOnlineStatus == false)

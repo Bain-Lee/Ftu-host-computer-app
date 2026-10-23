@@ -10,24 +10,16 @@ using System.Windows.Forms;
 namespace DtuTestManager
 {
     public partial class CYKForm : Form
-    { /// <summary>
-        /// 解决闪烁问题
-        /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+    {
         public static  CYkOption m_YkMsg = new CYkOption();
         public static bool YKTest = false;
         public static bool YKStatus= false;
         public CYKForm()
         {
             InitializeComponent();
+            typeof(ListView).GetProperty("DoubleBuffered",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                .SetValue(LV_YK, true, null);
         }      
          protected override void WndProc(ref Message m)
         {

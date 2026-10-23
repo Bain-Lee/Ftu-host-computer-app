@@ -12,18 +12,7 @@ using System.Threading;
 namespace DtuTestManager
 {
     public partial class CParaForm : Form
-    { /// <summary>
-        /// 解决闪烁问题
-        /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+    {
         CParaGroupTable m_NowParaGroup = null;
         private List<ParaTaskMsg> m_TaskList = new List<ParaTaskMsg>();
         private ParaTaskMsg pNowTask = null;

@@ -79,17 +79,25 @@ namespace DtuTestManager
                 LV_YX.HeaderStyle = ColumnHeaderStyle.Clickable;
                 LV_YX.Visible = true;
 
-                for (int i = 0; i < CGlobal.m_Device.m_YxList.Count; i++)
+                LV_YX.BeginUpdate();
+                try
                 {
-                    h[0] = " " + Convert.ToString(CGlobal.m_Device.m_YxList[i].m_YxNo);
-                    h[1] = CGlobal.m_Device.m_YxList[i].m_YxName;
-                    h[2] = CGlobal.m_Device.m_YxList[i].m_YxValue.ToString();
-                    h[3] = CGlobal.m_Device.m_YxList[i].m_YxChangeTime;
-                    ListViewItem ViewItem = new ListViewItem(h);
+                    for (int i = 0; i < CGlobal.m_Device.m_YxList.Count; i++)
+                    {
+                        h[0] = " " + Convert.ToString(CGlobal.m_Device.m_YxList[i].m_YxNo);
+                        h[1] = CGlobal.m_Device.m_YxList[i].m_YxName;
+                        h[2] = CGlobal.m_Device.m_YxList[i].m_YxValue.ToString();
+                        h[3] = CGlobal.m_Device.m_YxList[i].m_YxChangeTime;
+                        ListViewItem ViewItem = new ListViewItem(h);
 
-                    this.LV_YX.AddItem(ViewItem);
+                        this.LV_YX.AddItem(ViewItem);
+                    }
                 }
-              
+                finally
+                {
+                    LV_YX.EndUpdate();
+                }
+
                 for (int i = 0; i <= LV_YX.Items.Count; i++)
                 {
 
@@ -113,6 +121,7 @@ namespace DtuTestManager
         private void Init_YcLV()
         {           
             string[] h = new string[6];   
+            LV_YC.BeginUpdate();
             try
             {
                 #region YC
@@ -141,11 +150,16 @@ namespace DtuTestManager
                 #endregion
             }
             catch { }
+            finally
+            {
+                LV_YC.EndUpdate();
+            }
         
         }                           //初始化遥测界面
         private void Init_DDLV()
         {       
             string[] hh = new string[4];
+            LV_DD.BeginUpdate();
             try
             {
                 #region DD
@@ -174,6 +188,10 @@ namespace DtuTestManager
                 #endregion
             }
             catch { }
+            finally
+            {
+                LV_DD.EndUpdate();
+            }
         }                           //初始化电度界面
         //报文、SOE、事件信息窗口控制按钮函数
         private void Btn_BufferView_Click(object sender, EventArgs e)
@@ -281,7 +299,6 @@ namespace DtuTestManager
                     FreshPw();
                 }
             }
-            this.Invalidate();
         }
 
         private void BtnSetFixData_Click(object sender, EventArgs e)

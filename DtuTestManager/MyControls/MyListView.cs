@@ -36,6 +36,8 @@ namespace DtuTestManager
         public const Int32 LVIF_IMAGE = 0x0002;
 
         public const int LVW_FIRST = 0x1000;
+        public const int LVM_SETEXTENDEDLISTVIEWSTYLE = LVW_FIRST + 54;
+        // 旧名称保留给现有调用，实际对应设置扩展样式的消息。
         public const int LVM_GETEXTENDEDLISTVIEWSTYLE = LVW_FIRST + 54;
 
         public const int LVS_EX_GRIDLINES = 0x00000001;
@@ -45,6 +47,7 @@ namespace DtuTestManager
         public const int LVS_EX_HEADERDRAGDROP = 0x00000010;
         public const int LVS_EX_FULLROWSELECT = 0x00000020; // applies to report mode only
         public const int LVS_EX_ONECLICKACTIVATE = 0x00000040;
+        public const int LVS_EX_DOUBLEBUFFER = 0x00010000;
 
         private TextBox m_TextBox;
         private ComboBox m_ComboBox;
@@ -89,10 +92,7 @@ namespace DtuTestManager
         private void IniSetting()
         {
             //防止刷新闪烁
-            SetStyle(ControlStyles.DoubleBuffer |
-                    ControlStyles.OptimizedDoubleBuffer |
-                    ControlStyles.AllPaintingInWmPaint, true);
-            UpdateStyles();
+            this.DoubleBuffered = true;
 
             //添加可编辑单元格
             m_TextBox = new TextBox();
@@ -113,12 +113,13 @@ namespace DtuTestManager
             //指定列显示图标
             System.Windows.Forms.Message m = new Message();
             m.HWnd = this.Handle;
-            m.Msg = LVM_GETEXTENDEDLISTVIEWSTYLE;
+            m.Msg = LVM_SETEXTENDEDLISTVIEWSTYLE;
             m.LParam = (IntPtr)(LVS_EX_GRIDLINES |
                                 LVS_EX_FULLROWSELECT |
                                 LVS_EX_SUBITEMIMAGES |
                                 LVS_EX_CHECKBOXES |
-                                LVS_EX_TRACKSELECT);
+                                LVS_EX_TRACKSELECT |
+                                LVS_EX_DOUBLEBUFFER);
             m.WParam = IntPtr.Zero;
             this.WndProc(ref m);
         }

@@ -3,14 +3,17 @@ using System.Data.SQLite;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
+using System.Windows.Forms;
 using DtuTestManager;
 
 internal static class BaselineRegression
 {
     private static int failures;
 
+    [STAThread]
     private static int Main()
     {
+        Application.EnableVisualStyles();
         Run("SQLite: x86 in-memory write and read", TestSQLite);
         Run("socket: null connection releases lock", TestNullSocket);
         Run("socket: closed connection returns false", TestClosedSocket);
@@ -29,6 +32,16 @@ internal static class BaselineRegression
         Run("104: S frame after 16 seconds", () => TestAcknowledgement(16, 0, true));
         Run("104: delayed S frame after 65 seconds", () => TestAcknowledgement(65, 0, true));
         Run("104: four pending frames trigger S frame", () => TestAcknowledgement(0, 4, true));
+        Run("UI: native list double buffering and existing styles", UiRegression.ListDoubleBuffer);
+        Run("UI: list buffering after handle recreation", UiRegression.ListDoubleBufferAfterRecreate);
+        Run("UI: main window avoids descendant compositing", UiRegression.MainWindowStyle);
+        Run("UI: parameter window avoids descendant compositing", UiRegression.ParameterWindowStyle);
+        Run("UI: control window avoids descendant compositing", UiRegression.ControlWindowStyle);
+        Run("UI: module tabs avoid descendant compositing", UiRegression.ModuleTabStyle);
+        Run("UI: control list native buffering", UiRegression.ControlListDoubleBuffer);
+        Run("UI: offline idle ticks do not repaint", UiRegression.OfflineIdleRepaint);
+        Run("UI: embedded window has final docking before insertion", UiRegression.EmbeddedWindowLayout);
+        Run("UI: real-time lists retain rows and buffering", UiRegression.RealListInitialization);
         Console.WriteLine("Failures: " + failures);
         return failures == 0 ? 0 : 1;
     }
