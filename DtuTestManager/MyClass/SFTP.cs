@@ -56,7 +56,7 @@ namespace DtuTestManager
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //return false;
                 // TxtLog.WriteTxt(CommonMethod.GetProgramName(), string.Format("连接SFTP失败，原因：{0}", ex.Message));
@@ -99,7 +99,7 @@ namespace DtuTestManager
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }            
@@ -120,7 +120,7 @@ namespace DtuTestManager
                 File.WriteAllBytes(localPath, byt);
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -141,7 +141,7 @@ namespace DtuTestManager
                // Disconnect();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

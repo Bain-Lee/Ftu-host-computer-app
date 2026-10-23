@@ -105,7 +105,7 @@ namespace DtuTestManager
                 trans.Commit();
                 return m_DataList.Count;
             }
-            catch (OleDbException e1)
+            catch (OleDbException)
             {
                 trans.Rollback();
                 throw;

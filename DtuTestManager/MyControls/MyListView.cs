@@ -373,7 +373,7 @@ namespace DtuTestManager
                         }
                     }
                 }
-                catch (Exception err)
+                catch (Exception)
                 {
                     MessageBox.Show("选择出错");
                 }

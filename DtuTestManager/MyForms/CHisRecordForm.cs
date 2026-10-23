@@ -269,8 +269,9 @@ namespace DtuTestManager
                     DisplayFileContent(pFile); //表格显示            
                 }
             }
-            catch(Exception e)
-            { }
+            catch (Exception)
+            {
+            }
         }
         private void DisplayFixptFileContent(CFileCtrl pFile)
         {

@@ -278,29 +278,30 @@ namespace DtuTestManager
         }
         public int GetProcessBuff(byte[] ProcessBuff)
         {
-            if (m_RecLeng == 0) return 0;
-            Monitor.Enter(m_ProcessLock);
-            if (m_EndPlace > m_StartPlace)
+            lock (m_ProcessLock)
             {
-                Array.Copy(m_ReceiveBuff, m_StartPlace, ProcessBuff, 0, m_RecLeng);
-                if ((m_EndPlace - m_StartPlace) != m_RecLeng)
+                if (m_RecLeng == 0) return 0;
+                if (m_EndPlace > m_StartPlace)
                 {
-                    return 0;
+                    Array.Copy(m_ReceiveBuff, m_StartPlace, ProcessBuff, 0, m_RecLeng);
+                    if ((m_EndPlace - m_StartPlace) != m_RecLeng)
+                    {
+                        return 0;
+                    }
                 }
-            }
-            else
-            {
-                int nSectionOne = m_ByteLeng - m_StartPlace;
-                int nSectionTwo = m_EndPlace;
-                Array.Copy(m_ReceiveBuff, m_StartPlace, ProcessBuff, 0, nSectionOne);
-                if (nSectionTwo > 0) Array.Copy(m_ReceiveBuff, 0, ProcessBuff, nSectionOne, nSectionTwo);
-                if ((nSectionOne + nSectionTwo) != m_RecLeng)
+                else
                 {
-                    return 0;
-                }              
+                    int nSectionOne = m_ByteLeng - m_StartPlace;
+                    int nSectionTwo = m_EndPlace;
+                    Array.Copy(m_ReceiveBuff, m_StartPlace, ProcessBuff, 0, nSectionOne);
+                    if (nSectionTwo > 0) Array.Copy(m_ReceiveBuff, 0, ProcessBuff, nSectionOne, nSectionTwo);
+                    if ((nSectionOne + nSectionTwo) != m_RecLeng)
+                    {
+                        return 0;
+                    }
+                }
+                return m_RecLeng;
             }
-            Monitor.Exit(m_ProcessLock);
-            return m_RecLeng;
         }
         private void ProcessThread()
         {
@@ -345,10 +346,6 @@ namespace DtuTestManager
                 {
                    m_bOnlineStatus=SendToDevice(pSendBuff, pSendLeng);
                    m_bProcessFlag = m_bOnlineStatus;
-                   if (m_bOnlineStatus == false)
-                   {
-                       int tt = 0;
-                   }
                 }
             }
             m_bProcessFlag = false;
@@ -607,10 +604,6 @@ namespace DtuTestManager
             Array.Clear(m_SendBuff, 0, m_SendBuff.Length);
             m_SendLeng = m_Ptr.GetTaskBuffer(m_SendBuff, nTaskNo);
            m_bOnlineStatus= SendToDevice(m_SendBuff, m_SendLeng);
-           if (m_bOnlineStatus == false)
-           {
-               int tt = 0;
-           }
         }
         public bool SendToDevice(byte[] SendBuff, int SendLen)
         {

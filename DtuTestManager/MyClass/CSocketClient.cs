@@ -48,32 +48,32 @@ namespace DtuTestManager
         public bool SendToSocket(Byte[] pSendBuff, int nSendLeng)
         {
             bool SendFlags = false;
-            Monitor.Enter(m_Lock);
-            try 
+            lock (m_Lock)
             {
-                if (SocketClient == null) return false;
-               
-                if (SocketClient != null && SocketClient.Connected)
+                try
                 {
-                    if (SocketClient.Poll(100, SelectMode.SelectWrite))
+                    if (SocketClient == null) return false;
+
+                    if (SocketClient != null && SocketClient.Connected)
                     {
-                        SocketClient.Send(pSendBuff, nSendLeng, 0);
-                        SendFlags = true;
-                    }
-                    else
-                    {
-                        CloseSocket();                      
-                        SendFlags = false;
+                        if (SocketClient.Poll(100, SelectMode.SelectWrite))
+                        {
+                            SocketClient.Send(pSendBuff, nSendLeng, 0);
+                            SendFlags = true;
+                        }
+                        else
+                        {
+                            CloseSocket();
+                            SendFlags = false;
+                        }
                     }
                 }
-                
-            } 
-            catch (SocketException se) 
-            {
-                CloseSocket();
-                SendFlags = false;
+                catch (SocketException)
+                {
+                    CloseSocket();
+                    SendFlags = false;
+                }
             }
-            Monitor.Exit(m_Lock);
             return SendFlags;
         }
     }
@@ -122,7 +122,7 @@ namespace DtuTestManager
             {
                 sck.EndConnect(AsyncResult);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // m_bOnlineStatus = false;
                 //发生错误            
@@ -161,7 +161,7 @@ namespace DtuTestManager
                 CloseSocket();
                 ExceptionSolver(ex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {                //连接失败            
                 CloseSocket();
             }
@@ -277,7 +277,7 @@ namespace DtuTestManager
                     }
                 }
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {                
                     CloseSocket();
                     theDevice.m_bOnlineStatus = false;                

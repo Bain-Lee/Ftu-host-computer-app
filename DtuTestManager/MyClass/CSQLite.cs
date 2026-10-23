@@ -44,7 +44,7 @@ namespace DtuTestManager
             {
                 m_Dbconn.Open();
             }
-            catch (OleDbException e1)
+            catch (OleDbException)
             {
                 return false;
             }

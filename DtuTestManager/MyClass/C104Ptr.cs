@@ -2136,7 +2136,7 @@ namespace DtuTestManager
                 if (m_StartFlag)
                 {
                     TimeSpan spanTime = DateTime.Now - m_STime;
-                    if (spanTime.Seconds >= 15)
+                    if (spanTime.TotalSeconds >= 15)
                     {
                         pSendLeng = GetTaskBuffer(pSendBuff, 21);
                         m_STime = DateTime.Now;
@@ -2149,7 +2149,7 @@ namespace DtuTestManager
                 if (m_StartFlag)
                 {
                     TimeSpan spanTime = DateTime.Now - m_HeartTime;
-                    if (spanTime.Seconds >= 180)
+                    if (spanTime.TotalSeconds >= 180)
                     {
                         pSendLeng = GetTaskBuffer(pSendBuff, 2);
                         m_HeartTime = DateTime.Now;

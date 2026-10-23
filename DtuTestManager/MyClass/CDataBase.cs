@@ -41,7 +41,7 @@ namespace DtuTestManager
             {
                 m_Dbconn.Open();
             }
-            catch (OleDbException e1)
+            catch (OleDbException)
             {
                 return false;
             }
@@ -63,7 +63,7 @@ namespace DtuTestManager
                 returnObj = dataSet.Tables[0];
                 dataAdapter.Dispose();
             }
-            catch (OleDbException e1)
+            catch (OleDbException)
             {
                 return null;
             }
@@ -78,7 +78,7 @@ namespace DtuTestManager
                 OleDbCommand odbc = new OleDbCommand(sqlStr, m_Dbconn);
                 odbc.ExecuteNonQuery();
             }
-            catch (OleDbException e1)
+            catch (OleDbException)
             {
                 return false;
             }

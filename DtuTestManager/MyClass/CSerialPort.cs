@@ -95,7 +95,7 @@ namespace DtuTestManager
                 Monitor.Exit(m_RWLock);
                 Thread.Sleep(nSendLeng);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 m_SerialPort.DiscardOutBuffer();
                 m_SerialPort.DiscardInBuffer();

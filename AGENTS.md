@@ -13,7 +13,7 @@
 
 ## 版本管理
 
-- 跟踪源码、工程文件、文档、图片、现有模板数据库，以及工程引用的 SSH.NET / Docking DLL 和现有 TeeChart Interop DLL。`bin/Debug` 中这些受版本管理的文件通过 `.gitignore` 白名单保留，不移动或重命名。
+- 跟踪源码、工程文件、文档、图片、现有模板数据库、`lib/SQLite` 依赖，以及工程引用的 SSH.NET / Docking DLL 和现有 TeeChart Interop DLL。`bin/Debug` 中这些受版本管理的文件通过 `.gitignore` 白名单保留，不移动或重命名。
 - 忽略 Visual Studio 用户状态、`obj`、可执行运行包、日志、证书、现场 INI / 工程参数 / 转发表配置，以及未被当前工程引用的本地 `CDataBase.sdf`。忽略不代表删除本地文件。
 - `bin/Debug/工程模板/.gitkeep` 保留启动代码依赖的空目录；不要当作无用文件移除。
 - 本仓库设置 `core.autocrlf=false`，首个提交保留现有文件换行方式；不要借提交统一源文件换行或格式。
@@ -68,12 +68,11 @@
 
 | 依赖 | 当前项目约束 |
 | --- | --- |
-| `System.Data.SQLite`、`System.Data.SQLite.Linq` | 引用版本 1.0.105.2；前者为 x86，HintPath 指向 `C:\Program Files (x86)\System.Data.SQLite\2012\bin` |
+| `System.Data.SQLite`、`System.Data.SQLite.Linq` | 固定版本 1.0.118.0，HintPath 指向项目内 `lib/SQLite`；配套 x86 原生 `SQLite.Interop.dll` 自动复制到 EXE 同目录 |
 | `Renci.SshNet` | 引用版本 2014.4.6.0；HintPath 位于 `bin/Debug` |
 | `WeifenLuo.WinFormsUI.Docking` | 引用版本 2.3.1.24483；HintPath 位于 `bin/Debug` |
-| TeeChart / AxTeeChart | COM 类型库及 ActiveX 包装；仅存在 Interop DLL 不代表类型库已注册 |
+| TeeChart / AxTeeChart | 编译直接引用 `bin/Debug` 中已有的 Interop / AxInterop DLL，不在构建时重新导入类型库；曲线界面运行仍需匹配的 32 位 ActiveX 控件 |
 | ADODB / ADOX / stdole | 工程中的其他 COM 引用 |
-| Microsoft ReportViewer | Common / WinForms 11.0.0.0 引用 |
 | Jet OLE DB 4.0 | 运行时读取 Access `.mdb` 模板，需匹配 x86 进程 |
 | `TZhuZhanDll.dll`、`HsmPriDll.dll` | 按加密版本选择的厂商原生接口；相关功能需匹配的运行库及设备条件 |
 
@@ -87,9 +86,13 @@ msbuild .\DtuTestManager.sln /t:Build /p:Configuration=Debug '/p:Platform=Any CP
 
 Release 验证使用对应的 `Configuration=Release` 及隔离输出路径。临时输出只是编译产物，不是完整运行包。
 
-2026-10-23 已用本机 Visual Studio 2022 的完整 MSBuild 做一次隔离 Debug 构建：因 SQLite 引用缺失及 TeeChart COM 类型库未注册而失败，同时报告缺少两个 ReportViewer 引用。详细结果见 `PROJECT_ANALYSIS.md`。不通过删除引用、注释业务代码或自动安装 / 注册组件来掩盖环境问题。
+2026-10-23 已建立干净构建基线：Visual Studio 2022 的完整 64 位 MSBuild 对 Debug / Release 分别完成全新中间目录构建和默认输出目录构建，均为 0 错误、0 告警；验证命令使用 `/warnaserror`，工程告警级别保持 4，没有新增告警抑制。SQLite 及 TeeChart 依赖配置已落实到 `.csproj`；经确认当前源码和资源未使用的两个历史 ReportViewer 引用已移除。详细记录见 `PROJECT_ANALYSIS.md` 第 9 节。
 
-未发现独立自动化测试项目。`CTetstCasePro` / `CTtestCaseForm` 是程序内部的终端规约试验功能。普通修改先做最小相关编译或离线检查；涉及规约时再用明确的报文样例或获准的测试终端验证，不为文档修改新增测试框架。
+编译通过不代表 TeeChart ActiveX、加密设备或现场数据库业务已经验证。不要通过删除引用、注释业务代码或自动安装 / 注册组件来掩盖环境问题；本次 TeeChart 仅改为引用现有托管包装 DLL，控件运行依赖仍须保留。
+
+没有独立测试项目或外部测试框架。`tests/BaselineRegression.cs` 为独立 x86 控制台回归，18 项检查覆盖 SQLite 内存读写、具体锁释放路径、接收缓存和 104 心跳 / S 帧计时；Debug / Release 默认输出均已通过。构建后使用 `tests/Run-Regression.ps1 -BuildDirectory <输出目录>` 执行，说明见 `tests/README.md`。这些检查不启动窗体，不连接终端，不读写现场配置。
+
+`CTetstCasePro` / `CTtestCaseForm` 是程序内部的终端规约试验功能。普通修改先做最小相关编译或离线检查；涉及规约时再用明确的报文样例或获准的测试终端验证，不为文档修改新增测试框架。
 
 ## 运行文件与设备操作
 
