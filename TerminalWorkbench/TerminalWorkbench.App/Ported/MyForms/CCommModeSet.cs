@@ -175,6 +175,7 @@ namespace DtuTestManager
         private void Init4GData()
         {
             int i = 0;
+            CGlobal.m_4GList.Clear();
 
             ParaType[] Dsptype = new ParaType[] { ParaType.String, ParaType.String, ParaType.String, ParaType.String, ParaType.String, ParaType.IP };
 
@@ -202,6 +203,7 @@ namespace DtuTestManager
         private void InitHostData()
         {
             int i = 0;
+            CGlobal.m_HostList.Clear();
 
             ParaType[] Dsptype = new ParaType[] { ParaType.IP, ParaType.UShort, ParaType.IP, ParaType.UShort, ParaType.IP, ParaType.UShort, ParaType.IP, ParaType.UShort, ParaType.IP, ParaType.UShort };
 

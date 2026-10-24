@@ -130,7 +130,7 @@ namespace DtuTestManager
             CGlobal.m_EventView = null;
             CGlobal.m_SOEView = null;
             shutdownComplete = true;
-            Close();
+            BeginInvoke(new MethodInvoker(Close));
         }
     }
 }

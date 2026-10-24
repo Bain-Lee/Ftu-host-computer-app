@@ -110,8 +110,11 @@ namespace DtuTestManager
             ParaLV.Items.Clear();
             for (int i = 0; i < ParaCnt; i++)
             {
-                CGlobal.GetPrivateProfileString("ParaInfo", "Para" + i.ToString(), "1", temp, 100, m_path);
-                string[] m_Value = temp.ToString().Split(',');
+                while (CGlobal.GetPrivateProfileString("ParaInfo", "Para" + i.ToString(), "1", temp, temp.Capacity, m_path) == temp.Capacity - 1)
+                {
+                    temp.Capacity *= 2;
+                }
+                string[] m_Value = temp.ToString().Split(new[] { ',' }, 2);
                 int Addr = Convert.ToInt32(m_Value[0]);
                 string value = m_Value[1];
                 CParaCtrl pPara = new CParaCtrl(CGlobal.m_Device.m_TotalParaDataList[Addr]);

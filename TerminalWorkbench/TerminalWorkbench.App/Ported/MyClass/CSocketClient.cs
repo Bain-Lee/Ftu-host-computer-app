@@ -16,8 +16,8 @@ namespace DtuTestManager
         private object m_Lock = new object();
         protected Socket SocketClient;                   //socket连接对象
         protected bool m_OnlineFlag = false;
-        protected bool bReciveFlag;                    //接收线程标志
-        protected bool bListenFlag;
+        protected volatile bool bReciveFlag;                    //接收线程标志
+        protected volatile bool bListenFlag;
         protected ManualResetEvent TimeoutObject;             //超时等待
         protected Thread RecvThread;
         protected Thread AcceptThread;
@@ -37,11 +37,8 @@ namespace DtuTestManager
         }
         protected void CloseSocket()
         {
-            if (SocketClient != null)
-            {
-                SocketClient.Close();
-                SocketClient = null;
-            }
+            Socket socket = Interlocked.Exchange(ref SocketClient, null);
+            socket?.Close();
             m_OnlineFlag = false;
         }
 
@@ -152,7 +149,7 @@ namespace DtuTestManager
                 m_OnlineFlag = SocketClient.Connected;
                 if (SocketClient.Connected == false)
                 {
-                    //SocketClient.EndConnect(pResult);
+                    CloseSocket();
                     nCount--;
                     m_OnlineFlag = SocketConnect(strServerIP, nServerPort, nTimeOut, nCount);
                     return m_OnlineFlag;
@@ -181,22 +178,16 @@ namespace DtuTestManager
         public void CloseThread()
         {
             bListenFlag = false;
-            if (m_ListenSocket != null)
+            Socket listener = Interlocked.Exchange(ref m_ListenSocket, null);
+            listener?.Close();
+            Thread acceptor = AcceptThread;
+            if (acceptor != null && acceptor != Thread.CurrentThread)
             {
-                m_ListenSocket.Close();
-                //AcceptThread.Join();
-                m_ListenSocket = null;
+                acceptor.Join();
             }
-            if (bReciveFlag)
-            {
-                bReciveFlag = false;
-                exitEvent.Set();
-                Thread.Sleep(100);
-                //RecvThread.Join();
-            }
+            AcceptThread = null;
+            CloseReadSoketThread();
             theDevice.m_bOnlineStatus = false;
-            RecvThread = null;
-            CloseSocket();
         }
         private void ByteGroupMove(Byte[] pSourceBuff, int pMovePlace, int pMoveLeng)
         {
@@ -206,14 +197,15 @@ namespace DtuTestManager
         }
         public void CloseReadSoketThread()
         {
-            if (bReciveFlag)
+            bReciveFlag = false;
+            exitEvent.Set();
+            CloseSocket();
+            Thread reader = RecvThread;
+            if (reader != null && reader != Thread.CurrentThread)
             {
-                bReciveFlag = false;
-                exitEvent.Set();
-                Thread.Sleep(100);
-                // RecvThread.Join();
-                CloseSocket();
+                reader.Join();
             }
+            RecvThread = null;
         }
         public void StartListenSocket()
         {
@@ -227,6 +219,11 @@ namespace DtuTestManager
                     if (pClient == null)
                         continue;
                     CloseReadSoketThread();
+                    if (!bListenFlag)
+                    {
+                        pClient.Close();
+                        break;
+                    }
                     SocketClient = pClient;
 
                     theDevice.m_bOnlineStatus = true;
@@ -263,18 +260,11 @@ namespace DtuTestManager
             int nReadLeng = 0;
             try
             {
-                if (SocketClient != null && SocketClient.Connected && SocketClient.Available > 0)
+                Socket socket = SocketClient;
+                if (socket != null && socket.Poll(100, SelectMode.SelectRead))
                 {
-                    if (SocketClient.Poll(100, SelectMode.SelectRead))
-                    {
-                        nReadLeng = SocketClient.Receive(pReceiveBuff);
-                        if (nReadLeng == 0)
-                        {
-                            CloseSocket();
-                            theDevice.m_bOnlineStatus = false;
-                        }
-                    }
-                    else
+                    nReadLeng = socket.Receive(pReceiveBuff);
+                    if (nReadLeng == 0)
                     {
                         CloseSocket();
                         theDevice.m_bOnlineStatus = false;
@@ -284,6 +274,10 @@ namespace DtuTestManager
             catch (SocketException)
             {
                 CloseSocket();
+                theDevice.m_bOnlineStatus = false;
+            }
+            catch (ObjectDisposedException)
+            {
                 theDevice.m_bOnlineStatus = false;
             }
             return nReadLeng;

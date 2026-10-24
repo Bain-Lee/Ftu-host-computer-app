@@ -18,7 +18,7 @@ namespace DtuTestManager
     /// <summary>
     /// SFTP操作类
     /// </summary>
-    public class SFTPHelper
+    public class SFTPHelper : IDisposable
     {
         #region 字段或属性
         private SftpClient sftp;
@@ -44,7 +44,10 @@ namespace DtuTestManager
         public SFTPHelper(string ip, string port, string user, string pwd)
         {
             sftp = new SftpClient(ip, Int32.Parse(port), user, pwd);
-            Connect();
+        }
+        public void Dispose()
+        {
+            sftp.Dispose();
         }
         #endregion
         #region 连接SFTP

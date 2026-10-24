@@ -108,7 +108,7 @@ namespace DtuTestManager
         public bool m_ReceiveFlag = false;
 
         private Thread m_ProcessThread;
-        private bool m_bProcessFlag = true;
+        private volatile bool m_bProcessFlag = true;
 
         private int m_ByteLeng = 10240;
         private byte[] m_ReceiveBuff = new byte[10240];
@@ -365,7 +365,12 @@ namespace DtuTestManager
         public void CloseProcessThread()
         {
             m_bProcessFlag = false;
-            Thread.Sleep(500);
+            Thread worker = m_ProcessThread;
+            if (worker != null && worker != Thread.CurrentThread)
+            {
+                worker.Join();
+            }
+            m_ProcessThread = null;
         }
         public void InitConnect()
         {

@@ -665,12 +665,13 @@ namespace TerminalWorkbench.Presentation
             root.Children.Add(overlay);
             void Data()
             {
-                grid.ItemsSource = (model.DataSource as DataTable)?.DefaultView;
+                grid.ItemsSource = model.Rows;
                 grid.Columns.Clear();
                 foreach (DataGridViewColumn column in model.Columns)
                 {
-                    var binding = new Binding("[" + column.DataPropertyName + "]") { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
-                    W.DataGridColumn native = model.DataSource is DataTable source && source.Columns.Contains(column.DataPropertyName) && source.Columns[column.DataPropertyName].DataType == typeof(bool)
+                    var binding = new Binding($"[{model.Columns.IndexOf(column)}].Value") { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged };
+                    W.DataGridColumn native = column is DataGridViewCheckBoxColumn
+                        || model.DataSource is DataTable source && source.Columns.Contains(column.DataPropertyName) && source.Columns[column.DataPropertyName].DataType == typeof(bool)
                         ? new W.DataGridCheckBoxColumn { Binding = binding }
                         : new W.DataGridTextColumn { Binding = binding };
                     native.Header = column.HeaderText;
@@ -684,10 +685,10 @@ namespace TerminalWorkbench.Presentation
             model.Columns.CollectionChanged += (_, _) => Data();
             grid.CurrentCellChanged += (_, _) =>
             {
-                if (grid.CurrentItem is DataRowView row && grid.CurrentColumn != null && model.DataSource is DataTable table)
+                if (grid.CurrentItem is DataGridViewRow row && grid.CurrentColumn != null)
                 {
-                    int index = table.Rows.IndexOf(row.Row);
-                    int column = grid.CurrentColumn.DisplayIndex;
+                    int index = row.Index;
+                    int column = grid.Columns.IndexOf(grid.CurrentColumn);
                     if (index >= 0 && index < model.Rows.Count && column < model.Rows[index].Cells.Count)
                         model.CurrentCell = model.Rows[index].Cells[column];
                 }

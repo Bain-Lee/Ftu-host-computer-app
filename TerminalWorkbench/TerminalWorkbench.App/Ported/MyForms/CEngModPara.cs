@@ -51,7 +51,7 @@ namespace DtuTestManager
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            CGlobal.WritePrivateProfileString("ParaInfo", "ParaCnt", ParaLV.Items.Count.ToString(), CEngPara.m_CurrentPath);
+            CGlobal.WritePrivateProfileString("ParaInfo", "ParaCnt", CEngPara.m_CurrentParaDataList.Count.ToString(), CEngPara.m_CurrentPath);
             string m_Value;
             for (int i = 0; i < ParaLV.Items.Count; i++)
             {

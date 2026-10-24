@@ -12,6 +12,7 @@ namespace TerminalWorkbench.Presentation
         private Window window;
         private bool loaded;
         private bool closing;
+        private bool notifyingClose;
         private bool relocatingWindow;
         private DialogResult dialogResult;
         private readonly List<IDisposable> owned = new List<IDisposable>();
@@ -105,8 +106,7 @@ namespace TerminalWorkbench.Presentation
             {
                 if (closing || relocatingWindow)
                     return;
-                var args = new FormClosingEventArgs();
-                FormClosing?.Invoke(this, args);
+                var args = NotifyClosing();
                 e.Cancel = args.Cancel;
                 if (!e.Cancel)
                     FinishClose();
@@ -131,16 +131,30 @@ namespace TerminalWorkbench.Presentation
 
         public void Close()
         {
-            if (closing || IsDisposed)
+            if (closing || notifyingClose || IsDisposed)
                 return;
-            var args = new FormClosingEventArgs();
-            FormClosing?.Invoke(this, args);
+            var args = NotifyClosing();
             if (args.Cancel)
                 return;
             FinishClose();
             window?.Close();
             Parent?.Controls.Remove(this);
             Dispose();
+        }
+
+        private FormClosingEventArgs NotifyClosing()
+        {
+            var args = new FormClosingEventArgs();
+            notifyingClose = true;
+            try
+            {
+                FormClosing?.Invoke(this, args);
+                return args;
+            }
+            finally
+            {
+                notifyingClose = false;
+            }
         }
 
         private void FinishClose()
@@ -155,6 +169,10 @@ namespace TerminalWorkbench.Presentation
 
         protected override void Dispose(bool disposing)
         {
+            if (notifyingClose)
+            {
+                return;
+            }
             if (loaded && !closing)
             {
                 Close();
@@ -196,6 +214,12 @@ namespace TerminalWorkbench.Presentation
         {
             if (System.Windows.Application.Current == null)
                 return 0;
+            // Protocol callers do not consume a window-message result. Queue
+            // worker replies so closing a channel can join its worker safely.
+            if (!System.Windows.Application.Current.Dispatcher.CheckAccess())
+            {
+                return Post(id, message, wParam, lParam);
+            }
             System.Windows.Application.Current.Dispatcher.Invoke(() => Deliver(id, message, wParam, lParam));
             return 1;
         }

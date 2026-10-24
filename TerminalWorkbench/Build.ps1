@@ -41,6 +41,11 @@ try
         {
             throw 'Offline regression failed.'
         }
+        & $regressionExe --workflow --templates $templates
+        if ($LASTEXITCODE -ne 0)
+        {
+            throw 'Workflow regression failed.'
+        }
     }
     if ($Publish)
     {
