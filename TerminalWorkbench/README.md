@@ -1,6 +1,6 @@
 # FTU / DTU 配电终端工作台
 
-本目录是 `refactor/wpf-mvvm` 分支上的 .NET 10 / WPF 迁移候选。原 `DtuTestManager.sln` 和原源码保留，`main` 仍为此前验证通过的稳定版。当前没有配置远程仓库，也没有上传。
+本目录是 `refactor/wpf-mvvm` 分支上的 .NET 10 / WPF 迁移候选。原 `DtuTestManager.sln` 和原源码保留，`main` 仍为此前验证通过的稳定版。源码已上传至 [Ftu-host-computer-app](https://github.com/Bain-Lee/Ftu-host-computer-app)，仓库默认分支为 `main`。
 
 **当前不能把这个候选称为已经完成全功能等价验收的替换版本。** 全部 54 个编译窗口的控制逻辑和入口已移植，实际视图由 WPF 控件构成；设备、加密机、SFTP 服务及现场操作的完整流程还没有实测。部分旧控制器、全局状态和业务模型中的呈现耦合仍保留，尚未完成纯 MVVM 的架构拆分。
 
