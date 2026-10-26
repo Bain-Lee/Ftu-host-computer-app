@@ -97,6 +97,7 @@ namespace DtuTestManager
             BtnDelete.Click += BtnDelete_Click;
             BtnInsert.Click += BtnInsert_Click;
             Load += CGetSelectParaForm_Load;
+            ArrangeParameterSelectionLayout();
         }
     }
 }

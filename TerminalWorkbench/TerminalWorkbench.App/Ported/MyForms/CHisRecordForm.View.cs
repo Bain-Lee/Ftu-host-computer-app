@@ -68,7 +68,7 @@ namespace DtuTestManager
             label_Version = new Label();
             label_FileName = new Label();
             tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(100, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.RowHeights.Add(new System.Windows.GridLength(61, System.Windows.GridUnitType.Pixel));
+            tableLayoutPanel1.RowHeights.Add(System.Windows.GridLength.Auto);
             tableLayoutPanel1.RowHeights.Add(new System.Windows.GridLength(100, System.Windows.GridUnitType.Star));
             this.toolStrip1.BackColor = System.Drawing.Color.PowderBlue;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -117,7 +117,7 @@ namespace DtuTestManager
             this.splitContainer1.Location = new System.Drawing.Point(0, 56);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Size = new System.Drawing.Size(998, 430);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 1;
             this.FileTreeViewList.BackColor = System.Drawing.Color.Azure;
             this.FileTreeViewList.Dock = DockStyle.Fill;
@@ -126,6 +126,8 @@ namespace DtuTestManager
             this.FileTreeViewList.Size = new System.Drawing.Size(202, 430);
             this.FileTreeViewList.TabIndex = 0;
             this.FileView_Panel.Location = new System.Drawing.Point(3, 76);
+            this.FileView_Panel.Dock = DockStyle.Fill;
+            this.FileView_Panel.Visible = false;
             this.FileView_Panel.Name = "FileView_Panel";
             this.FileView_Panel.Size = new System.Drawing.Size(545, 229);
             this.FileView_Panel.TabIndex = 6;
@@ -153,20 +155,22 @@ namespace DtuTestManager
             this.label_ID.Name = "label_ID";
             this.label_ID.Size = new System.Drawing.Size(41, 12);
             this.label_ID.TabIndex = 0;
-            this.label_ID.Text = "label1";
+            this.label_ID.Text = "终端 ID：—";
             this.label_Version.AutoSize = true;
             this.label_Version.Location = new System.Drawing.Point(250, 23);
             this.label_Version.Name = "label_Version";
             this.label_Version.Size = new System.Drawing.Size(41, 12);
             this.label_Version.TabIndex = 0;
-            this.label_Version.Text = "label1";
+            this.label_Version.Text = "文件版本号：—";
             this.label_FileName.AutoSize = true;
             this.label_FileName.Location = new System.Drawing.Point(29, 23);
             this.label_FileName.Name = "label_FileName";
             this.label_FileName.Size = new System.Drawing.Size(41, 12);
             this.label_FileName.TabIndex = 0;
-            this.label_FileName.Text = "label1";
+            this.label_FileName.Text = "文件名：未选择";
             this.HisDataView_Panel.Location = new System.Drawing.Point(114, 3);
+            this.HisDataView_Panel.Dock = DockStyle.Fill;
+            this.HisDataView_Panel.Visible = false;
             this.HisDataView_Panel.Name = "HisDataView_Panel";
             this.HisDataView_Panel.Size = new System.Drawing.Size(121, 58);
             this.HisDataView_Panel.TabIndex = 5;
@@ -177,6 +181,7 @@ namespace DtuTestManager
             this.HisDataView.Size = new System.Drawing.Size(121, 58);
             this.HisDataView.TabIndex = 1;
             this.LV_File_Panel.Location = new System.Drawing.Point(2, 3);
+            this.LV_File_Panel.Dock = DockStyle.Fill;
             this.LV_File_Panel.Name = "LV_File_Panel";
             this.LV_File_Panel.Size = new System.Drawing.Size(106, 58);
             this.LV_File_Panel.TabIndex = 4;
@@ -187,7 +192,7 @@ namespace DtuTestManager
             this.LV_File.Size = new System.Drawing.Size(106, 58);
             this.LV_File.TabIndex = 0;
             this.Time_FreshView.Interval = 50;
-            this.ClientSize = new System.Drawing.Size(998, 486);
+            this.ClientSize = new System.Drawing.Size(1180, 720);
             this.Name = "CHisRecordForm";
             this.Text = "历史记录";
             this.toolStrip1.Items.AddRange(new Control[] {
@@ -216,6 +221,45 @@ namespace DtuTestManager
             this.panel1.Controls.Add(this.label_FileName);
             this.HisDataView_Panel.Controls.Add(this.HisDataView);
             this.LV_File_Panel.Controls.Add(this.LV_File);
+            var metadata = new TableLayoutPanel
+            {
+                Name = "HistoryFileMetadata",
+                Dock = DockStyle.Fill,
+                ColumnCount = 3,
+                RowCount = 1
+            };
+            metadata.ColumnWidths.Add(new System.Windows.GridLength(2, System.Windows.GridUnitType.Star));
+            metadata.ColumnWidths.Add(new System.Windows.GridLength(1, System.Windows.GridUnitType.Star));
+            metadata.ColumnWidths.Add(new System.Windows.GridLength(1, System.Windows.GridUnitType.Star));
+            metadata.RowHeights.Add(System.Windows.GridLength.Auto);
+            metadata.Controls.Add(this.label_FileName, 0, 0);
+            metadata.Controls.Add(this.label_Version, 1, 0);
+            metadata.Controls.Add(this.label_ID, 2, 0);
+            this.panel1.Controls.Add(metadata);
+            var content = new TableLayoutPanel
+            {
+                Name = "HistoryContent",
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 1
+            };
+            content.Controls.Add(this.FileView_Panel, 0, 0);
+            content.Controls.Add(this.HisDataView_Panel, 0, 0);
+            content.Controls.Add(this.LV_File_Panel, 0, 0);
+            var directoryGroup = new GroupBox
+            {
+                Text = "记录目录",
+                Dock = DockStyle.Fill
+            };
+            directoryGroup.Controls.Add(this.FileTreeViewList);
+            this.splitContainer1.Panel1.Controls.Add(directoryGroup);
+            var contentGroup = new GroupBox
+            {
+                Text = "文件与记录",
+                Dock = DockStyle.Fill
+            };
+            contentGroup.Controls.Add(content);
+            this.splitContainer1.Panel2.Controls.Add(contentGroup);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             btn_CallDir.Click += btn_CallDir_Click;

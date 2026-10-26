@@ -46,7 +46,7 @@ namespace DtuTestManager
                 LV_YX.Width = 480;
                 LV_YX.ClearAllItem();
                 LV_YX.Columns.Add("序号", 60, HorizontalAlignment.Left);
-                LV_YX.Columns.Add("遥信名称", 100, HorizontalAlignment.Left);
+                LV_YX.Columns.Add("遥信名称", 180, HorizontalAlignment.Left);
                 LV_YX.Columns.Add("状态(值)", 70, HorizontalAlignment.Center);
                 LV_YX.Columns.Add("变位时间", 180, HorizontalAlignment.Center);
                 LV_YX.GridLines = true;
@@ -106,7 +106,7 @@ namespace DtuTestManager
                 LV_YC.ClearAllItem();
                 LV_YC.Width = 420;
                 LV_YC.Columns.Add("遥测序号", 80, HorizontalAlignment.Center);
-                LV_YC.Columns.Add("遥测名称", 140, HorizontalAlignment.Left);
+                LV_YC.Columns.Add("遥测名称", 180, HorizontalAlignment.Left);
                 LV_YC.Columns.Add("实时值", 70, HorizontalAlignment.Center);
                 LV_YC.Columns.Add("单位", 50, HorizontalAlignment.Center);
                 LV_YC.GridLines = true;
@@ -144,7 +144,7 @@ namespace DtuTestManager
                 LV_DD.ClearAllItem();
                 LV_DD.Width = 420;
                 LV_DD.Columns.Add("电度序号", 80, HorizontalAlignment.Center);
-                LV_DD.Columns.Add("电度名称", 160, HorizontalAlignment.Left);
+                LV_DD.Columns.Add("电度名称", 200, HorizontalAlignment.Left);
                 LV_DD.Columns.Add("实时值", 60, HorizontalAlignment.Center);
                 LV_DD.Columns.Add("单位", 80, HorizontalAlignment.Center);
                 LV_DD.GridLines = true;

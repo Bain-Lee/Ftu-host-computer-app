@@ -46,12 +46,9 @@ namespace DtuTestManager
             timer1 = new Timer();
             Own(timer1);
             BtnSetFixData = new ToolStripButton();
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(36.52, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(0.6800001, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(30.52, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(0.8800001, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(30.52, System.Windows.GridUnitType.Star));
-            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(0.8800001, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(36, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(32, System.Windows.GridUnitType.Star));
+            tableLayoutPanel1.ColumnWidths.Add(new System.Windows.GridLength(32, System.Windows.GridUnitType.Star));
             tableLayoutPanel1.RowHeights.Add(new System.Windows.GridLength(100, System.Windows.GridUnitType.Star));
             this.timer1.Enabled = true;
             this.timer1.Interval = 500;
@@ -61,7 +58,7 @@ namespace DtuTestManager
             this.myPanel1.Name = "myPanel1";
             this.myPanel1.Size = new System.Drawing.Size(1249, 576);
             this.myPanel1.TabIndex = 3;
-            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.Dock = DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 56);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -130,8 +127,8 @@ namespace DtuTestManager
             this.myPanel1.Controls.Add(this.tableLayoutPanel1);
             this.myPanel1.Controls.Add(this.toolStrip1);
             this.tableLayoutPanel1.Controls.Add(this.LV_YX, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LV_DD, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.LV_YC, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.LV_DD, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.LV_YC, 1, 0);
             this.toolStrip1.Items.AddRange(new Control[] {
             this.Btn_StartOrder,
             this.Btn_StopOrder,

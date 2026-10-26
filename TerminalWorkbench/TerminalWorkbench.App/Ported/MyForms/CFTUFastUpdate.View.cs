@@ -71,7 +71,7 @@ namespace DtuTestManager
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(839, 226);
             this.Name = "CFTUFastUpdate";
-            this.Text = "CFTUFastUpdate";
+            this.Text = "FTU 快速升级";
             this.Controls.Add(this.FileDownMsg);
             this.Controls.Add(this.BtnEndDown);
             this.Controls.Add(this.BtnStartDown);

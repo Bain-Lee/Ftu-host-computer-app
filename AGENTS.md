@@ -117,6 +117,7 @@ Release 验证使用对应的 `Configuration=Release` 及隔离输出路径。�
 - `Ported` 是经过人工修复的迁移源码，直接维护；一次性迁移脚本不参与构建且不得覆盖已有实现。保留原任务号及原本故意错误的试验报文。
 - `TerminalWorkbench.Core` / `Legacy` / `Desktop` 为未采用的早期兼容草稿，未纳入有效解决方案或发布包；不以它们代替新版功能，也不擅自删除。
 - 不手工修改、清理或暂存 `.tools`、`.artifacts`、各项目 `bin` / `obj` 中的生成物；正常构建可更新生成物，不把 SDK 或运行时加入 Git。
-- `Build.ps1 -Verify` 先执行 92 组离线回归，再在独立进程执行 15 组自动工作流。工作流从内置资源准备临时工程，可运行主窗体的真实加载，只使用本机 TCP 仿真，不使用现场连接参数；测试成功不代表实机或 SFTP 传输验收。
+- `Build.ps1 -Verify` 先执行 92 组离线回归，再在独立进程执行 16 组自动工作流。工作流从内置资源准备临时工程，可运行主窗体的真实加载，只使用本机 TCP 仿真，不使用现场连接参数；测试成功不代表实机或 SFTP 传输验收。
+- `LayoutRegression.cs` 为工作流中的一组，生成两种客户区视口及 14 种对话框默认尺寸的 56 个布局场景，检查文字、控件边界、表格面积和外层滚动。截图位于回归输出 `layout-previews`；离屏截图不代替所有 DPI 或实机验收。多个互斥 Fill 控件应共享叠放 Grid；不要改回只让最后一个控件填充的 DockPanel 布局。
 - 正式发布使用 `Properties/PublishProfiles/Standalone.pubxml`，发布目录仅包含一个压缩 EXE。启动自动准备 `%LOCALAPPDATA%/TerminalWorkbench/Workspace`，不强制选择 INI；已有配置与模板只保留或补齐，不覆盖。
 - 私有 SDK 已移至 `%LOCALAPPDATA%/TerminalWorkbench.BuildTools/dotnet-10.0.402`。2026-10-26 已按用户本次明确授权清理 App / Regression 的四个 `bin/obj` 目录；不把这次授权扩大为后续任意清理。

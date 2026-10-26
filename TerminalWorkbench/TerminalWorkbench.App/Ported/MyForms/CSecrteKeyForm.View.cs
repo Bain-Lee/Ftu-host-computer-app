@@ -639,6 +639,7 @@ namespace DtuTestManager
             NormalUseErrCS.CheckedChanged += NormalUseErrCS_CheckedChanged;
             StatusTimer.Tick += StatusTimer_Tick;
             Load += CSecrteKeyForm_Load;
+            ArrangeEncryptionLayout();
         }
     }
 }

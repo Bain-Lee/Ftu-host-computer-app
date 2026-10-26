@@ -54,7 +54,7 @@ namespace DtuTestManager
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.ClientSize = new System.Drawing.Size(446, 193);
             this.Name = "CAddCom";
-            this.Text = "CAddCom";
+            this.Text = "串口配置";
             this.Controls.Add(this.combox_ComBaud);
             this.Controls.Add(this.combox_ComIndexSel);
             this.Controls.Add(this.label6);

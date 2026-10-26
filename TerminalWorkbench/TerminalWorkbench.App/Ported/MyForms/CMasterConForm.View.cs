@@ -640,6 +640,7 @@ namespace DtuTestManager
             SaveDataSet.Click += SaveDataSet_Click;
             FormClosed += CMasterConForm_FormClosed;
             Load += CMasterConParaForm_Load;
+            ArrangeConfigurationLayout();
         }
     }
 }

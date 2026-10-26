@@ -132,6 +132,7 @@ namespace DtuTestManager
             BtTran4.Click += BtTran4_Click;
             BtTran8.Click += BtTran8_Click;
             BtnClear.Click += BtnClear_Click;
+            ArrangeDataConversionLayout();
         }
     }
 }

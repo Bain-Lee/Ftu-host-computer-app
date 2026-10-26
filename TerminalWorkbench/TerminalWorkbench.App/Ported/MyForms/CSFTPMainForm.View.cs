@@ -118,6 +118,7 @@ namespace DtuTestManager
             button5.Click += button5_Click;
             FormClosing += CSFTPMainForm_FormClosing;
             Load += CSFTPMainForm_Load;
+            ArrangeFileTransferLayout();
         }
     }
 }

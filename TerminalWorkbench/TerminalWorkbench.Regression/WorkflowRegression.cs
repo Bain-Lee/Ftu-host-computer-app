@@ -41,6 +41,7 @@ internal static class WorkflowRegression
             Check("bundled workspace starts without an external configuration", BundledWorkspace);
             Check("INI write/reopen preserves 101 cause length", IniRoundTrip);
             Check("real main startup, repeated navigation and shutdown", MainWorkflow);
+            Check("responsive layouts and rendered previews", LayoutRegression.Run);
             Check("independent dialogs load and close", DialogWorkflow);
             Check("communication selection and native value editing", CommunicationEditor);
             Check("engineering string parameters retain commas", () => EngineeringParameters(false));

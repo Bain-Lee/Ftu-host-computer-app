@@ -120,7 +120,7 @@ namespace DtuTestManager
             this.YmCount.Size = new System.Drawing.Size(121, 21);
             this.YmCount.TabIndex = 1;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(339, 307);
+            this.ClientSize = new System.Drawing.Size(480, 420);
             this.Name = "CAddTermForm";
             this.Text = "终端信息";
             this.Controls.Add(this.Btn_Cancel);

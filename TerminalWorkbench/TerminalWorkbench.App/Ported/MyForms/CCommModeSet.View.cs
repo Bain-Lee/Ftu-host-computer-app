@@ -598,6 +598,7 @@ namespace DtuTestManager
             Btn_Save_Dev.Click += Btn_Save_Dev_Click;
             FormClosing += CommuCFG_FormClosing;
             Load += CommuCFG_Load;
+            ArrangeModuleConfigurationLayout();
         }
     }
 }

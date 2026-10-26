@@ -296,6 +296,7 @@ namespace DtuTestManager
             Btn_Cmd.Click += Btn_Cmd_Click;
             Btn_Can.Click += Btn_Can_Click;
             Load += CVersionForm_Load;
+            ArrangeBoardLayout();
         }
     }
 }

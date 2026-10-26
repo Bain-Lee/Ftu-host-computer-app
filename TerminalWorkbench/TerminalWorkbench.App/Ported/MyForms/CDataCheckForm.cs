@@ -55,6 +55,10 @@ namespace DtuTestManager
         }
         private void InitPhasedataValue()
         {
+            if (CGlobal.m_Device.m_Phasedata.Count > 0)
+            {
+                return;
+            }
             com_LineNo.Items.Clear();
             for (int i = 0; i < 16; i++)
             {
@@ -97,6 +101,10 @@ namespace DtuTestManager
             for (int i = 0; i < 16; i++)
             {
                 com_LineNo.Items.Add(i.ToString() + "#线路");
+                if (i < CGlobal.m_Device.m_AC_Checkdata.Count)
+                {
+                    continue;
+                }
                 List<CCheckdata> T_checkdata = new List<CCheckdata>();
                 for (int j = 0; j < 18; j++)
                 {
@@ -209,6 +217,10 @@ namespace DtuTestManager
         }
         private void InitDC_CheckdataValue()
         {
+            if (CGlobal.m_Device.m_DC_Checkdata.Count > 0)
+            {
+                return;
+            }
             for (int j = 0; j < 4; j++)
             {
                 CDCCheckdata temp = new CDCCheckdata();
@@ -248,8 +260,8 @@ namespace DtuTestManager
         {
             string LineName = CGlobal.m_Device.SelLineNo.ToString() + "#线路";
             LV_AC_Check.ClearAllItem();
-            LV_AC_Check.Columns.Add("选择", 50, HorizontalAlignment.Center);
-            LV_AC_Check.Columns.Add(LineName, 100, HorizontalAlignment.Center);
+            LV_AC_Check.Columns.Add("选择", 76, HorizontalAlignment.Center);
+            LV_AC_Check.Columns.Add(LineName, 140, HorizontalAlignment.Left);
             LV_AC_Check.Columns.Add("基准值", 120, HorizontalAlignment.Center);
             LV_AC_Check.Columns.Add("系数", 120, HorizontalAlignment.Center);
             LV_AC_Check.Columns.Add("实时值", 120, HorizontalAlignment.Center);
@@ -289,10 +301,10 @@ namespace DtuTestManager
         {
 
             LV_DC_Check.ClearAllItem();
-            LV_DC_Check.Columns.Add("选择", 50, HorizontalAlignment.Center);
-            LV_DC_Check.Columns.Add("名称", 100, HorizontalAlignment.Center);
-            LV_DC_Check.Columns.Add("基准值", 120, HorizontalAlignment.Center);
-            LV_DC_Check.Columns.Add("实时值", 120, HorizontalAlignment.Center);
+            LV_DC_Check.Columns.Add("选择", 76, HorizontalAlignment.Center);
+            LV_DC_Check.Columns.Add("名称", 160, HorizontalAlignment.Left);
+            LV_DC_Check.Columns.Add("基准值", 160, HorizontalAlignment.Center);
+            LV_DC_Check.Columns.Add("实时值", 160, HorizontalAlignment.Center);
 
             LV_DC_Check.GridLines = true;
             LV_DC_Check.FullRowSelect = true;
@@ -320,8 +332,8 @@ namespace DtuTestManager
             string LineName = CGlobal.m_Device.SelLineNo.ToString() + "#线路";
             LV_Phase.Items.Clear();
             LV_Phase.Columns.Clear();
-            LV_Phase.Columns.Add(LineName, 100, HorizontalAlignment.Center);
-            LV_Phase.Columns.Add("绝对相角度数", 120, HorizontalAlignment.Center);
+            LV_Phase.Columns.Add(LineName, 160, HorizontalAlignment.Left);
+            LV_Phase.Columns.Add("绝对相角度数", 200, HorizontalAlignment.Center);
             LV_Phase.GridLines = true;
             LV_Phase.FullRowSelect = true;
             LV_Phase.View = View.Details;

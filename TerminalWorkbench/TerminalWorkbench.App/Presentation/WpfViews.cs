@@ -102,6 +102,7 @@ namespace TerminalWorkbench.Presentation
                     Bind(password, UIElement.IsEnabledProperty, model, nameof(Control.Enabled));
                     password.SetBinding(UIElement.VisibilityProperty, new Binding(nameof(Control.Visible)) { Source = model, Converter = new W.BooleanToVisibilityConverter() });
                     password.Margin = new Thickness(2);
+                    ApplyControlMetrics(model, password);
                     return password;
                 }
                 var box = new W.TextBox
@@ -135,13 +136,14 @@ namespace TerminalWorkbench.Presentation
                 view = new W.Separator { Margin = new Thickness(5, 2, 5, 2) };
             else if (model is Label || model is ToolStripLabel)
             {
-                var label = new W.TextBlock { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(5, 2, 5, 2) };
+                var label = new W.TextBlock { VerticalAlignment = VerticalAlignment.Center, TextWrapping = TextWrapping.Wrap, Margin = new Thickness(5, 2, 5, 2) };
                 Bind(label, W.TextBlock.TextProperty, model, nameof(Control.Text));
                 view = label;
             }
             else
                 view = CreateContainer(model);
 
+            ApplyControlMetrics(model, view);
             Bind(view, UIElement.IsEnabledProperty, model, nameof(Control.Enabled));
             view.SetBinding(UIElement.VisibilityProperty, new Binding(nameof(Control.Visible)) { Source = model, Converter = new W.BooleanToVisibilityConverter() });
             view.DataContext = model;
@@ -158,6 +160,24 @@ namespace TerminalWorkbench.Presentation
                 W.ContextMenuService.SetContextMenu(view, (W.ContextMenu)model.ContextMenuStrip.Element);
             }
             return view;
+        }
+
+        private static void ApplyControlMetrics(Control model, FrameworkElement view)
+        {
+            view.UseLayoutRounding = true;
+            view.SnapsToDevicePixels = true;
+            if (model is TextBox || model is ComboBox || model is DateTimePicker)
+            {
+                view.MinHeight = 32;
+            }
+            else if (model is Button || model is ToolStripButton)
+            {
+                view.MinHeight = 34;
+            }
+            else if (model is CheckBox || model is Label || model is ToolStripLabel)
+            {
+                view.MinHeight = 24;
+            }
         }
 
         private static void Bind(DependencyObject target, DependencyProperty property, object source, string name, bool twoWay = false)
@@ -345,23 +365,55 @@ namespace TerminalWorkbench.Presentation
             }
             var panel = new W.DockPanel { LastChildFill = true };
             root.Children.Add(panel);
+            var dockSubscriptions = new Dictionary<Control, PropertyChangedEventHandler>();
+            var elementHosts = new List<W.Panel>();
+            var positionSubscriptions = new Dictionary<Control, PropertyChangedEventHandler>();
             void Populate()
             {
+                foreach (W.Panel host in elementHosts)
+                {
+                    host.Children.Clear();
+                }
+                elementHosts.Clear();
+                foreach (var subscription in positionSubscriptions)
+                {
+                    subscription.Key.PropertyChanged -= subscription.Value;
+                }
+                positionSubscriptions.Clear();
                 panel.Children.Clear();
                 while (root.Children.Count > 1)
                 {
-                    if (root.Children[1] is W.ScrollViewer scroll && scroll.Content is W.Canvas scrollCanvas)
+                    if (root.Children[1] is W.ScrollViewer scroll)
                     {
-                        scrollCanvas.Children.Clear();
                         scroll.Content = null;
                     }
-                    else if (root.Children[1] is W.Canvas oldCanvas)
-                        oldCanvas.Children.Clear();
                     root.Children.RemoveAt(1);
                 }
-                foreach (Control child in model.Controls.Where(child => child.Dock != DockStyle.None && child.Dock != DockStyle.Fill).Reverse().Concat(model.Controls.Where(child => child.Dock == DockStyle.Fill)))
+                foreach (Control previous in dockSubscriptions.Keys.Except(model.Controls).ToArray())
+                {
+                    previous.PropertyChanged -= dockSubscriptions[previous];
+                    dockSubscriptions.Remove(previous);
+                }
+                foreach (Control child in model.Controls)
+                {
+                    if (!dockSubscriptions.ContainsKey(child))
+                    {
+                        PropertyChangedEventHandler changed = (_, e) =>
+                        {
+                            if (e.PropertyName == nameof(Control.Dock))
+                            {
+                                Populate();
+                            }
+                        };
+                        dockSubscriptions.Add(child, changed);
+                        child.PropertyChanged += changed;
+                    }
+                }
+                foreach (Control child in model.Controls.Where(child => child.Dock != DockStyle.None && child.Dock != DockStyle.Fill).Reverse())
                 {
                     var element = child.Element;
+                    element.Width = double.NaN;
+                    element.Height = double.NaN;
                     var dock = child.Dock == DockStyle.Top ? W.Dock.Top : child.Dock == DockStyle.Bottom ? W.Dock.Bottom : child.Dock == DockStyle.Right ? W.Dock.Right : W.Dock.Left;
                     W.DockPanel.SetDock(element, dock);
                     if (child.Dock == DockStyle.Left || child.Dock == DockStyle.Right)
@@ -370,18 +422,44 @@ namespace TerminalWorkbench.Presentation
                         element.Height = child is ToolStrip ? double.NaN : child.Height;
                     panel.Children.Add(element);
                 }
+                var fill = model.Controls.Where(child => child.Dock == DockStyle.Fill).ToArray();
+                if (fill.Length > 0)
+                {
+                    var content = new W.Grid();
+                    elementHosts.Add(content);
+                    foreach (Control child in fill)
+                    {
+                        child.Element.Width = double.NaN;
+                        child.Element.Height = double.NaN;
+                        content.Children.Add(child.Element);
+                    }
+                    panel.Children.Add(content);
+                }
                 var absolute = model.Controls.Where(child => child.Dock == DockStyle.None).ToArray();
                 if (absolute.Length > 0)
                 {
+                    if (panel.Children.Count == 0 && absolute.All(IsFormField))
+                    {
+                        root.Children.Add(CreateFieldRows(absolute, elementHosts));
+                        return;
+                    }
+                    if (panel.Children.Count == 0 && absolute.Length == 1 && absolute[0] is not Label)
+                    {
+                        absolute[0].Element.Width = double.NaN;
+                        absolute[0].Element.Height = double.NaN;
+                        root.Children.Add(absolute[0].Element);
+                        return;
+                    }
                     var canvas = new W.Canvas { MinWidth = absolute.Max(child => child.Right) + 8, MinHeight = absolute.Max(child => child.Bottom) + 8 };
+                    elementHosts.Add(canvas);
                     foreach (Control child in absolute)
                     {
                         var element = child.Element;
                         element.Width = Math.Max(1, child.Width);
-                        element.Height = Math.Max(1, child.Height);
+                        element.Height = Math.Max(element.MinHeight, child.Height);
                         W.Canvas.SetLeft(element, child.Left);
                         W.Canvas.SetTop(element, child.Top);
-                        child.PropertyChanged += (_, e) =>
+                        PropertyChangedEventHandler changed = (_, e) =>
                         {
                             if (e.PropertyName == nameof(Control.Location))
                             {
@@ -391,9 +469,11 @@ namespace TerminalWorkbench.Presentation
                             if (e.PropertyName == nameof(Control.Size))
                             {
                                 element.Width = Math.Max(1, child.Width);
-                                element.Height = Math.Max(1, child.Height);
+                                element.Height = Math.Max(element.MinHeight, child.Height);
                             }
                         };
+                        positionSubscriptions.Add(child, changed);
+                        child.PropertyChanged += changed;
                         canvas.Children.Add(element);
                     }
                     if (panel.Children.Count == 0)
@@ -407,6 +487,53 @@ namespace TerminalWorkbench.Presentation
             if (model is GroupBox group)
                 return new W.GroupBox { Header = group.Text, Content = root, Padding = new Thickness(4) };
             return root;
+        }
+
+        private static bool IsFormField(Control control)
+        {
+            return control is Label || control is Button || control is ComboBox || control is CheckBox
+                || control is DateTimePicker || control is ProgressBar || control is TextBox text && !text.Multiline;
+        }
+
+        private static FrameworkElement CreateFieldRows(Control[] controls, List<W.Panel> elementHosts)
+        {
+            var rows = new W.StackPanel { Margin = new Thickness(8) };
+            var groups = new List<List<Control>>();
+            List<Control> group = null;
+            int rowCenter = int.MinValue;
+            foreach (Control control in controls.OrderBy(control => control.Top + Math.Min(control.Height, 32) / 2).ThenBy(control => control.Left))
+            {
+                int center = control.Top + Math.Min(control.Height, 32) / 2;
+                if (group == null || center - rowCenter > 12)
+                {
+                    group = new List<Control>();
+                    groups.Add(group);
+                    rowCenter = center;
+                }
+                group.Add(control);
+            }
+            foreach (List<Control> fields in groups)
+            {
+                var row = new W.WrapPanel { Margin = new Thickness(0, 3, 0, 3) };
+                elementHosts.Add(row);
+                rows.Children.Add(row);
+                foreach (Control control in fields.OrderBy(control => control.Left))
+                {
+                    FrameworkElement element = control.Element;
+                    element.Width = control is Label || control is Button || control is CheckBox ? double.NaN : Math.Max(40, control.Width);
+                    element.Height = double.NaN;
+                    element.VerticalAlignment = VerticalAlignment.Center;
+                    element.Margin = new Thickness(4, 3, 8, 3);
+                    row.Children.Add(element);
+                }
+            }
+            return new W.ScrollViewer
+            {
+                Content = rows,
+                HorizontalScrollBarVisibility = W.ScrollBarVisibility.Disabled,
+                VerticalScrollBarVisibility = W.ScrollBarVisibility.Auto,
+                HorizontalContentAlignment = System.Windows.HorizontalAlignment.Stretch
+            };
         }
 
         private static FrameworkElement CreateSplit(SplitContainer model)
@@ -474,13 +601,14 @@ namespace TerminalWorkbench.Presentation
                 EnableRowVirtualization = true,
                 EnableColumnVirtualization = true,
                 HeadersVisibility = W.DataGridHeadersVisibility.Column,
-                RowHeight = 30,
+                RowHeight = 34,
                 GridLinesVisibility = W.DataGridGridLinesVisibility.Horizontal,
                 HorizontalGridLinesBrush = Brush("#E5EDF1"),
                 AlternatingRowBackground = Brush("#F5F9FB"),
                 BorderBrush = Brush("#D5E0E7"),
                 BorderThickness = new Thickness(1),
                 Background = Brushes.White,
+                Foreground = Brush("#193549"),
                 SelectionUnit = W.DataGridSelectionUnit.FullRow
             };
             W.VirtualizingPanel.SetIsVirtualizing(grid, true);
@@ -514,7 +642,12 @@ namespace TerminalWorkbench.Presentation
                 for (int column = 0; column < model.Columns.Count; column++)
                 {
                     var header = model.Columns[column];
-                    grid.Columns.Add(new PointColumn(model, column) { Header = header.Text, Width = Math.Max(35, header.Width) });
+                    grid.Columns.Add(new PointColumn(model, column)
+                    {
+                        Header = header.Text,
+                        MinWidth = Math.Max(Math.Min(240, header.Width), Math.Max(64, Math.Min(160, header.Text.Length * 13 + 26))),
+                        Width = new W.DataGridLength(Math.Max(35, header.Width), W.DataGridLengthUnitType.Star)
+                    });
                 }
             }
             model.Columns.CollectionChanged += (_, _) => Columns();
@@ -556,18 +689,30 @@ namespace TerminalWorkbench.Presentation
             protected override FrameworkElement GenerateElement(W.DataGridCell cell, object dataItem)
             {
                 var row = (ListViewItem)dataItem;
-                var panel = new W.StackPanel { Orientation = W.Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center };
+                var panel = new W.DockPanel { LastChildFill = true, VerticalAlignment = VerticalAlignment.Center };
                 if (Index == 0 && table.CheckBoxes)
                 {
                     var check = new W.CheckBox { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(3, 0, 4, 0) };
                     check.SetBinding(Primitive.ToggleButton.IsCheckedProperty, new Binding(nameof(ListViewItem.Checked)) { Source = row, Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged });
                     check.PreviewMouseLeftButtonDown += (_, _) => row.Selected = true;
+                    W.DockPanel.SetDock(check, W.Dock.Left);
                     panel.Children.Add(check);
                 }
                 var status = new System.Windows.Shapes.Ellipse { Width = 8, Height = 8, Margin = new Thickness(0, 0, 5, 0), VerticalAlignment = VerticalAlignment.Center };
                 status.SetBinding(System.Windows.Shapes.Shape.FillProperty, new Binding($"SubItems[{Index}].StatusBrush") { Source = row });
-                var text = new W.TextBlock { Margin = new Thickness(4, 0, 4, 0) };
+                var statusStyle = new Style(typeof(System.Windows.Shapes.Ellipse));
+                statusStyle.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));
+                foreach (int index in new[] { 1, 2 })
+                {
+                    var trigger = new DataTrigger { Binding = new Binding($"SubItems[{Index}].ImageIndex") { Source = row }, Value = index };
+                    trigger.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Visible));
+                    statusStyle.Triggers.Add(trigger);
+                }
+                status.Style = statusStyle;
+                W.DockPanel.SetDock(status, W.Dock.Left);
+                var text = new W.TextBlock { Margin = new Thickness(6, 0, 6, 0), TextTrimming = TextTrimming.CharacterEllipsis };
                 text.SetBinding(W.TextBlock.TextProperty, new Binding($"SubItems[{Index}].Text") { Source = row });
+                text.SetBinding(FrameworkElement.ToolTipProperty, new Binding($"SubItems[{Index}].Text") { Source = row });
                 panel.Children.Add(status);
                 panel.Children.Add(text);
                 return panel;
@@ -675,9 +820,17 @@ namespace TerminalWorkbench.Presentation
                         ? new W.DataGridCheckBoxColumn { Binding = binding }
                         : new W.DataGridTextColumn { Binding = binding };
                     native.Header = column.HeaderText;
-                    native.Width = column.Width;
+                    void ColumnSize()
+                    {
+                        native.MinWidth = column is DataGridViewCheckBoxColumn ? 56
+                            : Math.Max(Math.Min(160, column.Width), Math.Max(72, Math.Min(150, column.HeaderText.Length * 13 + 26)));
+                        native.Width = model.AutoSizeColumnsMode == DataGridViewAutoSizeColumnsMode.Fill
+                            ? new W.DataGridLength(Math.Max(native.MinWidth, column.Width), W.DataGridLengthUnitType.Star)
+                            : new W.DataGridLength(Math.Max(native.MinWidth, column.Width));
+                    }
+                    ColumnSize();
                     native.IsReadOnly = model.ReadOnly || column.ReadOnly;
-                    column.PropertyChanged += (_, _) => { native.Width = column.Width; native.IsReadOnly = model.ReadOnly || column.ReadOnly; };
+                    column.PropertyChanged += (_, _) => { ColumnSize(); native.IsReadOnly = model.ReadOnly || column.ReadOnly; };
                     grid.Columns.Add(native);
                 }
             }

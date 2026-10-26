@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using TerminalWorkbench.Presentation;
+using GridLength = System.Windows.GridLength;
+using GridUnitType = System.Windows.GridUnitType;
 namespace DtuTestManager
 {
     partial class CDataCheckForm
@@ -34,8 +36,8 @@ namespace DtuTestManager
         private void InitializeComponent()
         {
             toolStrip1 = new ToolStrip();
-            CtrlPanel = new Panel();
-            DataPanel = new Panel();
+            CtrlPanel = new TableLayoutPanel();
+            DataPanel = new TableLayoutPanel();
             Btn_Check = new ToolStripButton();
             com_Angle = new ComboBox();
             com_Current = new ComboBox();
@@ -223,6 +225,64 @@ namespace DtuTestManager
             com_Vol.SelectedIndexChanged += com_Vol_SelectedIndexChanged;
             Freshtimer.Tick += Freshtimer_Tick;
             Load += CDataCheckForm_Load;
+            ConfigureCalibrationLayout();
+        }
+
+        private void ConfigureCalibrationLayout()
+        {
+            var controls = (TableLayoutPanel)CtrlPanel;
+            controls.ColumnCount = 1;
+            controls.RowCount = 2;
+            controls.RowHeights.Add(GridLength.Auto);
+            controls.RowHeights.Add(GridLength.Auto);
+            controls.Height = 104;
+            controls.Controls.Clear();
+
+            var references = new TableLayoutPanel
+            {
+                Name = "CalibrationReferences",
+                ColumnCount = 8,
+                RowCount = 1
+            };
+            references.RowHeights.Add(new GridLength(44));
+            for (int index = 0; index < 4; index++)
+            {
+                references.ColumnWidths.Add(GridLength.Auto);
+                references.ColumnWidths.Add(new GridLength(1, GridUnitType.Star));
+            }
+            references.Controls.Add(label4, 0, 0);
+            references.Controls.Add(com_LineNo, 1, 0);
+            references.Controls.Add(label1, 2, 0);
+            references.Controls.Add(com_Vol, 3, 0);
+            references.Controls.Add(label2, 4, 0);
+            references.Controls.Add(com_Current, 5, 0);
+            references.Controls.Add(label3, 6, 0);
+            references.Controls.Add(com_Angle, 7, 0);
+
+            var actions = new ToolStrip { Name = "CalibrationActions" };
+            actions.Items.AddRange(new Control[]
+            {
+                BtnCheckCmd,
+                Btn_CallRationCmd,
+                Btn_DownRatioCmd,
+                new ToolStripSeparator(),
+                BtnCallPhaseCmd,
+                new ToolStripSeparator(),
+                BtnSelectAllCmd,
+                SelectKillAllCmd
+            });
+            controls.Controls.Add(references, 0, 0);
+            controls.Controls.Add(actions, 0, 1);
+
+            var data = (TableLayoutPanel)DataPanel;
+            data.ColumnCount = 1;
+            data.RowCount = 1;
+            data.ColumnWidths.Add(new GridLength(1, GridUnitType.Star));
+            data.RowHeights.Add(new GridLength(1, GridUnitType.Star));
+            data.Controls.Clear();
+            data.Controls.Add(LV_AC_Check, 0, 0);
+            data.Controls.Add(LV_DC_Check, 0, 0);
+            data.Controls.Add(LV_Phase, 0, 0);
         }
     }
 }
