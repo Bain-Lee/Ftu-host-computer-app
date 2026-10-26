@@ -22,7 +22,7 @@ internal static class WorkflowRegression
     private static int failures;
     private static int passed;
 
-    internal static int Run(string templates)
+    internal static int Run()
     {
         var app = new System.Windows.Application { ShutdownMode = ShutdownMode.OnExplicitShutdown };
         SynchronizationContext.SetSynchronizationContext(new DispatcherSynchronizationContext(app.Dispatcher));
@@ -33,21 +33,12 @@ internal static class WorkflowRegression
         TerminalWorkbench.Presentation.MessageBox.DialogHandler = (_, _) => throw new InvalidOperationException("Unexpected workflow dialog.");
         string originalDirectory = Environment.CurrentDirectory;
         string workspace = Path.Combine(Path.GetTempPath(), "TerminalWorkbench-workflow-" + Guid.NewGuid().ToString("N"));
-        Directory.CreateDirectory(workspace);
-        foreach (string directory in new[] { "DefaultDevModule", "DevModuleDataBase", "工程模板", "工程参数" })
-        {
-            Directory.CreateDirectory(Path.Combine(workspace, directory));
-        }
-        foreach (string source in Directory.GetFiles(Path.GetFullPath(templates), "*.mdb"))
-        {
-            File.Copy(source, Path.Combine(workspace, "DefaultDevModule", Path.GetFileName(source)));
-        }
-        string ini = Path.Combine(workspace, "PrjSet_Main.ini");
-        File.WriteAllText(ini, "[ComType]\r\nIsAutoCon=0\r\nIsAutoCall=0\r\nConnType=1\r\nProType=1\r\nModuleName=DTU标准模板\r\n[NetSet]\r\nIP=127.0.0.1\r\nPort=1\r\nSocketType=0\r\n[Encode]\r\nIsEncode=False\r\n[101]\r\nCorType=1\r\n");
+        string ini = DefaultWorkspace.EnsureCreated(workspace);
         RuntimePaths.Configure(ini);
         Console.WriteLine("Temporary workflow workspace: " + workspace);
         try
         {
+            Check("bundled workspace starts without an external configuration", BundledWorkspace);
             Check("INI write/reopen preserves 101 cause length", IniRoundTrip);
             Check("real main startup, repeated navigation and shutdown", MainWorkflow);
             Check("independent dialogs load and close", DialogWorkflow);
@@ -144,6 +135,26 @@ internal static class WorkflowRegression
         view.UpdateLayout();
         Pump();
         return host;
+    }
+
+    private static void BundledWorkspace()
+    {
+        string workspace = RuntimePaths.WorkspaceDirectory;
+        foreach (string path in new[] { "PrjSet_Main.ini", "DataBase.mdb", "res/Log.png", "DefaultDevModule/DTU标准模板.mdb", "DefaultDevModule/空模板.mdb" })
+        {
+            Assert(File.Exists(Path.Combine(workspace, path)), "Missing bundled asset: " + path);
+        }
+        Assert(Directory.GetFiles(Path.Combine(workspace, "DevModuleDataBase"), "*.mdb").Length == 3, "Device templates are missing.");
+        CGlobal.m_Device = new CDeviceClass();
+        CGlobal.ReadSysSetting();
+        Assert(CGlobal.IsAutoCon == 0 && CGlobal.IsAutoCall == 0 && !CGlobal.m_Device.m_Connection.IsEncode, "First launch enabled automatic device operations.");
+        Assert(CGlobal.m_Device.m_Connection.m_DevName == "DTU标准模板", "The default template name was not read correctly.");
+        CGlobal.WritePrivateProfileString("ComType", "SingleType", "1", CGlobal.FileName);
+        DateTime templateWriteTime = File.GetLastWriteTimeUtc(Path.Combine(workspace, "DefaultDevModule", "DTU标准模板.mdb"));
+        DefaultWorkspace.EnsureCreated(workspace);
+        CGlobal.ReadSysSetting();
+        Assert(CGlobal.m_Device.m_Connection.m_SingleType == 1, "Relaunch overwrote saved communication settings.");
+        Assert(File.GetLastWriteTimeUtc(Path.Combine(workspace, "DefaultDevModule", "DTU标准模板.mdb")) == templateWriteTime, "Relaunch rewrote the user's template.");
     }
 
     private static void IniRoundTrip()

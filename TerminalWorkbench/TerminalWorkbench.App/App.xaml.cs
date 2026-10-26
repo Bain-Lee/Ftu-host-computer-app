@@ -13,19 +13,8 @@ namespace TerminalWorkbench
         {
             base.OnStartup(e);
             DispatcherUnhandledException += ReportRecoverableOperationError;
-            var picker = new Microsoft.Win32.OpenFileDialog
-            {
-                Title = "选择现有工程配置",
-                Filter = "工程配置 (PrjSet_Main.ini)|PrjSet_Main.ini|INI 文件 (*.ini)|*.ini",
-                CheckFileExists = true
-            };
-            if (picker.ShowDialog() != true)
-            {
-                Shutdown();
-                return;
-            }
-            string config = Path.GetFullPath(picker.FileName);
-            RuntimePaths.Configure(config);
+            string workspace = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TerminalWorkbench", "Workspace");
+            RuntimePaths.Configure(DefaultWorkspace.EnsureCreated(workspace));
             var screen = new MainForm { Text = "配电终端工作台" };
             screen.Show();
         }

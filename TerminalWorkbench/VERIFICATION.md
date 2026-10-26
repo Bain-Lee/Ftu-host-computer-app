@@ -1,10 +1,10 @@
 # 验证记录
 
-日期：2026-10-24。分支：`refactor/wpf-mvvm`。原稳定基线：`main` 的 `db170d5`。
+更新日期：2026-10-26。分支：`refactor/wpf-mvvm`。2026-10-24 对照的原稳定基线为 `main` 的 `db170d5`。
 
 ## 工具与构建
 
-- 项目内 .NET SDK 10.0.402，目标 `net10.0-windows`，`win-x86` 自包含。
+- 用户缓存中的私有 .NET SDK 10.0.402，目标 `net10.0-windows`，`win-x86` 自包含。SDK 位于 `%LOCALAPPDATA%/TerminalWorkbench.BuildTools/dotnet-10.0.402`。
 - 新项目包：System.Data.OleDb / System.IO.Ports / Microsoft.Data.Sqlite 10.0.13，SSH.NET 2026.0.0；实际 SQLite 原生传递依赖 SQLitePCLRaw.lib.e_sqlite3 2.1.13。
 - 保持 `TreatWarningsAsErrors=true`、告警级别 4，没有新增 NoWarn 或 pragma warning 抑制。
 - 原解决方案用 VS2022 完整 MSBuild 隔离输出，Debug 构建 0 错误、0 告警，原 28 项回归通过。
@@ -12,8 +12,24 @@
 
 | 配置 | 构建结果 | 离线回归 | 自动工作流 | 发布 |
 | --- | --- | --- | --- | --- |
-| Debug | 0 错误、0 告警 | 92 组通过、0 失败 | 14 组通过、0 失败 | 未发布 |
-| Release | 0 错误、0 告警 | 92 组通过、0 失败 | 14 组通过、0 失败 | x86 自包含运行包生成成功 |
+| Debug | 0 错误、0 告警 | 92 组通过、0 失败 | 15 组通过、0 失败 | 未发布 |
+| Release | 0 错误、0 告警 | 92 组通过、0 失败 | 15 组通过、0 失败 | 压缩单文件 EXE 生成成功 |
+
+## 单文件启动与瘦身
+
+2026-10-26 移除启动时强制选择现有 INI 的流程。默认配置、标准 / 空模板、三种设备模板、基础数据库和必要图片作为资源包含在 EXE 中；首次启动生成用户工作目录，以后只补齐缺失资源。
+
+发布配置使用 `PublishSingleFile`、内置压缩和原生库自动解包，并保留完整 WPF 运行时；没有启用 WPF 不支持的裁剪。正式发布目录从 410 个文件、约 139.65 MiB，收敛为 1 个 EXE、约 60.54 MiB。新 EXE 先在独立暂存目录生成，确认只有一个文件后才替换旧发布目录。
+
+实际把 EXE 复制到只有该文件的临时目录，以临时目录为工作目录无参数启动，已确认进程创建“配电终端工作台”主窗口，并自动创建默认配置及标准模板。此检查在开发输出清理后再次执行，启动不依赖原工程旁边的资源文件。
+
+桌面自动化组件因 `windows sandbox failed: helper_unknown_error` 未能初始化，因此没有声称完成可视化点击验收。实际进程启动检查与主窗体工作流结果均已保存；未连接真实设备。
+
+用户明确授权后清理 `TerminalWorkbench.App` 和 `TerminalWorkbench.Regression` 的四个 `bin/obj` 目录，约 713 MiB，事前核对 Git 跟踪文件数与配置 / 数据库 / 证书文件数均为 0。SDK 约 770 MiB 移至用户构建缓存，这部分属于移出工程目录，没有声称从整台电脑删除。
+
+工程目录测得由 1,560,428,062 字节收敛到约 79,170,720 字节（约 75.50 MiB，后续说明和日志会有小幅变化）。默认业务数据保存在 `%LOCALAPPDATA%/TerminalWorkbench/Workspace`，与源码及发布目录分开。
+
+本次日志和空间记录位于 `.artifacts/startup-debug.log`、`.artifacts/startup-release.log`、`.artifacts/single-file-startup.json`、`.artifacts/size-before.json` 和 `.artifacts/size-after.json`。
 
 ## 离线检查的含义
 
@@ -32,11 +48,12 @@
 
 ## 自动工作流
 
-用户确认没有测试设备和外部环境后，新增 `WorkflowRegression.cs`，由 `Build.ps1 -Verify` 在独立进程中执行。该进程生成临时 INI、复制模板，仅向 `127.0.0.1` 建立测试连接，没有读取现场通信地址或使用实际 SFTP 账户。
+`WorkflowRegression.cs` 由 `Build.ps1 -Verify` 在独立进程中执行。该进程从内置资源生成临时配置与模板，仅向 `127.0.0.1` 建立测试连接，没有读取现场通信地址或使用实际 SFTP 账户。
 
-14 个最外层检查组覆盖以下流程；每组包含多项断言，数量不表示全功能覆盖率：
+15 个最外层检查组覆盖以下流程；每组包含多项断言，数量不表示全功能覆盖率：
 
 - INI 通信配置保存重开，保留 101 地址和传送原因长度。
+- 默认资源不依赖外部工程目录；首次配置不启用自动设备操作，二次初始化不覆盖已有通信设置或重写模板文件。
 - 执行主窗体实际启动加载、11 个业务页的三轮切换及退出；核对旧页释放、400 个 YC 完整显示、初次加载不连接以及通信参数没有重复累积。
 - 14 种独立对话框的加载和关闭，包含会在关闭回调中调用 Dispose 的终端编辑窗口。
 - 通信页保留设计器的选择列；在原生 WPF 编辑器中修改值并提交，核对没有写错数据列或丢失选择状态。
@@ -47,7 +64,7 @@
 - 104 监听模式接收遥测、停止接收 / 监听线程并释放端口；101 在 TCP 上传送带校验和的分片浮点遥测。
 - 五次 TCP 连接 / 接收 / 断开，检查旧接收和处理线程退出；另外检查完整发送 1 MiB 测试缓冲区。
 
-最终 Release 的 33 次页面切换样本（包含布局）中位数为 72.6 ms，最大值 243.9 ms；Debug 对应为 78.7 ms / 297.1 ms。这只是当前机器、固定模板和所选页面的样本，没有与原版在同一条件下做性能对照，不能换算为整体提速比例。
+2026-10-24 一次通过运行的 33 次页面切换样本（包含布局）中，Release 中位数为 72.6 ms，最大值 243.9 ms；Debug 对应为 78.7 ms / 297.1 ms。这是历史样本，没有与原版在同一条件下做性能对照，不能换算为整体提速比例。
 
 本机日志：`.artifacts/debug-workflow-validation.log` 和 `.artifacts/release-workflow-validation.log`。更早的失败记录也保留在 `.artifacts/workflow-*.log`，不提交生成物。
 
@@ -70,4 +87,4 @@
 .\Build.ps1 -Configuration Release -Verify -Publish
 ```
 
-离线预览输出在回归工程对应 `bin/<配置>/win-x86/native-workbench-preview.png`，程序数据来自模板副本。构建与测试日志位于本次本机 `.artifacts`，不提交生成物。
+离线预览在回归工程对应 `bin/<配置>/win-x86/native-workbench-preview.png` 生成，本次清理前已另存为 `.artifacts/preview/native-workbench-preview.png`。构建与测试日志位于本次本机 `.artifacts`，不提交生成物。

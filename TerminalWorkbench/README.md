@@ -14,7 +14,7 @@
 .\Build.ps1 -Configuration Release -Verify -Publish
 ```
 
-脚本使用本目录 `.tools/dotnet` 下的私有 SDK 10.0.402；不存在时从微软官方下载到本目录，不安装系统 SDK，不修改全局 PATH，不注册 COM。首次还原需要联网。构建机为 Windows x64，应用与测试程序均输出为 x86，保留旧 Jet 和厂商原生接口的位数约束。
+脚本使用 `%LOCALAPPDATA%/TerminalWorkbench.BuildTools/dotnet-10.0.402` 下的私有 SDK；不存在时从微软官方下载到该用户缓存，不安装系统 SDK，不修改全局 PATH，不注册 COM。首次还原需要联网。构建机为 Windows x64，应用与测试程序均输出为 x86，保留旧 Jet 和厂商原生接口的位数约束。
 
 新解决方案为 `TerminalWorkbench.sln`，只包含 `TerminalWorkbench.App` 和 `TerminalWorkbench.Regression`。原 VS2022 继续用于原解决方案；.NET 10 的完整 IDE 构建和调试需要支持该框架的 Visual Studio 版本，当前环境请使用上面的脚本。没有自动升级 Visual Studio。
 
@@ -22,14 +22,16 @@
 
 - 默认 Release：`TerminalWorkbench.App/bin/Release/win-x86/TerminalWorkbench.exe`。
 - 默认 Debug：`TerminalWorkbench.App/bin/Debug/win-x86/TerminalWorkbench.exe`。
-- `-Publish` 的完整运行包：`.artifacts/publish/win-x86/`。
+- `-Publish` 的运行程序：`.artifacts/publish/win-x86/TerminalWorkbench.exe`，发布目录只有这一个文件。
 - 独立离线回归：`TerminalWorkbench.Regression/bin/<配置>/win-x86/TerminalWorkbench.Regression.exe`。
 
-发布包包含 x86 .NET 桌面运行时。应保留整个发布目录；只复制 EXE 不能运行。程序的数据文件由所选工程目录提供。
+发布 EXE 已内置并压缩 x86 .NET 桌面运行时、默认配置、模板和必要图片，只需复制这一个文件。WPF 使用反射与动态界面，本次没有启用不受支持的运行时裁剪。原生运行库由 .NET 在运行时自动解包到用户临时缓存，无需用户逐个整理 DLL。
 
-## 打开现有工程
+## 双击启动
 
-启动新版后选择原运行目录中的 `PrjSet_Main.ini`，例如 `../DtuTestManager/bin/Debug/PrjSet_Main.ini`。程序按该文件所在目录读取模板、工程参数和业务文件；厂商原生 DLL 也从该目录解析。加载工程和打开通信通道是两个动作，必须由用户点击“开始运行”才进行初次连接。
+直接双击发布 EXE，首次启动自动创建 `%LOCALAPPDATA%/TerminalWorkbench/Workspace`，并进入标准 DTU 模板的工作台。该目录存放 `PrjSet_Main.ini`、Access 模板、工程参数、转发表等业务数据；重新打开时只补齐缺少的默认资源，保留已有配置和模板修改。默认关闭自动连接和加密，连接参数在“通信配置”中设置，由用户点击“开始运行”发起初次连接。
+
+需要沿用原工程数据时，先关闭程序并备份该用户目录，再按原目录结构复制需要的配置和模板；厂商原生 DLL 也从该用户目录解析。不要把证书、密钥或现场配置作为默认发布资产。
 
 依赖仍包括已有模板 / Access 数据库、32 位 Jet OLE DB，以及加密功能需要的厂商 DLL、运行库和设备。新版不再使用 TeeChart ActiveX、WinForms 停靠 DLL 或原 EXE 来提供业务界面。没有复制、改写或自动注册现场证书、口令和厂商 DLL。
 
@@ -37,7 +39,7 @@
 
 ## 已执行的离线检查
 
-2026-10-24：Debug / Release 均为 0 错误、0 告警，告警视为错误；各通过 92 组离线回归和 14 组自动工作流，已重新生成自包含运行包。全部测试由构建脚本串行执行，详见 [VERIFICATION.md](VERIFICATION.md)。
+2026-10-26：Debug / Release 均为 0 错误、0 告警，告警视为错误；各通过 92 组离线回归和 15 组自动工作流。单文件 EXE 另复制到只有它的临时目录，无参数启动并确认工作台主窗口及默认资源已创建。详见 [VERIFICATION.md](VERIFICATION.md)。
 
 - 54 个窗口的构造和 WPF 视图创建；此项不等同于窗口全部按钮的业务验收。
 - 18 个既有接收缓存、锁释放、104 心跳与 S 帧检查。
@@ -47,6 +49,7 @@
 - 在临时副本上打开标准 / 空 Access 模板。标准模板读取 400 个 YC、930 个 YX 和 32 个 YK；400 个 YC 完整进入表格。
 - 5000 行记录的测试视口创建了 19 个行控件，证明该测试路径启用了行虚拟化；这不是全程序性能基准。
 - 自动工作流在临时工程中执行主窗体真实加载、11 个业务页的 33 次切换和退出，以及 14 种独立对话框的加载 / 关闭。
+- 内置资源初始化可独立运行；二次初始化保留已有通信设置和模板文件时间。
 - 本机 TCP 仿真覆盖 101 / 104 的分片接收、104 连续报文与遥测 / 遥信更新、链路测试应答、监听端口释放和五次重连；SFTP 只验证连接失败期间界面响应和关闭，未验证认证与文件操作。
 - 原生通信表格的选择 / 编辑，以及工程参数子集保存、逗号文本和长中文字符串保存重开均通过。修复了这些工作流实际发现的列丢失、递归关闭、重复参数累积、保存条数和文本截断问题。
 
@@ -56,8 +59,10 @@
 
 - `TerminalWorkbench.App/Ported`：从显式编译清单移植的业务 / 规约控制器和 WPF 视图描述，后续直接维护这些文件。
 - `TerminalWorkbench.App/Presentation`：WPF 呈现模型、原生视图、表格编辑、曲线和窗口生命周期。`Form`、`ListView` 等名字用于保持控制器调用契约，不是 WinForms 控件，也不使用 WindowsFormsHost。
-- `TerminalWorkbench.Regression`：独立离线检查；不会运行产品启动流程，不打开真实通信通道。
+- `TerminalWorkbench.Regression`：独立离线检查；工作流使用内置资源生成临时工程，运行主窗体实际加载，不打开真实设备通道。
 - `tools/port_sources.py`：一次性移植工具，不参与构建；已有迁移源文件时拒绝覆盖人工完善的实现。
 - `FEATURE_INVENTORY.json`：原编译窗口、事件绑定和直接任务号的静态清单。
+
+构建会重新生成各项目 `bin/obj`，它们属于开发输出，不是需要分发的运行包。2026-10-26 已按用户本次明确授权清理两个 WPF 项目的四个 `bin/obj` 目录；SDK 移出工程目录，默认数据在用户目录，发布目录只保留一个 EXE。保留的离线预览位于 `.artifacts/preview/native-workbench-preview.png`。
 
 `TerminalWorkbench.Core`、`TerminalWorkbench.Legacy`、`TerminalWorkbench.Desktop` 是范围澄清前的 net48 兼容试验稿，保留供审查，未进入新解决方案和发布包，也不计为本次迁移成果。自动审批拒绝了这些草稿的删除，理由是可能丢失中间成果，因此未继续删除或移动。

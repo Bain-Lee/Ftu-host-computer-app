@@ -24,9 +24,9 @@ internal static class Regression
     private static int Main(string[] args)
     {
         Console.OutputEncoding = new System.Text.UTF8Encoding(false);
-        if (args.Length == 3 && args[0] == "--workflow" && args[1] == "--templates")
+        if (args.Length == 1 && args[0] == "--workflow")
         {
-            return WorkflowRegression.Run(args[2]);
+            return WorkflowRegression.Run();
         }
         if (args.Length == 1 && args[0] == "--golden")
         {

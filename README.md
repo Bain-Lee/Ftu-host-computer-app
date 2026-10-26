@@ -76,26 +76,26 @@ git switch refactor/wpf-mvvm
 .\TerminalWorkbench\Build.ps1 -Configuration Release -Verify -Publish
 ```
 
-脚本使用项目目录下的 .NET SDK 10.0.402；本地不存在时从微软官方下载到 `TerminalWorkbench/.tools/dotnet`。首次构建需要联网下载 SDK 和还原 NuGet 包，不安装系统 SDK。
+脚本使用用户缓存 `%LOCALAPPDATA%/TerminalWorkbench.BuildTools/dotnet-10.0.402` 中的私有 SDK；不存在时从微软官方下载。首次构建需要联网下载 SDK 和还原 NuGet 包，不安装系统 SDK，不把 SDK 放进工程目录。
 
 - `-Verify`：依次执行离线回归和独立进程中的自动工作流。
-- `-Publish`：生成包含 x86 .NET 桌面运行时的自包含发布目录。
-- 发布入口：`TerminalWorkbench/.artifacts/publish/win-x86/TerminalWorkbench.exe`。运行时保留整个发布目录。
+- `-Publish`：生成内置 x86 .NET 桌面运行时、默认模板和资源的压缩单文件 EXE。
+- 发布入口：`TerminalWorkbench/.artifacts/publish/win-x86/TerminalWorkbench.exe`。只需复制这一个文件，双击即可打开。
 
 新版解决方案只包含 `TerminalWorkbench.App` 和 `TerminalWorkbench.Regression`。`Core`、`Legacy`、`Desktop` 为未纳入有效解决方案的早期草稿。
 
-启动新版后，选择现有工程目录中的 `PrjSet_Main.ini`；该目录提供模板、工程参数、业务文件及需要的厂商原生库。加载工程后，由用户点击“开始运行”发起初次连接。Access / Jet 和厂商接口的运行条件仍需满足。
+首次启动自动在 `%LOCALAPPDATA%/TerminalWorkbench/Workspace` 准备默认配置、模板和业务目录，不再要求选择 INI。以后继续使用并保留该用户目录中的修改。连接参数在软件内设置，由用户点击“开始运行”发起初次连接；Access / Jet 和厂商加密接口的运行条件仍需满足。
 
 详细操作见 [WPF 版本说明](https://github.com/Bain-Lee/Ftu-host-computer-app/blob/refactor/wpf-mvvm/TerminalWorkbench/README.md)。
 
 ## 验证记录与边界
 
-以下为仓库中 **2026-10-24** 的已有验证记录，本 README 的新增不代表重新执行了这些检查：
+原版记录来自 **2026-10-24**；WPF 记录更新至 **2026-10-26**：
 
 | 版本 | 已有记录 | 验证范围 |
 | --- | --- | --- |
 | WinForms | Debug / Release 构建 0 错误、0 告警；28 项回归通过 | SQLite、锁释放、接收缓存、104 计时，以及隐藏控件的缓冲和布局等 |
-| WPF | Debug / Release 构建 0 错误、0 告警；各通过 92 组离线回归和 14 组自动工作流 | 窗口与编辑流程、模板副本、临时工程和本机 TCP 仿真等 |
+| WPF | Debug / Release 构建 0 错误、0 告警；各通过 92 组离线回归和 15 组自动工作流 | 窗口与编辑流程、内置默认工程、临时数据和本机 TCP 仿真等；单文件 EXE 另做独立目录无参数启动检查 |
 
 检查通过不能替代真实终端遥控、参数固化、升级、加密设备、SFTP 文件传输或规约全量符合性验收。设备写入及故障试验应在明确授权的测试范围内进行。
 
