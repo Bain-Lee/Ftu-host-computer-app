@@ -480,7 +480,7 @@ namespace TerminalWorkbench.Presentation
         }
         public TreeNode TopNode
         {
-            get; set;
+            get => Nodes.FirstOrDefault();
         }
         public TreeNode SelectedNode
         {

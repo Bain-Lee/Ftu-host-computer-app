@@ -41,6 +41,7 @@ internal static class WorkflowRegression
             Check("bundled workspace starts without an external configuration", BundledWorkspace);
             Check("INI write/reopen preserves 101 cause length", IniRoundTrip);
             Check("real main startup, repeated navigation and shutdown", MainWorkflow);
+            Check("template configuration opens and navigates", TemplateConfiguration);
             Check("responsive layouts and rendered previews", LayoutRegression.Run);
             Check("independent dialogs load and close", DialogWorkflow);
             Check("communication selection and native value editing", CommunicationEditor);
@@ -206,6 +207,78 @@ internal static class WorkflowRegression
         main.Close();
         Wait(() => main.IsDisposed, "The main window did not finish asynchronous shutdown.");
         Assert(currentRealtime.IsDisposed, "Main shutdown retained its current page.");
+    }
+
+    private static void TemplateConfiguration()
+    {
+        CGlobal.m_Device = new CDeviceClass();
+        CGlobal.m_RunSendMode = false;
+        using var main = new MainForm();
+        using var mainHost = Attach(main.Element);
+        main.ActivateScreen();
+        try
+        {
+            using var form = new CModulForm();
+            using var host = Attach(form.Element);
+            var elapsed = Stopwatch.StartNew();
+            form.ActivateScreen();
+            Pump();
+            Console.WriteLine($"Template configuration load: {elapsed.Elapsed.TotalMilliseconds:F1}ms.");
+            var tree = Field<TreeView>(form, "DeviceTreeView");
+            Assert(tree.Nodes.Count == 5 && tree.SelectedNode == tree.Nodes[0] && tree.SelectedNode.IsExpanded,
+                "Template startup did not select and expand its first device.");
+            Assert(Field<Form>(form, "m_SelectForm") is CDeviceSetForm, "Template startup did not load device details.");
+            int visited = 0;
+            foreach (TreeNode root in tree.Nodes)
+            {
+                tree.SelectedNode = root;
+                foreach (TreeNode group in root.Nodes)
+                {
+                    tree.SelectedNode = group;
+                    form.Element.UpdateLayout();
+                    Pump();
+                    visited++;
+                }
+            }
+            Assert(visited >= 30, "Template navigation did not cover the device groups.");
+            var tabs = Field<CNormalTabControl>(form, "ModuleTabCtrl");
+            tabs.SelectedIndex = 1;
+            var children = Field<TreeView>(form, "LineListView");
+            Assert(children.Nodes.Count == 4, "Configuration template categories are missing.");
+            foreach (TreeNode root in children.Nodes)
+            {
+                children.SelectedNode = root;
+                foreach (TreeNode group in root.Nodes)
+                {
+                    children.SelectedNode = group;
+                    form.Element.UpdateLayout();
+                    Pump();
+                }
+            }
+            tabs.SelectedIndex = 0;
+            form.Close();
+            Assert(form.IsDisposed, "Template configuration did not close.");
+            for (int round = 0; round < 3; round++)
+            {
+                Field<Control>(main, "Btn_ModeSet1").PerformClick();
+                var window = System.Windows.Application.Current.Windows.OfType<Window>().Single(item => item.Title == "模板配置");
+                var opened = (CModulForm)((FrameworkElement)window.Content).DataContext;
+                Wait(() => window.IsLoaded && Field<Form>(opened, "m_SelectForm") is CDeviceSetForm,
+                    "The real template menu did not finish opening.");
+                Assert(Field<TreeView>(opened, "DeviceTreeView").SelectedNode != null,
+                    "The reopened template window lost its selected device.");
+                window.Close();
+                Wait(() => opened.IsDisposed, "The real template menu did not release its window.");
+            }
+            Console.WriteLine($"Template groups visited: {visited}; real menu open/close cycles: 3.");
+            Assert(!CGlobal.m_Device.m_bOnlineStatus && !CGlobal.m_RunSendMode, "Template browsing connected to a device.");
+        }
+        finally
+        {
+            CGlobal.m_DataBase.CloseDatabase();
+            main.Close();
+            Wait(() => main.IsDisposed, "Template workflow did not close its main window.");
+        }
     }
 
     private static void DialogWorkflow()
