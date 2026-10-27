@@ -380,6 +380,7 @@ namespace DtuTestManager
             AddModule.Click += ChileDelModule_Click;
             FormClosed += CModulForm_FormClosed;
             Load += CModulForm_Load;
+            ArrangeTemplateLayout();
         }
     }
 }

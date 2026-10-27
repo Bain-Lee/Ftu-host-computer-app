@@ -41,7 +41,9 @@ internal static class LayoutRegression
                 ParameterSelection(viewport, previews, failures);
                 Realtime(viewport, previews, failures);
                 Encryption(viewport, previews, failures);
+                Templates(viewport, previews, failures);
             }
+            Templates(new Size(1920, 1000), previews, failures);
             Dialogs(previews, failures);
             CalibrationReopen();
         }
@@ -210,6 +212,83 @@ internal static class LayoutRegression
             });
         }
         form.Close();
+    }
+
+    private static void Templates(Size viewport, string previews, List<string> failures)
+    {
+        using var form = new CModulForm();
+        try
+        {
+            form.ActivateScreen();
+            using var renderer = new Renderer(form, viewport);
+            var tree = Field<TreeView>(form, "DeviceTreeView");
+            TreeNode device = tree.Nodes.Single(node => node.Text == "DTU标准模板");
+            tree.SelectedNode = device;
+            device.Expand();
+            Scene("template-device", form, renderer, previews, failures, () =>
+            {
+                Assert(Field<Form>(form, "m_SelectForm") is CDeviceSetForm, "Template device details did not open.");
+            });
+            foreach (var entry in new[] { (1, "analog"), (2, "digital"), (3, "control"), (5, "energy") })
+            {
+                tree.SelectedNode = device.Nodes.Single(node => node.Tag is CBaseModuleGroup group && group.m_DataType == entry.Item1);
+                Scene("template-" + entry.Item2, form, renderer, previews, failures, () =>
+                {
+                    AssertInside(Field<Control>(form, "GroupSetPanel"), "template actions",
+                        new[] { "FirstAddress", "label1", "ChildModuleList", "label2", "FontName", "AddChildModule", "ResetAddress" }
+                            .Select(name => Field<Control>(form, name)));
+                    AssertTable(NativeTable(Field<Control>(form, "DevDataView")), viewport.Width * 0.65, viewport.Height * 0.5, "Template data");
+                });
+            }
+            tree.SelectedNode = device.Nodes.Single(node => node.Tag is CBaseModuleGroup group && group.m_DataType == 4);
+            var parameters = (CParaSetForm)Field<Form>(form, "m_SelectForm");
+            void VerifyParameters()
+            {
+                AssertInside(Field<Control>(parameters, "panel3"), "parameter actions",
+                    new[] { "label1", "FirstAddress", "label2", "ChildMdList", "label3", "FontNameList", "AddChileModule", "ResetAddNo" }
+                        .Select(name => Field<Control>(parameters, name)));
+                AssertTable(NativeTable(Field<Control>(parameters, "ParaDataListView")), viewport.Width * 0.45, viewport.Height * 0.4, "Template parameters");
+            }
+            Scene("template-parameters", form, renderer, previews, failures, VerifyParameters);
+            var parameterTree = Field<TreeView>(parameters, "ParaListTree");
+            TreeNode selectedGroup = parameterTree.Nodes.SelectMany(node => node.Nodes)
+                .First(node => node.Tag is CParaGroupTable group && group.m_ParaDataList.Count > 0);
+            selectedGroup.Parent.Expand();
+            parameterTree.SelectedNode = selectedGroup;
+            Scene("template-parameter-values", form, renderer, previews, failures, VerifyParameters);
+            tree.SelectedNode = device.Nodes.Single(node => node.Tag is CBaseModuleGroup group && group.m_DataType == 6);
+            Scene("template-lines", form, renderer, previews, failures, () =>
+            {
+                var lines = (CLineRealForm)Field<Form>(form, "m_SelectForm");
+                AssertTable(NativeTable(Field<Control>(lines, "LineSetView")), viewport.Width * 0.65, viewport.Height * 0.5, "Template lines");
+            });
+            Field<CNormalTabControl>(form, "ModuleTabCtrl").SelectedIndex = 1;
+            var childTree = Field<TreeView>(form, "LineListView");
+            TreeNode child = childTree.Nodes.SelectMany(node => node.Nodes).First();
+            child.Parent.Expand();
+            childTree.SelectedNode = child;
+            Scene("template-child", form, renderer, previews, failures, () =>
+            {
+                AssertTable(NativeTable(Field<Control>(form, "ModuleView")), viewport.Width * 0.65, viewport.Height * 0.6, "Child template");
+            });
+            form.Close();
+        }
+        finally
+        {
+            CGlobal.m_DataBase.CloseDatabase();
+        }
+    }
+
+    private static void AssertInside(Control container, string description, IEnumerable<Control> controls)
+    {
+        foreach (Control control in controls)
+        {
+            FrameworkElement element = control.Element;
+            Assert(element.IsVisible, description + " hides " + control.Name);
+            Rect bounds = element.TransformToAncestor(container.Element).TransformBounds(new Rect(element.RenderSize));
+            Assert(bounds.Left >= -2 && bounds.Top >= -2 && bounds.Right <= container.Element.ActualWidth + 2 && bounds.Bottom <= container.Element.ActualHeight + 2,
+                description + " clips " + control.Name + " (bottom=" + bounds.Bottom + ", panel height=" + container.Element.ActualHeight + ").");
+        }
     }
 
     private static void Dialogs(string previews, List<string> failures)

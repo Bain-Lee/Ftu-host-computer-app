@@ -249,6 +249,7 @@ namespace DtuTestManager
             BtnLoadNowPara.Click += BtnLoadNowPara_Click;
             BtnParaCheck.Click += BtnParaCheck_Click;
             Load += CParaSetForm_Load;
+            ArrangeParameterTemplateLayout();
         }
     }
 }
